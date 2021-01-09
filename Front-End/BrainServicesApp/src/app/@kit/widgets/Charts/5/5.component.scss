@@ -1,0 +1,7 @@
+@import 'src/mixins.scss';
+
+.chart {
+  ::ng-deep .ct-bar {
+    stroke-width: 15px;
+  }
+}

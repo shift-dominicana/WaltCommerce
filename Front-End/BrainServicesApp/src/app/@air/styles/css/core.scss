@@ -1,0 +1,24 @@
+@import 'src/mixins.scss';
+
+:root {
+  --kit-color-primary: #1b55e3;
+  --kit-font-family: 'Source Sans Pro', sans-serif;
+}
+
+html {
+  font-size: 15px;
+  @media (max-width: $sm-max-width) {
+    font-size: 14px;
+  }
+}
+
+body {
+  font-family: $base-font-family;
+}
+
+// dark theme
+[data-kit-theme='dark'] {
+  body {
+    background: darken($dark-gray-5, 3%);
+  }
+}

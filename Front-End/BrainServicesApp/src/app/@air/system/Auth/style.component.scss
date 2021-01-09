@@ -1,0 +1,9 @@
+@import 'src/mixins.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/* LOGIN */
+
+.boxContainer {
+  padding: rem(50);
+  box-shadow: 0 4px 38px 0 rgba(22, 21, 55, 0.06), 0 0 21px 0 rgba(22, 21, 55, 0.03) !important;
+}
