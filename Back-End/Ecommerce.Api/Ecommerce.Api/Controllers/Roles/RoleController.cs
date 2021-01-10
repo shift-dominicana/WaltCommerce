@@ -2,9 +2,9 @@
 using DataLayer.Models.Roles;
 using DataLayer.ViewModels.Roles;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Controllers.Core;
+using Ecommerce.Api.Controllers.Core;
 
-namespace BrainServices.Api.Controllers.Roles
+namespace Ecommerce.Api.Controllers.Roles
 {
     [Route("api/[controller]")]
     [ApiController]

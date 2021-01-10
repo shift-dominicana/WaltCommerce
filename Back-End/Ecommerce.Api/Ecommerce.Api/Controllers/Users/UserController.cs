@@ -2,9 +2,9 @@
 using DataLayer.Models.Users;
 using DataLayer.ViewModels.Users;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.Controllers.Core;
+using Ecommerce.Api.Controllers.Core;
 
-namespace BrainServices.Api.Controllers.Users
+namespace Ecommerce.Api.Controllers.Users
 {
     [Route("api/[controller]")]
     [ApiController]

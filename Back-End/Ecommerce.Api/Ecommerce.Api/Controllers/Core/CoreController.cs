@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace WebApi.Controllers.Core
+namespace Ecommerce.Api.Controllers.Core
 {
     public class CoreController<TIService, TEntity, TViewModel> : ControllerBase, ICoreController<TEntity>
     where TEntity : class

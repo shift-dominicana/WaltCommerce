@@ -1,6 +1,6 @@
 using System;
 
-namespace BrainServices.Api
+namespace Ecommerce.Api
 {
     public class WeatherForecast
     {

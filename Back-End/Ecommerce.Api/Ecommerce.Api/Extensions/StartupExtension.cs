@@ -12,7 +12,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Linq;
 
-namespace WebApi.Extensions
+namespace Ecommerce.Api.Extensions
 {
     public static class StartupExtension
     {
