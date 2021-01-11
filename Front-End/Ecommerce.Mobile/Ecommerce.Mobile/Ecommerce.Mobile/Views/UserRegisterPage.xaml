@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Ecommerce.Mobile.Views.UserRegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+
+    <StackLayout Margin="20">
+        <Entry Placeholder="Name" Text="{Binding FirstName}" />
+        <Entry Placeholder="LastName" Text="{Binding LastName}" />
+        <Entry Placeholder="UserName" Text="{Binding UserName}" />
+        <Entry
+            IsPassword="True"
+            Placeholder="Password"
+            Text="{Binding Password}" />
+
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
+        <Button
+            Command="{Binding SaveCommand}"
+            IsEnabled="{Binding IsEnabled}"
+            Text="Save"
+            VerticalOptions="EndAndExpand" />
+    </StackLayout>
+</ContentPage>

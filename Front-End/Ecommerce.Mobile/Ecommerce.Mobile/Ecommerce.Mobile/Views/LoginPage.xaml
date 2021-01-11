@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Ecommerce.Mobile.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    Title="Login"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
+
+    <StackLayout
+        Margin="20"
+        Spacing="30"
+        VerticalOptions="CenterAndExpand">
+
+        <Image Source="icon.png" />
+        <Entry
+            Keyboard="Email"
+            Placeholder="User"
+            Text="{Binding UserName}" />
+        <Entry
+            IsPassword="True"
+            Placeholder="Password"
+            Text="{Binding Password}" />
+
+        <Button
+            Padding="10"
+            Command="{Binding LoginCommand}"
+            Text="Inicial seccion" />
+
+        <Label
+            Text="Registrar Usuario"
+            TextColor="Black"
+            TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding UserRegisterCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+    </StackLayout>
+
+</ContentPage>
