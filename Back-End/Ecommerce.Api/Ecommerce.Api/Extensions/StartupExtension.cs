@@ -50,7 +50,7 @@ namespace Ecommerce.Api.Extensions
         {
             services.AddSwaggerGen(opt =>
             {
-                opt.SwaggerDoc("v1", new OpenApiInfo() { Title = "Brain Api", Version = "v1" });
+                opt.SwaggerDoc("v1", new OpenApiInfo() { Title = "Ecommerce Api", Version = "v1" });
             });
         }
 
@@ -60,7 +60,7 @@ namespace Ecommerce.Api.Extensions
             app.UseSwagger();
             app.UseSwaggerUI(opt =>
             {
-                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Brain Api");
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce Api");
                 opt.RoutePrefix = "swagger";
             });
         }

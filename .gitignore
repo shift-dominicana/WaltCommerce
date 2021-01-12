@@ -349,3 +349,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 Back-End/BrainServices.Api/DataLayer/Migrations
+Back-End/Ecommerce.Api/DataLayer/Migrations

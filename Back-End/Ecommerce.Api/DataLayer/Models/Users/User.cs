@@ -7,8 +7,8 @@ namespace DataLayer.Models.Users
 {
     public class User : BaseModel
     {
-        
-        public String UserName { get; set; }
+
+        public String Email { get; set; }
 
         public String Password { get; set; }
 
@@ -18,17 +18,18 @@ namespace DataLayer.Models.Users
 
         public String NickName { get; set; }
 
-        public String IdCard { get; set; }
-
-        public CardTypeEnum IdCardType { get; set; }
-
         public DateTime Dob { get; set; } //Date of Birth
 
         public String Telephone { get; set; }
 
         public String CellPhone { get; set; }
 
-        public Role Role { get; set; }
+        public String PersonalId { get; set; }
+
+        public PersonalIdTypeEnum PersonalIdType { get; set; }
+
+        public GenderEnum Gender { get; set; }
+
 
     }
 }

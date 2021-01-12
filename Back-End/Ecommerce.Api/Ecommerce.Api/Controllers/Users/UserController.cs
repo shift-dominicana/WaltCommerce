@@ -16,21 +16,21 @@ namespace Ecommerce.Api.Controllers.Users
             this._userService = service;
         }
 
-        [HttpGet("Authenticate/{username}/{password}")]
-        public IActionResult Authenticate([FromRoute] string username, [FromRoute] string password) {
+        [HttpGet("Authenticate/{email}/{password}")]
+        public IActionResult Authenticate([FromRoute] string email, [FromRoute] string password) {
 
-            var user = _userService.Authenticate(username, password);
+            var user = _userService.Authenticate(email, password);
 
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Email or password is incorrect" });
 
 
             return Ok(new
             {
                 Id = user.Id,
-                Username = user.UserName,
+                Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName,
+                LastName = user.LastName
                 //Token = tokenString
             });
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Utils.Enums
 {
-    public enum CardTypeEnum
+    public enum PersonalIdTypeEnum
     {
         LocalId = 1,
         Passport = 2,
@@ -22,5 +22,12 @@ namespace WebAPI.Utils.Enums
     {
         domicile = 1,
         normal = 2,
+    }
+
+    public enum GenderEnum
+    { 
+        male = 1,
+        female = 2,
+        nobinary = 3
     }
 }
