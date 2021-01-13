@@ -17,16 +17,19 @@
         <Image Source="icon.png" />
         <Entry
             Keyboard="Email"
-            Placeholder="User"
-            Text="{Binding UserName}" />
+            Placeholder="Email"
+            Text="{Binding Email}" />
         <Entry
             IsPassword="True"
             Placeholder="Password"
             Text="{Binding Password}" />
-
+        
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
+        
         <Button
             Padding="10"
             Command="{Binding LoginCommand}"
+            IsEnabled="{Binding IsEnabled}"
             Text="Inicial seccion" />
 
         <Label

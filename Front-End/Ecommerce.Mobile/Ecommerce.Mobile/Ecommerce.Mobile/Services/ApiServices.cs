@@ -190,5 +190,55 @@ namespace Ecommerce.Mobile.Services
                 };
             }
         }
+
+        public async Task<Response<object>> GetGenericAsync(
+        string urlBase,
+        string servicePrefix,
+        string controller,
+        string parameters)
+        {
+            try
+            {
+                var content = new StringContent("", Encoding.UTF8, "application/json");
+
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                // Pass the handler to httpclient(from you are calling api)
+                var client = new HttpClient(clientHandler)
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+
+                var url = $"{urlBase}{servicePrefix}{controller}{parameters}";
+                var response = await client.GetAsync(url);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response<object>
+                    {
+                        IsSuccess = false,
+                        Message = result,
+                    };
+                }
+
+                var obj = JsonConvert.DeserializeObject<object>(result);
+                return new Response<object>
+                {
+                    IsSuccess = true,
+                    Result = obj
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response<object>
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
     }
 }

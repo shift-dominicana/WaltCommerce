@@ -10,7 +10,7 @@
     <StackLayout Margin="20">
         <Entry Placeholder="Name" Text="{Binding FirstName}" />
         <Entry Placeholder="LastName" Text="{Binding LastName}" />
-        <Entry Placeholder="UserName" Text="{Binding UserName}" />
+        <Entry Placeholder="Email" Text="{Binding Email}" />
         <Entry
             IsPassword="True"
             Placeholder="Password"

@@ -36,5 +36,10 @@ namespace Ecommerce.Mobile.Services
             string tokenType,
             string accessToken);
 
+        Task<Response<object>> GetGenericAsync(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            string parameters);
     }
 }

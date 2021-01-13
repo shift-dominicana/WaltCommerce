@@ -13,7 +13,7 @@ namespace Ecommerce.Mobile.ViewModels
         private readonly IApiServices _apiServices;
         private string _name;
         private string _password;
-        private string _userName;
+        private string _email;
         private string _lastName;
         private DelegateCommand _saveCommand;
         private bool _isRunning;
@@ -39,10 +39,10 @@ namespace Ecommerce.Mobile.ViewModels
             get => _lastName;
             set => SetProperty(ref _lastName, value);
         }
-        public string UserName
+        public string Email
         {
-            get => _userName;
-            set => SetProperty(ref _userName, value);
+            get => _email;
+            set => SetProperty(ref _email, value);
         }
         public string Password
         {
@@ -74,7 +74,7 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 FirstName = FirstName,
                 LastName =  LastName,
-                UserName =  UserName,
+                Email =  Email,
                 Password =  Password
             };
 
@@ -111,7 +111,7 @@ namespace Ecommerce.Mobile.ViewModels
         {
             if (string.IsNullOrEmpty(FirstName)
                 || string.IsNullOrEmpty(LastName)
-                || string.IsNullOrEmpty(UserName)
+                || string.IsNullOrEmpty(Email)
                 || string.IsNullOrEmpty(Password)
                 )
             {

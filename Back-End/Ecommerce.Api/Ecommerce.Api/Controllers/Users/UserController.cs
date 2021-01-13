@@ -22,7 +22,7 @@ namespace Ecommerce.Api.Controllers.Users
             var user = _userService.Authenticate(email, password);
 
             if (user == null)
-                return BadRequest(new { message = "Email or password is incorrect" });
+                return BadRequest("Email or password is incorrect");
 
 
             return Ok(new
