@@ -28,7 +28,7 @@ namespace Ecommerce.Mobile
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
             containerRegistry.RegisterForNavigation<UserRegisterPage, UserRegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();            
             containerRegistry.Register<IApiServices, ApiServices>();

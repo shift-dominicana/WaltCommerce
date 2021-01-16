@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartAccess.Droid.Models
+namespace Ecommerce.Mobile.Models
 {
     public class Menu
     {

@@ -96,7 +96,7 @@ namespace Ecommerce.Mobile.ViewModels
             }
             
             await App.Current.MainPage.DisplayAlert("Información", "Bienvenido", "Aceptar");
-            await _navigationService.NavigateAsync("MainPage");
+            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
         }
 
         public async Task<bool> ValidateFormAsync()
