@@ -1,7 +1,6 @@
 ﻿using Common.Enums;
-using DataLayer.Models.Core;
+using Common.Models.Core;
 using System;
-
 
 namespace Common.Models.Users
 {

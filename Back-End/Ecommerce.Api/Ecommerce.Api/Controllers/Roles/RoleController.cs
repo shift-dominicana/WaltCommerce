@@ -1,8 +1,8 @@
 ﻿using BussinesLayer.Interfaces.Roles;
-using DataLayer.Models.Roles;
+using Common.Models.Roles;
 using DataLayer.ViewModels.Roles;
-using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Api.Controllers.Core;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Api.Controllers.Roles
 {
@@ -10,9 +10,11 @@ namespace Ecommerce.Api.Controllers.Roles
     [ApiController]
     public class RoleController : CoreController<IRolesService, Role, RoleViewModel>
     {
+        private IRolesService _roleService;
+
         public RoleController(IRolesService service) : base(service)
         {
-
+            this._roleService = service;
         }
     }
 }

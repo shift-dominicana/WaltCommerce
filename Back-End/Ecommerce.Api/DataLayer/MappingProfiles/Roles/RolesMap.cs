@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DataLayer.Models.Roles;
+using Common.Models.Roles;
 using DataLayer.ViewModels.Roles;
 
 namespace DataLayer.MappingProfiles.Roles

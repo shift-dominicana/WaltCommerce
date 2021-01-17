@@ -1,6 +1,22 @@
 ﻿using AutoMapper;
+using BussinesLayer.Interfaces.Brands;
+using BussinesLayer.Interfaces.PersonsTypeCategories;
+using BussinesLayer.Interfaces.Products;
+using BussinesLayer.Interfaces.ProductsCategories;
+using BussinesLayer.Interfaces.ProductsColors;
+using BussinesLayer.Interfaces.ProductsImages;
+using BussinesLayer.Interfaces.ProductsSizes;
+using BussinesLayer.Interfaces.ProductsSpecifications;
 using BussinesLayer.Interfaces.Roles;
 using BussinesLayer.Interfaces.Users;
+using BussinesLayer.Services.Brands;
+using BussinesLayer.Services.PersonsTypeCategories;
+using BussinesLayer.Services.Products;
+using BussinesLayer.Services.ProductsCategories;
+using BussinesLayer.Services.ProductsColors;
+using BussinesLayer.Services.ProductsImages;
+using BussinesLayer.Services.ProductsSizes;
+using BussinesLayer.Services.ProductsSpecifications;
 using BussinesLayer.Services.Roles;
 using BussinesLayer.Services.Users;
 using DataLayer.Contexts;
@@ -31,6 +47,15 @@ namespace Ecommerce.Api.Extensions
 
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IRolesService, RolesService>();
+            services.AddTransient<IProductsCategoriesService, ProductsCategoriesService>();
+            services.AddTransient<IProductsService, ProductsService>();
+            services.AddTransient<IBrandsService, BrandsService>();
+            services.AddTransient<IPersonsTypeCategoriesService, PersonsTypeCategoriesService>();
+            
+            services.AddTransient<IProductsColorsService, ProductsColorsService>();
+            services.AddTransient<IProductsImagesService, ProductsImagesService>();
+            services.AddTransient<IProductsSizesService, ProductsSizesService>();
+            services.AddTransient<IProductsSpecificationsService, ProductsSpecificationsService>();
         }
 
         public static void ConfigureAutomapper(this IServiceCollection services)

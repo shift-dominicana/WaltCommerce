@@ -1,14 +1,9 @@
 ﻿using AutoMapper;
 using BussinesLayer.Interfaces.Roles;
 using BussinesLayer.Repositories.Core;
+using Common.Models.Roles;
 using DataLayer.Contexts;
-using DataLayer.Models.Roles;
 using DataLayer.ViewModels.Roles;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Roles
 {

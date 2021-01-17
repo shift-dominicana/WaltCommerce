@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataLayer.Models.Core
+namespace Common.Models.Core
 {
     public class BaseModel
     {

@@ -1,13 +1,11 @@
 ﻿using Common.Models.Users;
 using Ecommerce.Mobile.Helpers;
-using Ecommerce.Mobile.Models;
 using Ecommerce.Mobile.Services;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
-
 namespace Ecommerce.Mobile.ViewModels
 {
     public class UserRegisterPageViewModel : ViewModelBase
@@ -31,7 +29,7 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;
             _isEnabled = true;
             Title = "Add User";
-    }
+        }
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(RegisterUserPost));
 
@@ -75,9 +73,9 @@ namespace Ecommerce.Mobile.ViewModels
         }
 
         public DateTime BirthDay
-        { 
-            get =>_birthDay; 
-            set =>SetProperty(ref _birthDay,value); 
+        {
+            get => _birthDay;
+            set => SetProperty(ref _birthDay, value);
         }
 
         public string Telephone
@@ -99,13 +97,13 @@ namespace Ecommerce.Mobile.ViewModels
             var usuario = new User()
             {
                 FirstName = FirstName,
-                LastName =  LastName,
-                Email =  Email,
-                Password =  Password,
+                LastName = LastName,
+                Email = Email,
+                Password = Password,
                 Gender = Common.Enums.GenderEnum.male,
                 Telephone = Telephone,
                 Dob = BirthDay
-                
+
             };
 
             IsRunning = true;
@@ -122,7 +120,7 @@ namespace Ecommerce.Mobile.ViewModels
                 if (response.Message == "")
                 {
                     response.Message = "No se pudo conectar con el servidor por favor intente más tarde.";
-                }                
+                }
                 await App.Current.MainPage.DisplayAlert("Información", response.Message, "Aceptar");
                 return;
             }
@@ -130,7 +128,7 @@ namespace Ecommerce.Mobile.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await App.Current.MainPage.DisplayAlert("Información", "El usuario fue Creado con éxito", "Aceptar");            
+            await App.Current.MainPage.DisplayAlert("Información", "El usuario fue Creado con éxito", "Aceptar");
             await _navigationService.NavigateAsync("LoginPage");
         }
 
