@@ -18,6 +18,7 @@ namespace Ecommerce.Mobile.Droid
         {
             base.OnCreate();
             Xamarin.Essentials.Platform.Init(this);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
         }
     }
 }

@@ -1,7 +1,10 @@
-﻿using Ecommerce.Mobile.Models;
+﻿using Common.Models.Users;
+using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Models;
 using Ecommerce.Mobile.Services;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -18,12 +21,16 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _saveCommand;
         private bool _isRunning;
         private bool _isEnabled;
+        private string _confirmPassword;
+        private DateTime _birthDay;
+        private string _telephone;
 
         public UserRegisterPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiServices = apiServices;
             _isEnabled = true;
+            Title = "Add User";
     }
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(RegisterUserPost));
@@ -49,6 +56,13 @@ namespace Ecommerce.Mobile.ViewModels
             get => _password;
             set => SetProperty(ref _password, value);
         }
+
+        public string ConfirmPassword
+        {
+            get => _confirmPassword;
+            set => SetProperty(ref _confirmPassword, value);
+        }
+
         public bool IsRunning
         {
             get => _isRunning;
@@ -58,6 +72,18 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _isEnabled;
             set => SetProperty(ref _isEnabled, value);
+        }
+
+        public DateTime BirthDay
+        { 
+            get =>_birthDay; 
+            set =>SetProperty(ref _birthDay,value); 
+        }
+
+        public string Telephone
+        {
+            get => _telephone;
+            set => SetProperty(ref _telephone, value);
         }
 
         private async void RegisterUserPost()
@@ -75,7 +101,11 @@ namespace Ecommerce.Mobile.ViewModels
                 FirstName = FirstName,
                 LastName =  LastName,
                 Email =  Email,
-                Password =  Password
+                Password =  Password,
+                Gender = Common.Enums.GenderEnum.male,
+                Telephone = Telephone,
+                Dob = BirthDay
+                
             };
 
             IsRunning = true;
@@ -83,7 +113,7 @@ namespace Ecommerce.Mobile.ViewModels
 
             var url = App.Current.Resources["UrlAPI"].ToString();
 
-            var response = await _apiServices.PostAsync(url, "/api", "/User/AddUser", usuario);
+            var response = await _apiServices.PostAsync<User>(url, "/api", "/User", usuario);
             if (!response.IsSuccess)
             {
 
@@ -92,9 +122,7 @@ namespace Ecommerce.Mobile.ViewModels
                 if (response.Message == "")
                 {
                     response.Message = "No se pudo conectar con el servidor por favor intente más tarde.";
-                }
-                //var respuesta = JsonConvert.DeserializeObject<Response<object>>(response.Message);
-                //var respuesta = JsonConvert.DeserializeObject<object>(response.Message);
+                }                
                 await App.Current.MainPage.DisplayAlert("Información", response.Message, "Aceptar");
                 return;
             }
@@ -113,6 +141,9 @@ namespace Ecommerce.Mobile.ViewModels
                 || string.IsNullOrEmpty(LastName)
                 || string.IsNullOrEmpty(Email)
                 || string.IsNullOrEmpty(Password)
+                || string.IsNullOrEmpty(ConfirmPassword)
+                || !DateValid.IsDate(BirthDay.ToString())
+                || string.IsNullOrEmpty(Telephone)
                 )
             {
                 await App.Current.MainPage.DisplayAlert("Información", "Debe completar todos los campos para poder procesar la soliciúd.", "Aceptar");

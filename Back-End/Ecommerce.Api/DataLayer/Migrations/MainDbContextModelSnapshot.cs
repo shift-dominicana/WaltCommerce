@@ -17,17 +17,81 @@ namespace DataLayer.Migrations
             modelBuilder
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("DataLayer.Models.User.User", b =>
+            modelBuilder.Entity("DataLayer.Models.Roles.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
-                    b.Property<string>("CellPhone")
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ModificatedBy")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModificationDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.Property<bool>("addAppointment")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("addArticles")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("addServices")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("cancelPayment")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("disableArticles")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("disableServices")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("editArticles")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("editCompanyData")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("editServices")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("removeAppointment")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("usePos")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("DataLayer.Models.Users.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseSerialColumn();
+
+                    b.Property<string>("CellPhone")
                         .HasColumnType("text");
 
                     b.Property<string>("CreatedBy")
@@ -39,15 +103,16 @@ namespace DataLayer.Migrations
                     b.Property<DateTime>("Dob")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("character varying(40)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("IdCard")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("IdCardType")
+                    b.Property<int>("Gender")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
@@ -68,16 +133,17 @@ namespace DataLayer.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("PersonalId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("PersonalIdType")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Telephone")
                         .HasColumnType("text");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("character varying(15)");
 
                     b.HasKey("Id");
 

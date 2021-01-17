@@ -1,5 +1,5 @@
 ﻿using BussinesLayer.Repositories.Core;
-using DataLayer.Models.Users;
+using Common.Models.Users;
 using DataLayer.ViewModels.Users;
 
 namespace BussinesLayer.Interfaces.Users

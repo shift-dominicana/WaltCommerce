@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebAPI.Utils.Enums
+﻿namespace Common.Enums
 {
     public enum PersonalIdTypeEnum
     {
@@ -16,7 +11,7 @@ namespace WebAPI.Utils.Enums
     {
         Combined = 1,
         Simple = 2,
-        Additional = 3 
+        Additional = 3
     }
     public enum AppointmentTypeEnum
     {
@@ -25,7 +20,7 @@ namespace WebAPI.Utils.Enums
     }
 
     public enum GenderEnum
-    { 
+    {
         male = 1,
         female = 2,
         nobinary = 3

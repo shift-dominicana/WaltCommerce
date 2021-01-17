@@ -1,4 +1,5 @@
-﻿using Ecommerce.Mobile.Helpers;
+﻿using Common.Models.Users;
+using Ecommerce.Mobile.Helpers;
 using Ecommerce.Mobile.Models;
 using Ecommerce.Mobile.Services;
 using Newtonsoft.Json;
@@ -78,7 +79,7 @@ namespace Ecommerce.Mobile.ViewModels
             IsEnabled = false;
 
             var url = App.Current.Resources["UrlAPI"].ToString();
-            var response = await _apiServices.GetGenericAsync(url, "/api", "/User/Authenticate/",$"{Email}/{Password}");
+            var response = await _apiServices.GetGenericAsync<User>(url, "/api", "/User/Authenticate/",$"{Email}/{Password}");
 
             IsRunning = false;
             IsEnabled = true;
@@ -94,8 +95,10 @@ namespace Ecommerce.Mobile.ViewModels
                 await App.Current.MainPage.DisplayAlert("Información", response.Message, "Aceptar");
                 return;
             }
-            
-            await App.Current.MainPage.DisplayAlert("Información", "Bienvenido", "Aceptar");
+
+            var user = (User)response.Result;
+            Preferences.Set("nombreCompleto", $"{user.FirstName} {user.LastName}");
+                       
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
         }
 

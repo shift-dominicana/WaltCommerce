@@ -4,17 +4,34 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
+    Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
 
     <StackLayout Margin="20">
-        <Entry Placeholder="Name" Text="{Binding FirstName}" />
-        <Entry Placeholder="LastName" Text="{Binding LastName}" />
+        <Entry Placeholder="Firts Name" Text="{Binding FirstName}" />
+        <Entry Placeholder="Last Name" Text="{Binding LastName}" />
         <Entry Placeholder="Email" Text="{Binding Email}" />
         <Entry
             IsPassword="True"
             Placeholder="Password"
             Text="{Binding Password}" />
+
+        <Entry
+            IsPassword="True"
+            Placeholder="Confirm Password"
+            Text="{Binding ConfirmPassword}" />
+
+        <Entry
+            Keyboard="Telephone"
+            Placeholder="Telephone"
+            Text="{Binding Telephone}" />
+
+        <Label
+            Margin="5"
+            FontSize="Medium"
+            Text="Birth Day" />
+        <DatePicker />
 
         <ActivityIndicator IsRunning="{Binding IsRunning}" />
         <Button

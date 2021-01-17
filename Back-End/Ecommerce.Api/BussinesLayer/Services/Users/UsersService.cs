@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using BussinesLayer.Interfaces.Users;
 using BussinesLayer.Repositories.Core;
+using Common.Models.Users;
 using DataLayer.Contexts;
-using DataLayer.Models.Users;
 using DataLayer.ViewModels.Users;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Users
 {

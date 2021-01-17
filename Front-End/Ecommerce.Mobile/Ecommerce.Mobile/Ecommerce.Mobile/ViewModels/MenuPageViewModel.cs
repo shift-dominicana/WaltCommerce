@@ -1,4 +1,5 @@
-﻿using Ecommerce.Mobile.Fonts;
+﻿using Common.Models.Users;
+using Ecommerce.Mobile.Fonts;
 using Ecommerce.Mobile.Models;
 using Prism.Commands;
 using Prism.Navigation;

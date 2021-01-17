@@ -1,7 +1,7 @@
-﻿using DataLayer.ContextExtension.Roles;
+﻿using Common.Models.Users;
+using DataLayer.ContextExtension.Roles;
 using DataLayer.ContextExtension.Users;
 using DataLayer.Models.Roles;
-using DataLayer.Models.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Contexts

@@ -1,8 +1,8 @@
 ﻿using BussinesLayer.Interfaces.Users;
-using DataLayer.Models.Users;
+using Common.Models.Users;
 using DataLayer.ViewModels.Users;
-using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Api.Controllers.Core;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Api.Controllers.Users
 {
@@ -17,7 +17,8 @@ namespace Ecommerce.Api.Controllers.Users
         }
 
         [HttpGet("Authenticate/{email}/{password}")]
-        public IActionResult Authenticate([FromRoute] string email, [FromRoute] string password) {
+        public IActionResult Authenticate([FromRoute] string email, [FromRoute] string password)
+        {
 
             var user = _userService.Authenticate(email, password);
 

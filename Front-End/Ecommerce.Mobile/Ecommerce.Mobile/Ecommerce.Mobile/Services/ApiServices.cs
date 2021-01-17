@@ -20,9 +20,14 @@ namespace Ecommerce.Mobile.Services
         {
             try
             {
-                var client = new HttpClient
+
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                // Pass the handler to httpclient(from you are calling api)
+                var client = new HttpClient(clientHandler)
                 {
-                    BaseAddress = new Uri(urlBase),
+                    BaseAddress = new Uri(urlBase)
                 };
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
@@ -69,7 +74,12 @@ namespace Ecommerce.Mobile.Services
             {
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
-                var client = new HttpClient
+
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                // Pass the handler to httpclient(from you are calling api)
+                var client = new HttpClient(clientHandler)
                 {
                     BaseAddress = new Uri(urlBase)
                 };
@@ -115,7 +125,12 @@ namespace Ecommerce.Mobile.Services
             {
                 var request = JsonConvert.SerializeObject(model);
                 var content = new StringContent(request, Encoding.UTF8, "application/json");
-                var client = new HttpClient
+
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                // Pass the handler to httpclient(from you are calling api)
+                var client = new HttpClient(clientHandler)
                 {
                     BaseAddress = new Uri(urlBase)
                 };
@@ -158,7 +173,12 @@ namespace Ecommerce.Mobile.Services
         {
             try
             {
-                var client = new HttpClient
+
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                // Pass the handler to httpclient(from you are calling api)
+                var client = new HttpClient(clientHandler)
                 {
                     BaseAddress = new Uri(urlBase)
                 };
@@ -191,7 +211,7 @@ namespace Ecommerce.Mobile.Services
             }
         }
 
-        public async Task<Response<object>> GetGenericAsync(
+        public async Task<Response<object>> GetGenericAsync<T>(
         string urlBase,
         string servicePrefix,
         string controller,
@@ -223,8 +243,8 @@ namespace Ecommerce.Mobile.Services
                         Message = result,
                     };
                 }
-
-                var obj = JsonConvert.DeserializeObject<object>(result);
+                
+                var obj = JsonConvert.DeserializeObject<T>(result);
                 return new Response<object>
                 {
                     IsSuccess = true,

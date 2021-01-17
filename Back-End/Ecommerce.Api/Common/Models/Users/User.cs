@@ -1,9 +1,9 @@
-﻿using DataLayer.Models.Core;
-using DataLayer.Models.Roles;
+﻿using Common.Enums;
+using DataLayer.Models.Core;
 using System;
-using WebAPI.Utils.Enums;
 
-namespace DataLayer.Models.Users
+
+namespace Common.Models.Users
 {
     public class User : BaseModel
     {
