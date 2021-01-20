@@ -1,4 +1,6 @@
 ﻿using BussinesLayer.Repositories.Core;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -18,19 +20,20 @@ namespace Ecommerce.Api.Controllers.Core
 
 
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Get()
             => Ok(await _service.GetAllAsync());
 
         [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> GetById(int id)
         {
             var reqResult = await _service.GeTModelByIdAsync(id);
             if (reqResult != null) return Ok(reqResult);
             return NoContent();
         }
-
-
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Create(TEntity entity)
         {
             var reqResult = await _service.CreateAsync(entity);
@@ -39,6 +42,7 @@ namespace Ecommerce.Api.Controllers.Core
         }
 
         [HttpPut]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Edit(TEntity entity)
         {
             var reqResult = await _service.EditAsync(entity);
@@ -51,6 +55,7 @@ namespace Ecommerce.Api.Controllers.Core
         }
 
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Delete(int id)
         {
             var reqResult = await _service.DeleteByIdAsync(id);
