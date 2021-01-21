@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Ecommerce.Mobile"
     xmlns:locator="clr-namespace:Ecommerce.Mobile.Behaviors"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <MasterDetailPage.Master>
@@ -31,7 +32,7 @@
                     <Label
                         FontSize="Large"
                         HorizontalOptions="StartAndExpand"
-                        Text="{Binding NombreCompleto, StringFormat='{0}'}"
+                        Text="{Binding FullName, StringFormat='{0}'}"
                         TextColor="WhiteSmoke"
                         VerticalOptions="CenterAndExpand" />
                 </StackLayout>
@@ -59,13 +60,13 @@
                                         FontFamily="{StaticResource MaterialFontFamily}"
                                         FontSize="Medium"
                                         HorizontalOptions="Start"
-                                        Text="{Binding Icono}"
+                                        Text="{Binding Icon}"
                                         VerticalOptions="Center" />
 
                                     <Label
                                         FontSize="Medium"
                                         HorizontalOptions="Start"
-                                        Text="{Binding Titulo}"
+                                        Text="{Binding Title}"
                                         VerticalOptions="Center" />
 
 

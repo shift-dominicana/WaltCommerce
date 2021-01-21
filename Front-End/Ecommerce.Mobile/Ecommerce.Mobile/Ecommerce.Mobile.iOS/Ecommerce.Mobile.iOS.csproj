@@ -99,6 +99,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -206,6 +207,10 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Back-End\Ecommerce.Api\Common\Common.csproj">
+      <Project>{5414c093-473e-4047-b686-f0508f221825}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ecommerce.Mobile\Ecommerce.Mobile.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>Ecommerce.Mobile</Name>

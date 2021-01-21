@@ -4,40 +4,41 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
 
     <StackLayout Margin="20">
-        <Entry Placeholder="Firts Name" Text="{Binding FirstName}" />
-        <Entry Placeholder="Last Name" Text="{Binding LastName}" />
-        <Entry Placeholder="Email" Text="{Binding Email}" />
+        <Entry Placeholder="{i18n:Translate PhFirstName}" Text="{Binding FirstName}" />
+        <Entry Placeholder="{i18n:Translate PhLastName}" Text="{Binding LastName}" />
+        <Entry Placeholder="{i18n:Translate PhEmail}" Text="{Binding Email}" />
         <Entry
             IsPassword="True"
-            Placeholder="Password"
+            Placeholder="{i18n:Translate PhPassword}"
             Text="{Binding Password}" />
 
         <Entry
             IsPassword="True"
-            Placeholder="Confirm Password"
+            Placeholder="{i18n:Translate PhConfirmPassword}"
             Text="{Binding ConfirmPassword}" />
 
         <Entry
             Keyboard="Telephone"
-            Placeholder="Telephone"
+            Placeholder="{i18n:Translate PhTelephone}"
             Text="{Binding Telephone}" />
 
         <Label
             Margin="5"
             FontSize="Medium"
-            Text="Birth Day" />
+            Text="{i18n:Translate wBirthDay}" />
         <DatePicker />
 
         <ActivityIndicator IsRunning="{Binding IsRunning}" />
         <Button
             Command="{Binding SaveCommand}"
             IsEnabled="{Binding IsEnabled}"
-            Text="Save"
+            Text="{i18n:Translate wSave}"
             VerticalOptions="EndAndExpand" />
     </StackLayout>
 </ContentPage>

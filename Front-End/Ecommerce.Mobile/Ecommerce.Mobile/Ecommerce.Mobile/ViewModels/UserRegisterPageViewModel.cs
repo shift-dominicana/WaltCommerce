@@ -1,5 +1,6 @@
 ﻿using Common.Models.Users;
 using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
 using Prism.Commands;
 using Prism.Navigation;
@@ -28,7 +29,7 @@ namespace Ecommerce.Mobile.ViewModels
             _navigationService = navigationService;
             _apiServices = apiServices;
             _isEnabled = true;
-            Title = "Add User";
+            Title = Messages.TtRegisUser;
         }
 
         public DelegateCommand SaveCommand => _saveCommand ?? (_saveCommand = new DelegateCommand(RegisterUserPost));
@@ -88,7 +89,7 @@ namespace Ecommerce.Mobile.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await App.Current.MainPage.DisplayAlert("Informacion", "No se pudo conectar a internet por favor intente más tarde.", "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.ConnectionError, Messages.Accept);
                 return;
             }
 
@@ -119,16 +120,16 @@ namespace Ecommerce.Mobile.ViewModels
                 IsEnabled = true;
                 if (response.Message == "")
                 {
-                    response.Message = "No se pudo conectar con el servidor por favor intente más tarde.";
+                    response.Message = Messages.ConnectionError;
                 }
-                await App.Current.MainPage.DisplayAlert("Información", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
                 return;
             }
 
             IsRunning = false;
             IsEnabled = true;
 
-            await App.Current.MainPage.DisplayAlert("Información", "El usuario fue Creado con éxito", "Aceptar");
+            await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.UserCreated, Messages.Accept);
             await _navigationService.NavigateAsync("LoginPage");
         }
 
@@ -144,7 +145,7 @@ namespace Ecommerce.Mobile.ViewModels
                 || string.IsNullOrEmpty(Telephone)
                 )
             {
-                await App.Current.MainPage.DisplayAlert("Información", "Debe completar todos los campos para poder procesar la soliciúd.", "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.MustFillFields, Messages.Accept);
                 return false;
             }
 

@@ -1,5 +1,6 @@
 ﻿using Common.Models.Users;
 using Ecommerce.Mobile.Fonts;
+using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Models;
 using Prism.Commands;
 using Prism.Navigation;
@@ -13,38 +14,30 @@ namespace Ecommerce.Mobile.ViewModels
         private INavigationService _navigationService;
         private DelegateCommand _selectMenuCommand;
         private Menu _menu;
-        private string _nombreCompleto;
-        private User _usuario;
+        private string _fullname;
+        private User _user;
         public MenuPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            _nombreCompleto = Preferences.Get("nombreCompleto", "");
+            _fullname = Preferences.Get("FullName", "");
             LoadMenus();
         }
-        #region Propidades
+        
 
         public List<Menu> Menus { get; set; }
         public DelegateCommand SelectMenuCommand => _selectMenuCommand ?? (_selectMenuCommand = new DelegateCommand(SelectMenu));
 
-        //public DelegateCommand VerPerfilUsuarioCommand => _verPerfilUsuarioCommand ?? (_verPerfilUsuarioCommand = new DelegateCommand(VerPerfilUsuario));
 
-
-        //public string NombreCompleto
-        //{
-        //    get => _nombreCompleto;
-        //    set => SetProperty(ref _nombreCompleto, value);
-        //}
-
-        public User Usuario
+        public User User
         {
-            get => _usuario;
-            set => SetProperty(ref _usuario, value);
+            get => _user;
+            set => SetProperty(ref _user, value);
         }
 
-        public string NombreCompleto
+        public string FullName
         {
-            get => _nombreCompleto;
-            set => SetProperty(ref _nombreCompleto, value);
+            get => _fullname;
+            set => SetProperty(ref _fullname, value);
         }
 
         public Menu Menu
@@ -52,9 +45,7 @@ namespace Ecommerce.Mobile.ViewModels
             get => _menu;
             set => SetProperty(ref _menu, value);
         }
-        #endregion
-
-        #region Metodos
+        
 
         private void LoadMenus()
         {
@@ -62,27 +53,27 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 new Menu
                 {
-                    Icono = IconFont.DoorOpen,
-                    Pagina = "GatewayPage",
-                    Titulo = "Puerta"
+                    Icon = IconFont.DoorOpen,
+                    Page = "ProfilePage",
+                    Title = Messages.MenuOptProfile
                 },
                  new Menu
                 {
-                    Icono = IconFont.EnvelopeOpenText,
-                    Pagina = "ChatPage",
-                    Titulo = "Mensajes"
+                    Icon = IconFont.EnvelopeOpenText,
+                    Page = "AddressPage",
+                    Title = Messages.MenuOptAddresses
                 },
                   new Menu
                 {
-                    Icono = IconFont.InfoCircle,
-                    Pagina = "OpenRequestPage",
-                    Titulo = "Solicitudes"
+                    Icon = IconFont.InfoCircle,
+                    Page = "OrdersPage",
+                    Title = Messages.MenuOptOrders
                 },
                 new Menu
                 {
-                    Icono = IconFont.SignOutAlt,
-                    Pagina = "LoginPage",
-                    Titulo = "Cerrar Sesión"
+                    Icon = IconFont.SignOutAlt,
+                    Page = "LoginPage",
+                    Title = Messages.MenuOptLogOut
                 }
             };
 
@@ -90,9 +81,9 @@ namespace Ecommerce.Mobile.ViewModels
 
         private async void SelectMenu()
         {
-            if (Menu.Pagina.Equals("LoginPage"))
+            if (Menu.Page.Equals("LoginPage"))
             {
-                var confirm = await App.Current.MainPage.DisplayAlert("Información", "¿Esta seguro que desea cerrar la sesión?", "Salir", "Cancelar");
+                var confirm = await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.AskLogOut, Messages.Accept,  Messages.Cancel);
                 if (confirm)
                 {
                     await _navigationService.NavigateAsync("/NavigationPage/LoginPage");
@@ -101,16 +92,16 @@ namespace Ecommerce.Mobile.ViewModels
                 return;
             }
             var parameter = new NavigationParameters();
-            parameter.Add("Usuario", Usuario);
-            await _navigationService.NavigateAsync($"/MenuPage/NavigationPage/{Menu.Pagina}", parameter);
+            parameter.Add("User", User);
+            await _navigationService.NavigateAsync($"/MenuPage/NavigationPage/{Menu.Page}", parameter);
 
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Usuario = (User)parameters["Usuario"];
+            User = (User)parameters["User"];
             base.OnNavigatedTo(parameters);
         }
-        #endregion
+     
     }
 }

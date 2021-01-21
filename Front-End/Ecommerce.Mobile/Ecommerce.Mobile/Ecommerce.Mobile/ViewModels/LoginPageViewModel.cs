@@ -1,14 +1,8 @@
 ﻿using Common.Models.Users;
-using Ecommerce.Mobile.Helpers;
-using Ecommerce.Mobile.Models;
+using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
-using Newtonsoft.Json;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
@@ -30,6 +24,7 @@ namespace Ecommerce.Mobile.ViewModels
             _navigationService = navigationService;
             _apiServices = apiServices;
             _isEnabled = true;
+            Title = Messages.TtRegisUser;
         }
 
         public DelegateCommand UserRegisterCommand => _userRegisterCommand ?? (_userRegisterCommand = new DelegateCommand(RegisterUser));
@@ -67,7 +62,7 @@ namespace Ecommerce.Mobile.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await App.Current.MainPage.DisplayAlert("Informacion", "No se pudo conectar a internet por favor intente más tarde.", "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.ConnectionError, Messages.Accept);
                 return;
             }
 
@@ -79,7 +74,7 @@ namespace Ecommerce.Mobile.ViewModels
             IsEnabled = false;
 
             var url = App.Current.Resources["UrlAPI"].ToString();
-            var response = await _apiServices.GetGenericAsync<User>(url, "/api", "/User/Authenticate/",$"{Email}/{Password}");
+            var response = await _apiServices.GetGenericAsync<User>(url, "/api", "/User/Authenticate/", $"{Email}/{Password}");
 
             IsRunning = false;
             IsEnabled = true;
@@ -89,16 +84,16 @@ namespace Ecommerce.Mobile.ViewModels
 
                 if (response.Message == "")
                 {
-                    response.Message = "No se pudo conectar con el servidor por favor intente más tarde.";
+                    response.Message = Messages.ConnectionError;
                 }
 
-                await App.Current.MainPage.DisplayAlert("Información", response.Message, "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
                 return;
             }
 
             var user = (User)response.Result;
-            Preferences.Set("nombreCompleto", $"{user.FirstName} {user.LastName}");
-                       
+            Preferences.Set("FullName", $"{user.FirstName} {user.LastName}");
+
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
         }
 
@@ -108,7 +103,7 @@ namespace Ecommerce.Mobile.ViewModels
                 || string.IsNullOrEmpty(Password)
                )
             {
-                await App.Current.MainPage.DisplayAlert("Información", "Debe completar todos los campos para poder procesar la soliciúd.", "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.MustFillFields, Messages.Accept);
                 return false;
             }
 

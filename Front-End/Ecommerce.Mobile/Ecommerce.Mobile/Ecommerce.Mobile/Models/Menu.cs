@@ -8,10 +8,10 @@ namespace Ecommerce.Mobile.Models
 {
     public class Menu
     {
-        public string Titulo { get; set; }
+        public string Title { get; set; }
 
-        public string Pagina { get; set; }
+        public string Page { get; set; }
 
-        public string Icono { get; set; }
+        public string Icon { get; set; }
     }
 }
