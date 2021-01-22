@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Ecommerce.Mobile.Services
 {
@@ -211,15 +212,15 @@ namespace Ecommerce.Mobile.Services
             }
         }
 
-        public async Task<Response<object>> GetGenericAsync<T>(
+        public async Task<Response<object>> PostGenericAsync<T>(
         string urlBase,
         string servicePrefix,
         string controller,
-        string parameters)
+        string request)
         {
             try
             {
-                var content = new StringContent("", Encoding.UTF8, "application/json");
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
 
                 HttpClientHandler clientHandler = new HttpClientHandler();
                 clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
@@ -231,8 +232,8 @@ namespace Ecommerce.Mobile.Services
                 };
 
 
-                var url = $"{urlBase}{servicePrefix}{controller}{parameters}";
-                var response = await client.GetAsync(url);
+                var url = $"{urlBase}{servicePrefix}{controller}";
+                var response = await client.PostAsync(url, content);
                 var result = await response.Content.ReadAsStringAsync();
 
                 if (!response.IsSuccessStatusCode)
@@ -244,7 +245,7 @@ namespace Ecommerce.Mobile.Services
                     };
                 }
                 
-                var obj = JsonConvert.DeserializeObject<T>(result);
+                var obj = JsonConvert.DeserializeObject<T>(result);                
                 return new Response<object>
                 {
                     IsSuccess = true,

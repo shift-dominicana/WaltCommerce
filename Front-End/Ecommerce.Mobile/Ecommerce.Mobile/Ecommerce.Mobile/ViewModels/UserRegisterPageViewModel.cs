@@ -1,4 +1,6 @@
-﻿using Common.Models.Users;
+﻿using Common.Helpers;
+using Common.Helpers.Interfaces;
+using Common.Models.Users;
 using Ecommerce.Mobile.Helpers;
 using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
@@ -95,12 +97,13 @@ namespace Ecommerce.Mobile.ViewModels
 
             var valid = await ValidaDatosAsync();
             if (!valid) return;
+            var pass = Hasher.MD5Hash(Password);
             var usuario = new User()
             {
                 FirstName = FirstName,
                 LastName = LastName,
                 Email = Email,
-                Password = Password,
+                Password = pass,
                 Gender = Common.Enums.GenderEnum.male,
                 Telephone = Telephone,
                 Dob = BirthDay

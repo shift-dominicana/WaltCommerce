@@ -1,6 +1,10 @@
-﻿using Common.Models.Users;
+﻿using Common.Helpers;
+using Common.Models.Token;
+using Common.Models.UserRequest;
+using Common.Models.Users;
 using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using System.Threading.Tasks;
@@ -11,7 +15,7 @@ namespace Ecommerce.Mobile.ViewModels
     public class LoginPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        private readonly IApiServices _apiServices;
+        private readonly IApiServices _apiServices;        
         private DelegateCommand _userRegisterCommand;
         private DelegateCommand _loginCommand;
         private string _email;
@@ -22,7 +26,7 @@ namespace Ecommerce.Mobile.ViewModels
         public LoginPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
-            _apiServices = apiServices;
+            _apiServices = apiServices;            
             _isEnabled = true;
             Title = Messages.TtRegisUser;
         }
@@ -72,9 +76,18 @@ namespace Ecommerce.Mobile.ViewModels
 
             IsRunning = true;
             IsEnabled = false;
-
+            var pass = Hasher.MD5Hash(Password);
             var url = App.Current.Resources["UrlAPI"].ToString();
-            var response = await _apiServices.GetGenericAsync<User>(url, "/api", "/User/Authenticate/", $"{Email}/{Password}");
+
+            var request = new UserRequest()
+            {
+                Email = Email,
+                Password = pass
+            };
+
+            var json = JsonConvert.SerializeObject(request);
+
+            var response = await _apiServices.PostGenericAsync<AccessToken>(url, "/api", "/Auth/Login", json);
 
             IsRunning = false;
             IsEnabled = true;
@@ -91,8 +104,9 @@ namespace Ecommerce.Mobile.ViewModels
                 return;
             }
 
-            var user = (User)response.Result;
+            var user = (AccessToken)response.Result;
             Preferences.Set("FullName", $"{user.FirstName} {user.LastName}");
+            Preferences.Set("Token", user.Token);
 
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
         }
