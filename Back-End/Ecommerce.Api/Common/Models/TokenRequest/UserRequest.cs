@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Models.TokenRequest
 {
-    public class TokenRequest
+    public class UserRequest
     {
         public string Email { get; set; }
         public string Password { get; set; }
