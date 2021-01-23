@@ -106,8 +106,8 @@ namespace Ecommerce.Mobile.ViewModels
             }
 
             var user = (AccessToken)response.Result;
-            Settings.FullName = user.FirstName+ " " + user.LastName;
-            Settings.Token = user.Token;
+            Preferences.Set(Settings.FullName, $"{user.FirstName} {user.LastName}"); 
+            Preferences.Set(Settings.Token, user.Token);
 
 
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");

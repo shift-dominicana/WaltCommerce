@@ -12,7 +12,7 @@ namespace Ecommerce.Mobile.Services
 {
     public class ApiServices : IApiServices
     {
-        private static string _tokenType = "bearer";
+        private readonly string _tokenType = "bearer";
 
         public async Task<Response<object>> GetListAsync<T>(
         string urlBase,
