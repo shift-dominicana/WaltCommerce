@@ -17,7 +17,9 @@ namespace Ecommerce.Mobile.Services
             string urlBase,
             string servicePrefix,
             string controller,
-            T model);
+            T model,
+            string tokenType,
+            string accessToken);
 
         Task<Response<object>> PutAsync<T>(
             string urlBase,

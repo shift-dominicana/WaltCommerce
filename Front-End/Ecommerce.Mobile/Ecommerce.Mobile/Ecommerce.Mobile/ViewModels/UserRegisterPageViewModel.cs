@@ -115,7 +115,7 @@ namespace Ecommerce.Mobile.ViewModels
 
             var url = App.Current.Resources["UrlAPI"].ToString();
 
-            var response = await _apiServices.PostAsync<User>(url, "/api", "/User", usuario);
+            var response = await _apiServices.PostAsync<User>(url, "/api", "/User", usuario, "",Settings.Token);
             if (!response.IsSuccess)
             {
 

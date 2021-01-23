@@ -1,5 +1,6 @@
 ﻿using Common.Models.Users;
 using Ecommerce.Mobile.Fonts;
+using Ecommerce.Mobile.Helpers;
 using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Models;
 using Prism.Commands;
@@ -19,7 +20,7 @@ namespace Ecommerce.Mobile.ViewModels
         public MenuPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            _fullname = Preferences.Get("FullName", "");
+            _fullname = Settings.FullName;
             LoadMenus();
         }
         

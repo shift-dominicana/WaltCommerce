@@ -2,6 +2,7 @@
 {
     public enum PersonalIdTypeEnum
     {
+        none = 0,
         LocalId = 1,
         Passport = 2,
         BusinessId = 3
@@ -21,6 +22,7 @@
 
     public enum GenderEnum
     {
+        none = 0,
         male = 1,
         female = 2,
         nobinary = 3

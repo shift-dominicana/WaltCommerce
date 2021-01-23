@@ -1,4 +1,5 @@
 ﻿using Common.Models.Users;
+using Common.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,10 +14,13 @@ namespace DataLayer.ContextExtension.Users
             builder.Property(x => x.Password).IsRequired().HasMaxLength(32); //HashMD5
             builder.Property(x => x.FirstName).IsRequired();
             builder.Property(x => x.LastName).IsRequired();
-            builder.Property(x => x.PersonalId);
-            builder.Property(x => x.PersonalIdType);
             builder.Property(x => x.Dob).IsRequired();
-            builder.Property(x => x.Gender).IsRequired();
+            builder.Property(x => x.PersonalIdType).HasDefaultValue(PersonalIdTypeEnum.none);
+            builder.Property(x => x.Gender).HasDefaultValue(GenderEnum.none);
+
+
+
         }
+
     }
 }

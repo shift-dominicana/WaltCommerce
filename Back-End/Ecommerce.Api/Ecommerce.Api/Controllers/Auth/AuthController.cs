@@ -1,9 +1,7 @@
 ﻿using BussinesLayer.Interfaces.Auth;
 using BussinesLayer.Interfaces.Users;
-using Common.Models.TokenRequest;
-using Common.Models.Users;
+using Common.Models.UserRequest;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Controllers.Auth
 {
@@ -14,7 +12,7 @@ namespace Ecommerce.Api.Controllers.Auth
         private readonly IAuthService _service;
         private readonly IUsersService _userService;
 
-        public AuthController(IAuthService service,IUsersService userService)
+        public AuthController(IAuthService service, IUsersService userService)
         {
             _service = service;
             _userService = userService;
@@ -27,8 +25,8 @@ namespace Ecommerce.Api.Controllers.Auth
             var response = _userService.Authenticate(user.Email, user.Password);
             if (response == null) return BadRequest("invalid login");
             var token = _service.BuildToken(response);
-            
-            var UserResponse  = new
+
+            var UserResponse = new
             {
                 Email = response.Email,
                 FirstName = response.FirstName,
@@ -37,7 +35,7 @@ namespace Ecommerce.Api.Controllers.Auth
                 Telephone = response.Telephone,
                 Token = token
             };
-            
+
 
             return Ok(UserResponse);
         }

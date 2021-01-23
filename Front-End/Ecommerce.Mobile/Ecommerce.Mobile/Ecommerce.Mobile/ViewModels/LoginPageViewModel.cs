@@ -2,6 +2,7 @@
 using Common.Models.Token;
 using Common.Models.UserRequest;
 using Common.Models.Users;
+using Ecommerce.Mobile.Helpers;
 using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
 using Newtonsoft.Json;
@@ -105,8 +106,9 @@ namespace Ecommerce.Mobile.ViewModels
             }
 
             var user = (AccessToken)response.Result;
-            Preferences.Set("FullName", $"{user.FirstName} {user.LastName}");
-            Preferences.Set("Token", user.Token);
+            Settings.FullName = user.FirstName+ " " + user.LastName;
+            Settings.Token = user.Token;
+
 
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
         }

@@ -12,6 +12,8 @@ namespace Ecommerce.Mobile.Services
 {
     public class ApiServices : IApiServices
     {
+        private static string _tokenType = "bearer";
+
         public async Task<Response<object>> GetListAsync<T>(
         string urlBase,
         string servicePrefix,
@@ -31,8 +33,8 @@ namespace Ecommerce.Mobile.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
-                    tokenType,
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue (
+                    tokenType.Equals("") ? _tokenType:tokenType, 
                     accessToken);
 
                 var url = $"{servicePrefix}{controller}";
@@ -69,7 +71,9 @@ namespace Ecommerce.Mobile.Services
         string urlBase,
         string servicePrefix,
         string controller,
-        T model)
+        T model, 
+        string tokenType,
+        string accessToken)
         {
             try
             {
@@ -85,7 +89,11 @@ namespace Ecommerce.Mobile.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    tokenType.Equals("") ? _tokenType : tokenType,
+                    accessToken);
+
+
                 var url = $"{servicePrefix}{controller}";
                 var response = await client.PostAsync(url, content);
                 var answer = await response.Content.ReadAsStringAsync();
@@ -136,7 +144,10 @@ namespace Ecommerce.Mobile.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    tokenType.Equals("") ? _tokenType : tokenType,
+                    accessToken);
+
                 var url = $"{servicePrefix}{controller}/{id}";
                 var response = await client.PutAsync(url, content);
                 var answer = await response.Content.ReadAsStringAsync();
@@ -184,7 +195,10 @@ namespace Ecommerce.Mobile.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    tokenType.Equals("") ? _tokenType : tokenType,
+                    accessToken);
+
                 var url = $"{servicePrefix}{controller}/{id}";
                 var response = await client.DeleteAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
