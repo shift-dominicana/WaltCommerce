@@ -26,6 +26,7 @@ namespace Ecommerce.Api
             services.ServicesImplementations();
             services.ConfigureAutomapper();
             services.ConfigureSwagger();
+            services.ConfigureAddControllers();
 
         }
 

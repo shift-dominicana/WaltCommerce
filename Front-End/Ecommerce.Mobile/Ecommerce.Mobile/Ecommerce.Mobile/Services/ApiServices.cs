@@ -37,7 +37,7 @@ namespace Ecommerce.Mobile.Services
                     tokenType.Equals("") ? _tokenType:tokenType, 
                     accessToken);
 
-                var url = $"{servicePrefix}{controller}";
+                var url = $"{urlBase}{servicePrefix}{controller}";
                 var response = await client.GetAsync(url);
                 var result = await response.Content.ReadAsStringAsync();
 
@@ -94,7 +94,7 @@ namespace Ecommerce.Mobile.Services
                     accessToken);
 
 
-                var url = $"{servicePrefix}{controller}";
+                var url = $"{urlBase}{servicePrefix}{controller}";
                 var response = await client.PostAsync(url, content);
                 var answer = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)
@@ -148,7 +148,7 @@ namespace Ecommerce.Mobile.Services
                     tokenType.Equals("") ? _tokenType : tokenType,
                     accessToken);
 
-                var url = $"{servicePrefix}{controller}/{id}";
+                var url = $"{urlBase}{servicePrefix}{controller}/{id}";
                 var response = await client.PutAsync(url, content);
                 var answer = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)
@@ -199,7 +199,7 @@ namespace Ecommerce.Mobile.Services
                     tokenType.Equals("") ? _tokenType : tokenType,
                     accessToken);
 
-                var url = $"{servicePrefix}{controller}/{id}";
+                var url = $"{urlBase}{servicePrefix}{controller}/{id}";
                 var response = await client.DeleteAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)

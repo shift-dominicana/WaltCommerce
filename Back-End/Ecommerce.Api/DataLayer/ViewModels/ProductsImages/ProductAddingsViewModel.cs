@@ -1,4 +1,4 @@
-﻿using DataLayer.Models.Products;
+﻿using Common.Models.Products;
 using DataLayer.ViewModels.Core;
 
 namespace DataLayer.ViewModels.ProductsImages

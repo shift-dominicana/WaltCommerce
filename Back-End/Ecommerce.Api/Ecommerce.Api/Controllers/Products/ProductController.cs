@@ -1,5 +1,5 @@
 ﻿using BussinesLayer.Interfaces.Products;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using DataLayer.ViewModels.Products;
 using Ecommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;

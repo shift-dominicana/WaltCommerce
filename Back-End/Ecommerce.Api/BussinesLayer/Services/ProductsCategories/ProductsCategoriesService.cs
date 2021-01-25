@@ -4,6 +4,10 @@ using BussinesLayer.Repositories.Core;
 using Common.Models.ProductCategories;
 using DataLayer.Contexts;
 using DataLayer.ViewModels.ProductsCategories;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.ProductsCategories
 {
@@ -17,5 +21,10 @@ namespace BussinesLayer.Services.ProductsCategories
             _context = context;
         }
 
+        public async Task<IEnumerable<ProductCategory>> GetListProduct()
+        {
+            var products = await _context.ProductsCategories.Include(p => p.Products).ToListAsync();
+            return products;
+        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Common.Models.Core;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using System.Collections.Generic;
 
 namespace Common.Models.ProductCategories

@@ -2,7 +2,7 @@
 using BussinesLayer.Interfaces.Products;
 using BussinesLayer.Repositories.Core;
 using DataLayer.Contexts;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using DataLayer.ViewModels.Products;
 
 namespace BussinesLayer.Services.Products

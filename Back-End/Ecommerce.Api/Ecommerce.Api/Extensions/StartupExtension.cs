@@ -31,6 +31,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -84,7 +85,7 @@ namespace Ecommerce.Api.Extensions
             services.AddSwaggerGen(opt =>
             {
                 opt.SwaggerDoc("v1", new OpenApiInfo() { Title = "Ecommerce Api", Version = "v1", });
-                opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                opt.AddSecurityDefinition("SecretKey", new OpenApiSecurityScheme()
                 {
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey,
@@ -93,7 +94,22 @@ namespace Ecommerce.Api.Extensions
                     In = ParameterLocation.Header,
                     Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
                 });
+
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id="SecretKey"
+                            }
+                        }, new List<string>()
+                    }
+                });
             });
+
         }
 
         public static void ConfigureCors(this IServiceCollection services)
@@ -114,23 +130,30 @@ namespace Ecommerce.Api.Extensions
             });
         }
 
-        public static void ConfigureJwt(this IServiceCollection services,IConfiguration configuration)
+        public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidateAudience =true,
+                    ValidateAudience = true,
                     ValidateLifetime = false,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer  = configuration.GetSection(nameof(JwtSetting))[nameof(JwtSetting.ValidIssuer)],
+                    ValidIssuer = configuration.GetSection(nameof(JwtSetting))[nameof(JwtSetting.ValidIssuer)],
                     ValidAudience = configuration.GetSection(nameof(JwtSetting))[nameof(JwtSetting.ValidAudience)],
                     IssuerSigningKey = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(configuration.GetSection(nameof(JwtSetting))[nameof(JwtSetting.SecretKey)])),
-                    ClockSkew = TimeSpan.Zero    
+                    ClockSkew = TimeSpan.Zero
                 });
 
+        }
+
+        public static void ConfigureAddControllers(this IServiceCollection services)
+        {
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
     }
 }

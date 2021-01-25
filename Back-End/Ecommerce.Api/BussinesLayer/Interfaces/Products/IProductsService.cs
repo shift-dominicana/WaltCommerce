@@ -1,5 +1,5 @@
 ﻿using BussinesLayer.Repositories.Core;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using DataLayer.ViewModels.Products;
 
 

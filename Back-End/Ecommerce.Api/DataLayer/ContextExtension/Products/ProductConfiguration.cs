@@ -1,4 +1,4 @@
-﻿using DataLayer.Models.Products;
+﻿using Common.Models.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

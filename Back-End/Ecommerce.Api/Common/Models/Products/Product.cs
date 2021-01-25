@@ -9,7 +9,7 @@ using Common.Models.Sizes;
 using System;
 using System.Collections.Generic;
 
-namespace DataLayer.Models.Products
+namespace Common.Models.Products
 {
     public class Product : BaseModel
     {

@@ -20,7 +20,7 @@ namespace Ecommerce.Mobile.ViewModels
         public MenuPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
-            _fullname = Settings.FullName;
+            _fullname = Preferences.Get(Settings.FullName,"");
             LoadMenus();
         }
         

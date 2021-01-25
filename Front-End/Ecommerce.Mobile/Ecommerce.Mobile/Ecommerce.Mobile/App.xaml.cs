@@ -26,12 +26,12 @@ namespace Ecommerce.Mobile
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
-
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
             containerRegistry.RegisterForNavigation<UserRegisterPage, UserRegisterPageViewModel>();
-            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();            
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.Register<IApiServices, ApiServices>();
+            containerRegistry.RegisterForNavigation<ProductPage, ProductPageViewModel>();
         }
     }
 }

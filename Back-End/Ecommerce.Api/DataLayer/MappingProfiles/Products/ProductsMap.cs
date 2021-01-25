@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using DataLayer.ViewModels.Products;
 
 namespace DataLayer.MappingProfiles.Products

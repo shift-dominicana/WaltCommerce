@@ -110,7 +110,7 @@ namespace Ecommerce.Mobile.ViewModels
             Preferences.Set(Settings.Token, user.Token);
 
 
-            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/UserRegisterPage");
+            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");
         }
 
         public async Task<bool> ValidateFormAsync()

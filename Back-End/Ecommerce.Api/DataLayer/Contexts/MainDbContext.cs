@@ -17,7 +17,7 @@ using DataLayer.ContextExtension.ProductsSizes;
 using DataLayer.ContextExtension.ProductsSpecifications;
 using DataLayer.ContextExtension.Roles;
 using DataLayer.ContextExtension.Users;
-using DataLayer.Models.Products;
+using Common.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataLayer.Contexts
