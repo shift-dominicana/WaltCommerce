@@ -48,7 +48,7 @@ namespace BussinesLayer.Repositories.Core
         public async Task<IEnumerable<TModel>> GetList(Expression<Func<TModel, bool>> predicate)
             => await _dbSet.Where(predicate).ToListAsync();
 
-        public async Task<IEnumerable<TModel>> GetAllAsync() => await _dbSet.ToListAsync();
+        public virtual async Task<IEnumerable<TModel>> GetAllAsync() => await _dbSet.ToListAsync();
         public IQueryable<TModel> FindBy(Expression<Func<TModel, bool>> predicate)
         {
             IQueryable<TModel> query = _dbSet.Where(predicate);
@@ -119,7 +119,7 @@ namespace BussinesLayer.Repositories.Core
                 return false;
             }
         }
-        public async Task<TViewModel> CreateAsync(TModel entity)
+        public virtual async Task<TViewModel> CreateAsync(TModel entity)
         {
             await _context.AddAsync(entity);
             if (await CommitAsync())

@@ -27,4 +27,12 @@
         female = 2,
         nobinary = 3
     }
+
+    public enum PayModeEnum
+    {
+        CASH = 1,
+        TRANSFER = 2,
+        CARD = 3,
+        PAYPAL = 4
+    }
 }

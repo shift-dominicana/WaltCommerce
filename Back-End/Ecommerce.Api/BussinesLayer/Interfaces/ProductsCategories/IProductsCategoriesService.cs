@@ -8,6 +8,6 @@ namespace BussinesLayer.Interfaces.ProductsCategories
 {
     public interface IProductsCategoriesService : IRepository<ProductCategory, ProductCategoryViewModel>
     {
-        public Task<IEnumerable<ProductCategory>> GetListProduct();
+
     }
 }

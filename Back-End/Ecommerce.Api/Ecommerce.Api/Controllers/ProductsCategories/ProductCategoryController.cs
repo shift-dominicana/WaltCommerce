@@ -18,13 +18,5 @@ namespace Ecommerce.Api.Controllers.ProductsCategories
             this._productCategoryService = service;
         }
 
-        [HttpGet("GetProducts")]
-        public async Task<IActionResult> GetProducts()
-        {
-        
-            var list = await _productCategoryService.GetListProduct();
-            if (list == null) return BadRequest("No se encontraron los productos!");
-            return Ok(list);
-        }
     }
 }

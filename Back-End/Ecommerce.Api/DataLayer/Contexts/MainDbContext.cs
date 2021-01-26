@@ -1,4 +1,6 @@
 using Common.Models.Brands;
+using Common.Models.BuyCartDetails;
+using Common.Models.BuyCarts;
 using Common.Models.PersonTypeCategories;
 using Common.Models.ProductCategories;
 using Common.Models.ProductsColors;
@@ -8,6 +10,8 @@ using Common.Models.Roles;
 using Common.Models.Sizes;
 using Common.Models.Users;
 using DataLayer.ContextExtension.Brands;
+using DataLayer.ContextExtension.BuyCartDetails;
+using DataLayer.ContextExtension.BuyCarts;
 using DataLayer.ContextExtension.PersonTypeCategories;
 using DataLayer.ContextExtension.ProductCategories;
 using DataLayer.ContextExtension.ProductColors;
@@ -41,6 +45,8 @@ namespace DataLayer.Contexts
             modelBuilder.ApplyConfiguration(new ProductSizeConfiguration());
             modelBuilder.ApplyConfiguration(new BrandConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new BuyCartConfiguration());
+            modelBuilder.ApplyConfiguration(new BuyCartDetailConfiguration());
         }
 
         public DbSet<User> Users { get; set; }
@@ -53,5 +59,7 @@ namespace DataLayer.Contexts
         public DbSet<ProductSize> ProductsSizes { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<BuyCart> BuyCarts { get; set; }
+        public DbSet<BuyCartDetail> BuyCartDetails { get; set; }
     }
 }

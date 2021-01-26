@@ -1,4 +1,5 @@
 ﻿using Common.Enums;
+using Common.Models.BuyCarts;
 using Common.Models.Core;
 using System;
 
@@ -28,7 +29,6 @@ namespace Common.Models.Users
         public PersonalIdTypeEnum PersonalIdType { get; set; }
 
         public GenderEnum Gender { get; set; }
-
 
     }
 }

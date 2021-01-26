@@ -38,7 +38,7 @@ namespace Ecommerce.Mobile.ViewModels
 
             var url = Prism.PrismApplicationBase.Current.Resources["UrlAPI"].ToString();
             var Token = Preferences.Get(Settings.Token, "");
-            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory/GetProducts", "",Token);
+            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "",Token);
             if (!response.IsSuccess)
             {              
                 if (response.Message == "")
@@ -56,11 +56,7 @@ namespace Ecommerce.Mobile.ViewModels
             ListProducts.ForEach(x => CategoryModelList.Add(x));
             var list = CategoryModelList.Select(x => x.Products).ToList();
             list.ForEach(p => ProductList.Add(p.ToList()));
-            //foreach (var item in list)
-            //{
-            //    ProductList.Add(item.ToList());
-            //}
-
+           
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)

@@ -21,10 +21,11 @@ namespace BussinesLayer.Services.ProductsCategories
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductCategory>> GetListProduct()
+        public override async Task<IEnumerable<ProductCategory>> GetAllAsync()
         {
             var products = await _context.ProductsCategories.Include(p => p.Products).ToListAsync();
             return products;
         }
+
     }
 }

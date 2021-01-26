@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BussinesLayer.Interfaces.Auth;
 using BussinesLayer.Interfaces.Brands;
+using BussinesLayer.Interfaces.BuyCartDetails;
+using BussinesLayer.Interfaces.BuyCarts;
 using BussinesLayer.Interfaces.PersonsTypeCategories;
 using BussinesLayer.Interfaces.Products;
 using BussinesLayer.Interfaces.ProductsCategories;
@@ -12,6 +14,8 @@ using BussinesLayer.Interfaces.Roles;
 using BussinesLayer.Interfaces.Users;
 using BussinesLayer.Services.Auth;
 using BussinesLayer.Services.Brands;
+using BussinesLayer.Services.BuyCartDetails;
+using BussinesLayer.Services.BuyCarts;
 using BussinesLayer.Services.PersonsTypeCategories;
 using BussinesLayer.Services.Products;
 using BussinesLayer.Services.ProductsCategories;
@@ -30,6 +34,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +70,8 @@ namespace Ecommerce.Api.Extensions
             services.AddTransient<IProductsImagesService, ProductsImagesService>();
             services.AddTransient<IProductsSizesService, ProductsSizesService>();
             services.AddTransient<IProductsSpecificationsService, ProductsSpecificationsService>();
+            services.AddTransient<IBuyCartsService, BuyCartsService>();
+            services.AddTransient<IBuyCartDetailsService, BuyCartDetailsService>();
         }
 
         public static void ConfigureAutomapper(this IServiceCollection services)
@@ -127,6 +134,7 @@ namespace Ecommerce.Api.Extensions
             {
                 opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce Api");
                 opt.RoutePrefix = "swagger";
+                //opt.DocExpansion(DocExpansion.None);
             });
         }
 
