@@ -19,7 +19,7 @@ namespace Ecommerce.Api.Controllers.Core
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Get()
             => Ok(await _service.GetAllAsync());
 

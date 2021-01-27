@@ -88,8 +88,11 @@
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
-                Margin="0,0,25,0"
+                Margin="0,0,0,0"
                 ItemsSource="{Binding ProductList}"
+                SelectedItem="{Binding SelectedProduct}"
+                SelectionChangedCommand="{Binding ViewProductCommand}"
+                SelectionMode="Single"
                 VerticalOptions="StartAndExpand"
                 VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
@@ -98,7 +101,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid
-                            Padding="8"
+                            Padding="0"
                             ColumnDefinitions="*,*"
                             HeightRequest="300"
                             RowDefinitions="*,Auto,Auto">
@@ -108,7 +111,7 @@
                                 CacheDuration="50"
                                 DownsampleToViewSize="true"
                                 ErrorPlaceholder="ErrorImage"
-                                HeightRequest="200"
+                                HeightRequest="300"
                                 LoadingPlaceholder="LoaderImage"
                                 RetryCount="3"
                                 RetryDelay="600"
@@ -131,9 +134,9 @@
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                Margin="0,13,0,6"
-                                Text="Iphone"
-                                TextColor="Red" />
+                                Margin="0,0,0,0"
+                                Text="{Binding Name}"
+                                TextColor="Black" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
@@ -143,9 +146,9 @@
                                         <Span Text="$ " />
                                         <Span
                                             FontAttributes="Bold"
-                                            FontSize="30"
-                                            Text="25000"
-                                            TextColor="Blue" />
+                                            FontSize="15"
+                                            Text="{Binding Price}"
+                                            TextColor="Red" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

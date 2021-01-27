@@ -18,27 +18,42 @@ namespace Ecommerce.Mobile.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiServices _apiServices;
-
+        private DelegateCommand _viewProductCommand;
+        private Product _selectedProduct;
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiServices = apiServices;
             CategoryModelList = new ObservableCollection<ProductCategory>();
-            ProductList = new ObservableCollection<List<Product>>();
+            ProductList = new ObservableCollection<Product>();
         }
 
+        public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));
+
+        
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
-        public ObservableCollection<List<Product>> ProductList { get; set; }
+        public ObservableCollection<Product> ProductList { get; set; }
         //public ObservableCollection<Products> ProductModelList { get; set; }
 
+        public Product SelectedProduct 
+        { 
+            get => _selectedProduct; 
+            set => SetProperty(ref _selectedProduct, value); 
+        }
 
+        private void ViewProductDetail()
+        {
+            var parameters = new NavigationParameters();
+            parameters.Add("Product",_selectedProduct);
+            _navigationService.NavigateAsync("ProductDetailPage", parameters);
+        }
 
         private async Task GetProducts()
         {            
 
             var url = Prism.PrismApplicationBase.Current.Resources["UrlAPI"].ToString();
-            var Token = Preferences.Get(Settings.Token, "");
-            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "",Token);
+            //var Token = Preferences.Get(Settings.Token, "");
+            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "","");
             if (!response.IsSuccess)
             {              
                 if (response.Message == "")
@@ -54,9 +69,17 @@ namespace Ecommerce.Mobile.ViewModels
 
             var ListProducts = (List<ProductCategory>)response.Result;            
             ListProducts.ForEach(x => CategoryModelList.Add(x));
-            var list = CategoryModelList.Select(x => x.Products).ToList();
-            list.ForEach(p => ProductList.Add(p.ToList()));
-           
+
+            //var list = CategoryModelList.Select(x => x.Products).ToList();
+            //list.ForEach(p => ProductList.Add(p.ToList()));
+            //ProductList.Add(CategoryModelList.Where(x => x.Products));
+            foreach (ProductCategory x in CategoryModelList) 
+            {
+
+                foreach (Product y in x.Products)
+                    ProductList.Add(y);
+                
+            }
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)

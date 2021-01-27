@@ -33,9 +33,13 @@ namespace Ecommerce.Mobile.Services
                     BaseAddress = new Uri(urlBase)
                 };
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue (
-                    tokenType.Equals("") ? _tokenType:tokenType, 
-                    accessToken);
+                if (!accessToken.Equals(""))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                        tokenType.Equals("") ? _tokenType : tokenType,
+                        accessToken);
+                }
+
 
                 var url = $"{urlBase}{servicePrefix}{controller}";
                 var response = await client.GetAsync(url);
