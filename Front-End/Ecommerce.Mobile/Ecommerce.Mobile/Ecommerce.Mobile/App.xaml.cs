@@ -20,7 +20,7 @@ namespace Ecommerce.Mobile
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/ProductPage");
+            await NavigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

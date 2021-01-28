@@ -49,13 +49,13 @@ namespace Ecommerce.Mobile.ViewModels
         }
 
         private async Task GetProducts()
-        {            
+        {
 
             var url = Prism.PrismApplicationBase.Current.Resources["UrlAPI"].ToString();
             //var Token = Preferences.Get(Settings.Token, "");
-            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "","");
+            var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "", "");
             if (!response.IsSuccess)
-            {              
+            {
                 if (response.Message == "")
                 {
                     response.Message = "No se pudo conectar con el Servidor por favor intente más tarde.";
@@ -67,25 +67,23 @@ namespace Ecommerce.Mobile.ViewModels
                 return;
             }
 
-            var ListProducts = (List<ProductCategory>)response.Result;            
+            var ListProducts = (List<ProductCategory>)response.Result;
             ListProducts.ForEach(x => CategoryModelList.Add(x));
-
-            //var list = CategoryModelList.Select(x => x.Products).ToList();
-            //list.ForEach(p => ProductList.Add(p.ToList()));
-            //ProductList.Add(CategoryModelList.Where(x => x.Products));
-            foreach (ProductCategory x in CategoryModelList) 
+            //var list = ListProducts.Select(x => x.Products).ToList();            
+            foreach (ProductCategory x in CategoryModelList)
             {
 
                 foreach (Product y in x.Products)
                     ProductList.Add(y);
-                
+
             }
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             //_usuario = (User)parameters["Usuario"];
-            await GetProducts();            
+            if(parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
+                await GetProducts();            
         }
     }
 }
