@@ -189,4 +189,16 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="DpCategory" xml:space="preserve">
+    <value>Catégorie</value>
+  </data>
+  <data name="DpDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DpName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="DpPrice" xml:space="preserve">
+    <value>Prix</value>
+  </data>
 </root>

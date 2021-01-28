@@ -97,6 +97,42 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        public static string DpCategory {
+            get {
+                return ResourceManager.GetString("DpCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string DpDescription {
+            get {
+                return ResourceManager.GetString("DpDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DpName {
+            get {
+                return ResourceManager.GetString("DpName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string DpPrice {
+            get {
+                return ResourceManager.GetString("DpPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not connect to the internet please try again later..
         /// </summary>
         public static string ErrorConnection {

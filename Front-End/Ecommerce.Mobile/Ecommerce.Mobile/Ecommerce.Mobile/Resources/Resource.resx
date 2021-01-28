@@ -129,6 +129,18 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="DpCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="DpDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DpName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DpPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="ErrorConnection" xml:space="preserve">
     <value>Could not connect to the internet please try again later.</value>
   </data>
