@@ -3,62 +3,95 @@
     x:Class="Ecommerce.Mobile.Views.ProductDetailPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <StackLayout>
         <ScrollView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    Text="{i18n:Translate DpName}" />
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Text="{Binding Product.Name}" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    Text="{i18n:Translate DpDescription}" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Text="{Binding Product.Description}" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    Text="{i18n:Translate DpPrice}" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Text="{Binding Product.Price}" />
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    Text="{i18n:Translate DpCategory}" />
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Text="{Binding Category.Description}" />
-            </Grid>
+            <StackLayout>
 
+                <CarouselView ItemsSource="{Binding Product.ProductImages}" Loop="False">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" />
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame
+                                    Margin="20"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    HasShadow="True"
+                                    HeightRequest="300"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand">
+                                    <StackLayout>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Large"
+                                            HorizontalOptions="Center"
+                                            Text="NOMBRE"
+                                            VerticalOptions="Center" />
+                                        <Image
+                                            Aspect="AspectFill"
+                                            HeightRequest="350"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding ImageUrl}"
+                                            WidthRequest="350" />
+                                        <Label HorizontalOptions="Center" Text="LOCATION" />
+                                        <Label
+                                            FontAttributes="Italic"
+                                            HorizontalOptions="Center"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="5"
+                                            Text="DETALLE" />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto">
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate DpName}" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding Product.Name}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate DpDescription}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Product.Description}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate DpPrice}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding Product.Price}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate DpCategory}" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding Category.Description}" />
+                </Grid>
+            </StackLayout>
         </ScrollView>
         <Button
             BackgroundColor="Navy"

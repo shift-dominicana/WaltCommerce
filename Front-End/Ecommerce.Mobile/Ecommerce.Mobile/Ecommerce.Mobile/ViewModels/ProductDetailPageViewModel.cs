@@ -33,7 +33,7 @@ namespace Ecommerce.Mobile.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             Product = parameters.GetValue<Product>("Product");
-            Category = Product.ProductCategory;
+            Category = parameters.GetValue<ProductCategory>("Category");
         }
     }
 }

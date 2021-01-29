@@ -78,6 +78,7 @@
 
         <CollectionView
             Margin="10"
+            EmptyView="No items to display"
             ItemsSource="{Binding ProductList}"
             SelectedItem="{Binding SelectedProduct}"
             SelectionChangedCommand="{Binding ViewProductCommand}"

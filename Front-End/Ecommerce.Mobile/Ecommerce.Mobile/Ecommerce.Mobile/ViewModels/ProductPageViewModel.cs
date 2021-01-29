@@ -1,16 +1,12 @@
 ﻿using Common.Models.ProductCategories;
 using Common.Models.Products;
-using Ecommerce.Mobile.Helpers;
 using Ecommerce.Mobile.Services;
 using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace Ecommerce.Mobile.ViewModels
 {
@@ -30,21 +26,30 @@ namespace Ecommerce.Mobile.ViewModels
 
         public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));
 
-        
+
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
         //public ObservableCollection<Products> ProductModelList { get; set; }
 
-        public Product SelectedProduct 
-        { 
-            get => _selectedProduct; 
-            set => SetProperty(ref _selectedProduct, value); 
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set => SetProperty(ref _selectedProduct, value);
         }
 
         private void ViewProductDetail()
         {
             var parameters = new NavigationParameters();
-            parameters.Add("Product",_selectedProduct);
+            parameters.Add("Product", _selectedProduct);
+            var Category = CategoryModelList.Where(c=>c.Id == _selectedProduct.ProductCategoryFKey);
+
+            var CategoryModel = new ProductCategory()
+            {
+                Identificator = Category.FirstOrDefault().Identificator,
+                Description = Category.FirstOrDefault().Description
+            };
+
+            parameters.Add("Category", CategoryModel);
             _navigationService.NavigateAsync("ProductDetailPage", parameters);
         }
 
@@ -82,8 +87,8 @@ namespace Ecommerce.Mobile.ViewModels
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             //_usuario = (User)parameters["Usuario"];
-            if(parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
-                await GetProducts();            
+            if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
+                await GetProducts();
         }
     }
 }

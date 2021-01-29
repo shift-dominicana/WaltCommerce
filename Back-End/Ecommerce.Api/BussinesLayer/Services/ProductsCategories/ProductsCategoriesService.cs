@@ -23,7 +23,8 @@ namespace BussinesLayer.Services.ProductsCategories
 
         public override async Task<IEnumerable<ProductCategory>> GetAllAsync()
         {
-            var products = await _context.ProductsCategories.Include(p => p.Products).ToListAsync();
+            var products = await _context.ProductsCategories.Include(p => p.Products)
+                        .ThenInclude(p => p.ProductImages).ToListAsync();
             return products;
         }
 
