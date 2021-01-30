@@ -16,6 +16,9 @@ namespace Ecommerce.Mobile.ViewModels
         private readonly IApiServices _apiServices;
         private DelegateCommand _viewProductCommand;
         private Product _selectedProduct;
+        private DelegateCommand _categoryCommand;
+        private ProductCategory _categorySelected;
+
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -25,7 +28,9 @@ namespace Ecommerce.Mobile.ViewModels
         }
 
         public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));
+        public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
 
+       
 
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
@@ -37,19 +42,25 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _selectedProduct, value);
         }
 
+        public ProductCategory CategorySelected
+        {
+            get => _categorySelected;
+            set => SetProperty(ref _categorySelected, value);
+        }
+
         private void ViewProductDetail()
         {
             var parameters = new NavigationParameters();
             parameters.Add("Product", _selectedProduct);
-            var Category = CategoryModelList.Where(c=>c.Id == _selectedProduct.ProductCategoryFKey);
+            //var Category = CategoryModelList.Where(c=>c.Id == SelectedProduct.ProductCategory.Id);
 
-            var CategoryModel = new ProductCategory()
-            {
-                Identificator = Category.FirstOrDefault().Identificator,
-                Description = Category.FirstOrDefault().Description
-            };
+            //var CategoryModel = new ProductCategory()
+            //{
+            //    Identificator = Category.FirstOrDefault().Identificator,
+            //    Description = Category.FirstOrDefault().Description
+            //};
 
-            parameters.Add("Category", CategoryModel);
+            //parameters.Add("Category", CategoryModel);
             _navigationService.NavigateAsync("ProductDetailPage", parameters);
         }
 
@@ -79,8 +90,26 @@ namespace Ecommerce.Mobile.ViewModels
             {
 
                 foreach (Product y in x.Products)
+                {
                     ProductList.Add(y);
+                }
 
+            }
+        }
+
+        private  void CategoryFilter()
+        {
+            ProductList.Clear();
+            foreach (ProductCategory x in CategoryModelList)
+            {
+                if (x.Id == CategorySelected.Id) 
+                {
+                    foreach (var Product in x.Products)
+                    {
+                        ProductList.Add(Product);
+                    }
+                
+                }                              
             }
         }
 

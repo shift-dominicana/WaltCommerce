@@ -24,8 +24,7 @@ namespace Common.Models.Products
         public ProductColor ProductColor { get; set; }
         public bool isEnabled { get; set; }
         public Brand ProductBrand { get; set; }
-        public ProductCategory ProductCategory { get; set; }
-        public int ProductCategoryFKey { get; set; }
+        public ProductCategory ProductCategory { get; set; }        
         public bool hasSizes { get; set; }
         public ProductSize ProductSize { get; set; }
         public PersonTypeCategory forPersonType { set; get; } //Men, Women, Kids, Elder, 
