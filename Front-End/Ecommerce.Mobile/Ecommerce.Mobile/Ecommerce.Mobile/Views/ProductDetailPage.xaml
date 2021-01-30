@@ -7,98 +7,117 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <StackLayout>
-        <ScrollView>
-            <StackLayout>
 
-                <CarouselView ItemsSource="{Binding Product.ProductImages}" Loop="False">
-                    <CarouselView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" />
-                    </CarouselView.ItemsLayout>
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Frame
-                                    Margin="20"
-                                    BorderColor="DarkGray"
-                                    CornerRadius="5"
-                                    HasShadow="True"
-                                    HeightRequest="300"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="CenterAndExpand">
-                                    <StackLayout>
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Large"
-                                            HorizontalOptions="Center"
-                                            Text="NOMBRE"
-                                            VerticalOptions="Center" />
-                                        <Image
-                                            Aspect="AspectFill"
-                                            HeightRequest="350"
-                                            HorizontalOptions="Center"
-                                            Source="{Binding ImageUrl}"
-                                            WidthRequest="350" />
-                                        <Label HorizontalOptions="Center" Text="LOCATION" />
-                                        <Label
-                                            FontAttributes="Italic"
-                                            HorizontalOptions="Center"
-                                            LineBreakMode="TailTruncation"
-                                            MaxLines="5"
-                                            Text="DETALLE" />
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
 
-                <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto">
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        FontAttributes="Bold"
-                        Text="{i18n:Translate DpName}" />
-                    <Label
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Text="{Binding Product.Name}" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        FontAttributes="Bold"
-                        Text="{i18n:Translate DpDescription}" />
-                    <Label
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Text="{Binding Product.Description}" />
-                    <Label
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        FontAttributes="Bold"
-                        Text="{i18n:Translate DpPrice}" />
-                    <Label
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Text="{Binding Product.Price}" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="0"
-                        FontAttributes="Bold"
-                        Text="{i18n:Translate DpCategory}" />
-                    <Label
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Text="{Binding Category.Description}" />
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-        <Button
-            BackgroundColor="Navy"
-            Command="{Binding AddToCartCommand}"
-            CornerRadius="10"
-            Text="4Carrito"
-            TextColor="White"
-            VerticalOptions="EndAndExpand" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <CarouselView ItemsSource="{Binding Product.ProductImages}" Loop="False">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame
+                                Margin="0,0,0,0"
+                                BorderColor="DarkGray"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                HeightRequest="450"
+                                HorizontalOptions="Center"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout>
+
+                                    <Image
+                                        Aspect="Fill"
+                                        HeightRequest="450"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding ImageUrl}"
+                                        WidthRequest="450" />
+                                    <Label HorizontalOptions="Center" Text="LOCATION" />
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+
+            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate DpName}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding Product.Name}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate DpDescription}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="{Binding Product.Description}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate DpPrice}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Text="{Binding Product.Price}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate DpCategory}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Text="{Binding Category.Description}" />
+            </Grid>
+
+            <CollectionView
+                x:Name="categoryList"
+                HeightRequest="150"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Product.Specs}"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid>
+
+                            <Label FontAttributes="Bold" Text="{Binding Description, StringFormat='-{0:F0}'}" />
+
+                        </Grid>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button
+                BackgroundColor="Navy"
+                Command="{Binding AddToCartCommand}"
+                CornerRadius="10"
+                Text="4Carrito"
+                TextColor="White"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ScrollView>
+
+
 </ContentPage>
