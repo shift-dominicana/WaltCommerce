@@ -129,6 +129,9 @@
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="DpAddToCart" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
   <data name="DpCategory" xml:space="preserve">
     <value>Category</value>
   </data>
@@ -140,6 +143,12 @@
   </data>
   <data name="DpPrice" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="DpQuatity" xml:space="preserve">
+    <value>Quatity</value>
+  </data>
+  <data name="DpSpecifications" xml:space="preserve">
+    <value>Specifications</value>
   </data>
   <data name="ErrorConnection" xml:space="preserve">
     <value>Could not connect to the internet please try again later.</value>

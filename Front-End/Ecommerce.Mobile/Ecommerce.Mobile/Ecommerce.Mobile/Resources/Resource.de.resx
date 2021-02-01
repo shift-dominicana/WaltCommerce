@@ -201,4 +201,13 @@
   <data name="DpPrice" xml:space="preserve">
     <value>Preis</value>
   </data>
+  <data name="DpAddToCart" xml:space="preserve">
+    <value>In den Warenkorb</value>
+  </data>
+  <data name="DpSpecifications" xml:space="preserve">
+    <value>Technische Merkmale</value>
+  </data>
+  <data name="DpQuatity" xml:space="preserve">
+    <value>Menge</value>
+  </data>
 </root>

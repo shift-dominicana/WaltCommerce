@@ -97,6 +97,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add To Cart.
+        /// </summary>
+        public static string DpAddToCart {
+            get {
+                return ResourceManager.GetString("DpAddToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string DpCategory {
@@ -129,6 +138,24 @@ namespace Ecommerce.Mobile.Resources {
         public static string DpPrice {
             get {
                 return ResourceManager.GetString("DpPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quatity.
+        /// </summary>
+        public static string DpQuatity {
+            get {
+                return ResourceManager.GetString("DpQuatity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifications.
+        /// </summary>
+        public static string DpSpecifications {
+            get {
+                return ResourceManager.GetString("DpSpecifications", resourceCulture);
             }
         }
         

@@ -10,8 +10,13 @@
 
 
     <ScrollView>
-        <StackLayout>
-            <CarouselView ItemsSource="{Binding Product.ProductImages}" Loop="False">
+        <StackLayout Padding="5,2,5,2">
+            <CarouselView
+                HeightRequest="400"
+                HorizontalScrollBarVisibility="Always"
+                ItemsSource="{Binding Product.ProductImages}"
+                Loop="False">
+                
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout Orientation="Horizontal" />
                 </CarouselView.ItemsLayout>
@@ -30,11 +35,11 @@
 
                                     <Image
                                         Aspect="Fill"
-                                        HeightRequest="450"
+                                        HeightRequest="350"
                                         HorizontalOptions="Center"
                                         Source="{Binding ImageUrl}"
-                                        WidthRequest="450" />
-                                    <Label HorizontalOptions="Center" Text="LOCATION" />
+                                        WidthRequest="350" />
+
 
                                 </StackLayout>
                             </Frame>
@@ -44,44 +49,79 @@
             </CarouselView>
 
 
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto">
+            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     FontAttributes="Bold"
+                    FontSize="Large"
                     Text="{i18n:Translate DpName}" />
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
+                    FontSize="Medium"
                     Text="{Binding Product.Name}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     FontAttributes="Bold"
+                    FontSize="Medium"
                     Text="{i18n:Translate DpDescription}" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
+                    FontSize="Medium"
                     Text="{Binding Product.Description}" />
                 <Label
                     Grid.Row="2"
                     Grid.Column="0"
                     FontAttributes="Bold"
+                    FontSize="Medium"
                     Text="{i18n:Translate DpPrice}" />
                 <Label
                     Grid.Row="2"
                     Grid.Column="1"
-                    Text="{Binding Product.Price}" />
+                    FontSize="Medium"
+                    Text="{Binding Price}" />
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
                     FontAttributes="Bold"
-                    Text="{i18n:Translate DpCategory}" />
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpQuatity}" />
+
                 <Label
                     Grid.Row="3"
                     Grid.Column="1"
-                    Text="{Binding Category.Description}" />
+                    BindingContext="{x:Reference QtyStepper}"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{Binding Value}" />
+                <Stepper
+                    x:Name="QtyStepper"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    HorizontalOptions="Start"
+                    Increment="1"
+                    Minimum="0" />
             </Grid>
+
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="{i18n:Translate DpSpecifications}"
+                TextColor="OrangeRed" />
+
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="Black" />
+
 
             <CollectionView
                 x:Name="categoryList"
@@ -90,7 +130,7 @@
                 ItemsSource="{Binding Product.Specs}"
                 SelectionMode="None"
                 VerticalOptions="FillAndExpand"
-                VerticalScrollBarVisibility="Never">
+                VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
@@ -113,7 +153,8 @@
                 BackgroundColor="Navy"
                 Command="{Binding AddToCartCommand}"
                 CornerRadius="10"
-                Text="4Carrito"
+                FontSize="Medium"
+                Text="{i18n:Translate DpAddToCart}"
                 TextColor="White"
                 VerticalOptions="EndAndExpand" />
         </StackLayout>
