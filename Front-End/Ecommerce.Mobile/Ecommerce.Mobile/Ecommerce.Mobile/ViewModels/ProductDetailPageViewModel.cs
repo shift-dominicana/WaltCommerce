@@ -12,7 +12,7 @@ namespace Ecommerce.Mobile.ViewModels
         private INavigationService _navigationService;
         private Product _product;
         private ProductCategory _category;
-        private String _formatedPrice;
+
 
         public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -31,16 +31,10 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _category, value);
         }
 
-        public String Price
-        {
-            get => _formatedPrice;
-            set => SetProperty(ref _formatedPrice, value);
-        }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Product = parameters.GetValue<Product>("Product");
-            Price = "RD"+Product.Price.ToString("C");
+            Product = parameters.GetValue<Product>("Product");            
             base.OnNavigatedTo(parameters);
         }
     }

@@ -6,7 +6,6 @@ using DataLayer.Contexts;
 using DataLayer.ViewModels.ProductsCategories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.ProductsCategories
@@ -23,10 +22,12 @@ namespace BussinesLayer.Services.ProductsCategories
 
         public override async Task<IEnumerable<ProductCategory>> GetAllAsync()
         {
-            var products = await _context.ProductsCategories.Include(p => p.Products)
-                                                        .ThenInclude(p => p.ProductImages)
-                                                            .Include(p => p.Products)
-                                                        .ThenInclude(p => p.Specs).ToListAsync();
+            var products = await _context.ProductsCategories
+            .Include(p => p.Products)
+            .ThenInclude(p => p.ProductImages)
+            .Include(p => p.Products)
+            .ThenInclude(p => p.Specs).ToListAsync();
+
             return products;
         }
 

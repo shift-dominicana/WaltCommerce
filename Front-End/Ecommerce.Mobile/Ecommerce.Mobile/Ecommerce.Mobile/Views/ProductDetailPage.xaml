@@ -16,9 +16,11 @@
                 HorizontalScrollBarVisibility="Always"
                 ItemsSource="{Binding Product.ProductImages}"
                 Loop="False">
-                
                 <CarouselView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" />
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        SnapPointsAlignment="End"
+                        SnapPointsType="MandatorySingle" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -78,11 +80,15 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     Text="{i18n:Translate DpPrice}" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    FontSize="Medium"
-                    Text="{Binding Price}" />
+                <Label Grid.Row="2" Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Medium" Text="$RD " />
+                            <Span FontSize="Medium" Text="{Binding Product.Price, StringFormat='{0:#,0.#0}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
@@ -100,10 +106,32 @@
                 <Stepper
                     x:Name="QtyStepper"
                     Grid.Row="4"
-                    Grid.Column="1"
+                    Grid.Column="0"
                     HorizontalOptions="Start"
-                    Increment="1"
-                    Minimum="0" />
+                    Increment="1" />
+            </Grid>
+
+
+            <Grid RowDefinitions="Auto,Auto">
+                <Button
+                    Grid.Row="0"
+                    BackgroundColor="Navy"
+                    Command="{Binding AddToCartCommand}"
+                    CornerRadius="10"
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpAddToCart}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+
+                <Button
+                    Grid.Row="1"
+                    BackgroundColor="Navy"
+                    Command="{Binding AddToCartCommand}"
+                    CornerRadius="10"
+                    FontSize="Medium"
+                    Text="Buy Now"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
             </Grid>
 
             <BoxView
@@ -149,14 +177,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Button
-                BackgroundColor="Navy"
-                Command="{Binding AddToCartCommand}"
-                CornerRadius="10"
-                FontSize="Medium"
-                Text="{i18n:Translate DpAddToCart}"
-                TextColor="White"
-                VerticalOptions="EndAndExpand" />
         </StackLayout>
     </ScrollView>
 

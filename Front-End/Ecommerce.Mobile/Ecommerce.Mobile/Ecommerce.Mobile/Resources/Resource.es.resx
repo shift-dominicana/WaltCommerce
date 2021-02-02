@@ -210,4 +210,7 @@
   <data name="DpQuatity" xml:space="preserve">
     <value>Cantidad</value>
   </data>
+  <data name="NoItems" xml:space="preserve">
+    <value>No hay elementos para mostrar</value>
+  </data>
 </root>

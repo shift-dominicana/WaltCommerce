@@ -3,8 +3,8 @@
     x:Class="Ecommerce.Mobile.Views.UserRegisterPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="http://prismlibrary.com"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 

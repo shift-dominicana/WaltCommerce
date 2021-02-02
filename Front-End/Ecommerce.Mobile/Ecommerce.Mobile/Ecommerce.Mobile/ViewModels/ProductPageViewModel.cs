@@ -3,6 +3,7 @@ using Common.Models.Products;
 using Ecommerce.Mobile.Services;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Ecommerce.Mobile.ViewModels
         private Product _selectedProduct;
         private DelegateCommand _categoryCommand;
         private ProductCategory _categorySelected;
+        private bool _isBusy;
 
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -25,12 +27,17 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;
             CategoryModelList = new ObservableCollection<ProductCategory>();
             ProductList = new ObservableCollection<Product>();
+            ViewProductCommand = new DelegateCommand(ViewProductDetail);
+
+
         }
 
-        public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));
+        //public DelegateCommand ViewProductCommand => _viewProductCommand = new DelegateCommand(ViewProductDetail);
+        public DelegateCommand ViewProductCommand { get; private set; }
         public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
+        //public DelegateCommand NavigateToDetail => _navigateToDetail ?? (_navigateToDetail = new DelegateCommand(OpenDetail));
 
-       
+
 
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
@@ -48,10 +55,18 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _categorySelected, value);
         }
 
-        private void ViewProductDetail()
+        public bool IsBusy
         {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
+        private async void ViewProductDetail()
+        {
+
+           
             var parameters = new NavigationParameters();
-            parameters.Add("Product", _selectedProduct);
+            parameters.Add("Product", SelectedProduct);
             //var Category = CategoryModelList.Where(c=>c.Id == SelectedProduct.ProductCategory.Id);
 
             //var CategoryModel = new ProductCategory()
@@ -61,15 +76,21 @@ namespace Ecommerce.Mobile.ViewModels
             //};
 
             //parameters.Add("Category", CategoryModel);
-            _navigationService.NavigateAsync("ProductDetailPage", parameters);
+           await _navigationService.NavigateAsync("ProductDetailPage", parameters);
+
+            ViewProductCommand.CanExecute();
+            //SelectedProduct = null;
+            //_viewProductCommand = null;
         }
 
         private async Task GetProducts()
         {
-
+            
             var url = Prism.PrismApplicationBase.Current.Resources["UrlAPI"].ToString();
             //var Token = Preferences.Get(Settings.Token, "");
+            IsBusy = true;
             var response = await _apiServices.GetListAsync<ProductCategory>(url, "/api", "/ProductCategory", "", "");
+            //await Task.Delay(TimeSpan.FromSeconds(10));            
             if (!response.IsSuccess)
             {
                 if (response.Message == "")
@@ -85,6 +106,7 @@ namespace Ecommerce.Mobile.ViewModels
 
             var ListProducts = (List<ProductCategory>)response.Result;
             ListProducts.ForEach(x => CategoryModelList.Add(x));
+            
             //var list = ListProducts.Select(x => x.Products).ToList();            
             foreach (ProductCategory x in CategoryModelList)
             {
@@ -95,6 +117,8 @@ namespace Ecommerce.Mobile.ViewModels
                 }
 
             }
+            
+            IsBusy = false;
         }
 
         private  void CategoryFilter()
