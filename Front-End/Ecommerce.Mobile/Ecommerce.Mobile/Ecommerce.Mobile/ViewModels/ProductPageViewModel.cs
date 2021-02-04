@@ -27,13 +27,12 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;
             CategoryModelList = new ObservableCollection<ProductCategory>();
             ProductList = new ObservableCollection<Product>();
-            ViewProductCommand = new DelegateCommand(ViewProductDetail);
+            IsBusy = true;
 
 
         }
 
-        //public DelegateCommand ViewProductCommand => _viewProductCommand = new DelegateCommand(ViewProductDetail);
-        public DelegateCommand ViewProductCommand { get; private set; }
+        public DelegateCommand ViewProductCommand => _viewProductCommand = new DelegateCommand(ViewProductDetail);        
         public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
         //public DelegateCommand NavigateToDetail => _navigateToDetail ?? (_navigateToDetail = new DelegateCommand(OpenDetail));
 
@@ -76,11 +75,7 @@ namespace Ecommerce.Mobile.ViewModels
             //};
 
             //parameters.Add("Category", CategoryModel);
-           await _navigationService.NavigateAsync("ProductDetailPage", parameters);
-
-            ViewProductCommand.CanExecute();
-            //SelectedProduct = null;
-            //_viewProductCommand = null;
+           await _navigationService.NavigateAsync("ProductDetailPage", parameters);                                   
         }
 
         private async Task GetProducts()
@@ -140,6 +135,7 @@ namespace Ecommerce.Mobile.ViewModels
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             //_usuario = (User)parameters["Usuario"];
+            SelectedProduct = null;
             if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
                 await GetProducts();
         }
