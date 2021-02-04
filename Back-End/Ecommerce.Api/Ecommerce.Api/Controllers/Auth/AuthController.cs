@@ -1,6 +1,7 @@
 ﻿using BussinesLayer.Interfaces.Auth;
 using BussinesLayer.Interfaces.Users;
 using Common.Models.UserRequest;
+using Common.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Api.Controllers.Auth
@@ -20,19 +21,17 @@ namespace Ecommerce.Api.Controllers.Auth
 
 
         [HttpPost("Login")]
-        public IActionResult Login(UserRequest user)
+        public IActionResult Login(UserRequest credentials)
         {
-            var response = _userService.Authenticate(user.Email, user.Password);
-            if (response == null) return BadRequest("invalid login");
-            var token = _service.BuildToken(response);
+
+            User user= _userService.Authenticate(credentials.Email, credentials.Password);
+
+            if (user == null) return BadRequest("invalid login");
+            var token = _service.BuildToken(user);
 
             var UserResponse = new
             {
-                Email = response.Email,
-                FirstName = response.FirstName,
-                LastName = response.LastName,
-                Dob = response.Dob,
-                Telephone = response.Telephone,
+                user,
                 Token = token
             };
 

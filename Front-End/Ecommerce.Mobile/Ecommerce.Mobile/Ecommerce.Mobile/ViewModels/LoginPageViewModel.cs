@@ -105,10 +105,10 @@ namespace Ecommerce.Mobile.ViewModels
                 return;
             }
 
-            var user = (AccessToken)response.Result;
-            Preferences.Set(Settings.FullName, $"{user.FirstName} {user.LastName}"); 
-            Preferences.Set(Settings.Token, user.Token);
-
+            var access = (AccessToken)response.Result;
+            Preferences.Set(Settings.FullName, $"{access.User.FirstName} {access.User.LastName}"); 
+            Preferences.Set(Settings.Token, access.Token);
+            Preferences.Set(Settings.UserData, JsonConvert.SerializeObject(access));
 
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");
         }

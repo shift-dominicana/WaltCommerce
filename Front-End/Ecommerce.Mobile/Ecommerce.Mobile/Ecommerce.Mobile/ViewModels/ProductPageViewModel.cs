@@ -134,7 +134,7 @@ namespace Ecommerce.Mobile.ViewModels
 
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
-            //_usuario = (User)parameters["Usuario"];
+            //null for select the same product multiple times
             SelectedProduct = null;
             if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
                 await GetProducts();

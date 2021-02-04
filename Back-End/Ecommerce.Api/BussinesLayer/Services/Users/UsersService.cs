@@ -29,7 +29,7 @@ namespace BussinesLayer.Services.Users
                 return null;
 
             // check if password is correct
-            // TODO: Compare by HASH MD5 or SHA
+            // Compare by HASH MD5
             if (user.Password != password)
                 return null;
 

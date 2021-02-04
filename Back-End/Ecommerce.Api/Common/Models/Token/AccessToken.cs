@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Common.Models.Token
 {
-    public class AccessToken:User
+    public class AccessToken
     {
+        public User User { get; set; }
         public string Token { get; set; }
     }
 }

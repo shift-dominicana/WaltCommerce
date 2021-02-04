@@ -55,7 +55,7 @@ namespace Ecommerce.Mobile.ViewModels
                 new Menu
                 {
                     Icon = IconFont.DoorOpen,
-                    Page = "ProfilePage",
+                    Page = "UserProfilePage",
                     Title = Messages.MenuOptProfile
                 },
                  new Menu
@@ -84,7 +84,7 @@ namespace Ecommerce.Mobile.ViewModels
         {
             if (Menu.Page.Equals("LoginPage"))
             {
-                var confirm = await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.AskLogOut, Messages.Accept,  Messages.Cancel);
+                var confirm = await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.AskLogOut, Messages.Accept, Messages.Cancel);
                 if (confirm)
                 {
                     await _navigationService.NavigateAsync("/NavigationPage/LoginPage");
@@ -92,6 +92,11 @@ namespace Ecommerce.Mobile.ViewModels
 
                 return;
             }
+            else if (Menu.Page.Equals("ProfilePage")) 
+            {
+                await _navigationService.NavigateAsync("/NavigationPage/UserProfilePage");
+            }
+
             var parameter = new NavigationParameters();
             parameter.Add("User", User);
             await _navigationService.NavigateAsync($"/MenuPage/NavigationPage/{Menu.Page}", parameter);

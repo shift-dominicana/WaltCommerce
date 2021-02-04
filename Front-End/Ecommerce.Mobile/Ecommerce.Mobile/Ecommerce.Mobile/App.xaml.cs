@@ -33,6 +33,7 @@ namespace Ecommerce.Mobile
             containerRegistry.Register<IApiServices, ApiServices>();
             containerRegistry.RegisterForNavigation<ProductPage, ProductPageViewModel>();
             containerRegistry.RegisterForNavigation<ProductDetailPage, ProductDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<UserProfilePage, UserProfilePageViewModel>();
         }
     }
 }
