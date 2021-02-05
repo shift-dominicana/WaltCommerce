@@ -133,7 +133,7 @@
     <value>Vous devez remplir les champs pour traiter la demande.!</value>
   </data>
   <data name="PhConfirmPassword" xml:space="preserve">
-    <value>Confirmer le mot de passe :</value>
+    <value>Confirmer le mot de passe</value>
   </data>
   <data name="PhEmail" xml:space="preserve">
     <value>Courrier électronique</value>
@@ -212,5 +212,20 @@
   </data>
   <data name="NoItems" xml:space="preserve">
     <value>Aucun élément à afficher</value>
+  </data>
+  <data name="PhNickName" xml:space="preserve">
+    <value>Surnom</value>
+  </data>
+  <data name="PhPersonalId" xml:space="preserve">
+    <value>N° personnel </value>
+  </data>
+  <data name="Option_IdType" xml:space="preserve">
+    <value>Type d'ID</value>
+  </data>
+  <data name="PhCellPhone" xml:space="preserve">
+    <value>Téléphone portable</value>
+  </data>
+  <data name="UserProfile_Title" xml:space="preserve">
+    <value>Profil utilisateur</value>
   </data>
 </root>

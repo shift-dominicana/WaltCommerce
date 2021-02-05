@@ -151,7 +151,7 @@
     <value>Anmelden</value>
   </data>
   <data name="PhConfirmPassword" xml:space="preserve">
-    <value>Kennwort bestätigen:</value>
+    <value>Kennwort bestätigen</value>
   </data>
   <data name="PhFirstName" xml:space="preserve">
     <value>Vorname</value>
@@ -212,5 +212,20 @@
   </data>
   <data name="NoItems" xml:space="preserve">
     <value>Keine Elemente zum Anzeigen</value>
+  </data>
+  <data name="PhNickName" xml:space="preserve">
+    <value>Spitzname</value>
+  </data>
+  <data name="PhPersonalId" xml:space="preserve">
+    <value>Persönliche ID</value>
+  </data>
+  <data name="Option_IdType" xml:space="preserve">
+    <value>Kennungstyp</value>
+  </data>
+  <data name="PhCellPhone" xml:space="preserve">
+    <value>Mobiltelefon</value>
+  </data>
+  <data name="UserProfile_Title" xml:space="preserve">
+    <value>Benutzerprofil</value>
   </data>
 </root>

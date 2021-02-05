@@ -153,6 +153,15 @@
   <data name="ErrorConnection" xml:space="preserve">
     <value>Could not connect to the internet please try again later.</value>
   </data>
+  <data name="Gender_Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Gender_Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Gender_NonBinary" xml:space="preserve">
+    <value>Non Binary</value>
+  </data>
   <data name="InfoMessage" xml:space="preserve">
     <value>Information</value>
   </data>
@@ -177,6 +186,15 @@
   <data name="NoItems" xml:space="preserve">
     <value>No items to display</value>
   </data>
+  <data name="Option_GenderType" xml:space="preserve">
+    <value>Select your Gender</value>
+  </data>
+  <data name="Option_IdType" xml:space="preserve">
+    <value>Select your Personal Id Type</value>
+  </data>
+  <data name="PhCellPhone" xml:space="preserve">
+    <value>Cell Phone</value>
+  </data>
   <data name="PhConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
   </data>
@@ -189,8 +207,14 @@
   <data name="PhLastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="PhNickName" xml:space="preserve">
+    <value>NickName</value>
+  </data>
   <data name="PhPassword" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="PhPersonalId" xml:space="preserve">
+    <value>Personal Id</value>
   </data>
   <data name="PhTelephone" xml:space="preserve">
     <value>Telephone</value>
@@ -206,6 +230,9 @@
   </data>
   <data name="UserCreated" xml:space="preserve">
     <value>User was created successfully !</value>
+  </data>
+  <data name="UserProfile_Title" xml:space="preserve">
+    <value>User Profile</value>
   </data>
   <data name="wBirthDay" xml:space="preserve">
     <value>Birth Day</value>

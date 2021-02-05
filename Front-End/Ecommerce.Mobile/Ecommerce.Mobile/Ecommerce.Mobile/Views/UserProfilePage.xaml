@@ -1,8 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Ecommerce.Mobile.Views.UserProfilePage">
-  
+<ContentPage
+    x:Class="Ecommerce.Mobile.Views.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{i18n:Translate UserProfile_Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ScrollView>
+        <StackLayout Margin="20">
+
+            <Entry Placeholder="{i18n:Translate PhFirstName}" Text="{Binding FirstName}" />
+            <Entry Placeholder="{i18n:Translate PhLastName}" Text="{Binding LastName}" />
+            <Entry Placeholder="{i18n:Translate PhEmail}" Text="{Binding Email}" />
+            <Entry Placeholder="{i18n:Translate PhNickName}" Text="{Binding NickName}" />
+
+            <Label
+                Margin="5"
+                FontSize="Medium"
+                Text="{i18n:Translate wBirthDay}" />
+            <DatePicker />
+
+            <Entry
+                Keyboard="Telephone"
+                Placeholder="{i18n:Translate PhTelephone}"
+                Text="{Binding Telephone}" />
+
+            <Entry
+                Keyboard="Telephone"
+                Placeholder="{i18n:Translate PhCellPhone}"
+                Text="{Binding CellPhone}" />
+
+            <Entry Placeholder="{i18n:Translate PhPersonalId}" Text="{Binding PersonalId}" />
+
+            <StackLayout RadioButtonGroup.GroupName="PersonalIdType" RadioButtonGroup.SelectedValue="{Binding SelectionIdType}">
+                <Label Text="{i18n:Translate Option_IdType}" />
+                <!--  tHE sAME types IN DataEnums.PersonalIdTypeEnum  -->
+                <!--  Content for Only RD at the moment...  -->
+                <RadioButton Content="Cedula" Value="1" />
+                <RadioButton Content="Pasaporte" Value="2" />
+                <RadioButton Content="Rnc" Value="3" />
+            </StackLayout>
+
+            <StackLayout RadioButtonGroup.GroupName="GenderType" RadioButtonGroup.SelectedValue="{Binding SelectionGenderType}">
+                <Label Text="{i18n:Translate Option_GenderType}" />
+                <!--  tHE sAME types IN DataEnums.GenderEnum  -->
+                <RadioButton Content="{i18n:Translate Gender_Male}" Value="1" />
+                <RadioButton Content="{i18n:Translate Gender_Female}" Value="2" />
+                <RadioButton Content="{i18n:Translate Gender_NonBinary}" Value="3" />
+            </StackLayout>
+
+
+            <ActivityIndicator IsRunning="{Binding IsRunning}" />
+            <Button
+                Command="{Binding SaveCommand}"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate wSave}"
+                VerticalOptions="EndAndExpand" />
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

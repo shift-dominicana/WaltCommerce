@@ -169,6 +169,33 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string Gender_Female {
+            get {
+                return ResourceManager.GetString("Gender_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string Gender_Male {
+            get {
+                return ResourceManager.GetString("Gender_Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non Binary.
+        /// </summary>
+        public static string Gender_NonBinary {
+            get {
+                return ResourceManager.GetString("Gender_NonBinary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string InfoMessage {
@@ -241,6 +268,33 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select your Gender.
+        /// </summary>
+        public static string Option_GenderType {
+            get {
+                return ResourceManager.GetString("Option_GenderType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select your Personal Id Type.
+        /// </summary>
+        public static string Option_IdType {
+            get {
+                return ResourceManager.GetString("Option_IdType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cell Phone.
+        /// </summary>
+        public static string PhCellPhone {
+            get {
+                return ResourceManager.GetString("PhCellPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string PhConfirmPassword {
@@ -277,11 +331,29 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NickName.
+        /// </summary>
+        public static string PhNickName {
+            get {
+                return ResourceManager.GetString("PhNickName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string PhPassword {
             get {
                 return ResourceManager.GetString("PhPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Id.
+        /// </summary>
+        public static string PhPersonalId {
+            get {
+                return ResourceManager.GetString("PhPersonalId", resourceCulture);
             }
         }
         
@@ -327,6 +399,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string UserCreated {
             get {
                 return ResourceManager.GetString("UserCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Profile.
+        /// </summary>
+        public static string UserProfile_Title {
+            get {
+                return ResourceManager.GetString("UserProfile_Title", resourceCulture);
             }
         }
         

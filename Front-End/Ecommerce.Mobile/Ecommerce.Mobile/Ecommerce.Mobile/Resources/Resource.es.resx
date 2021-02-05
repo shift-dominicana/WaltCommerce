@@ -151,7 +151,7 @@
     <value>Iniciar sesión</value>
   </data>
   <data name="PhConfirmPassword" xml:space="preserve">
-    <value>Confirmar contraseña:</value>
+    <value>Confirmar contraseña</value>
   </data>
   <data name="PhFirstName" xml:space="preserve">
     <value>Nombre</value>
@@ -212,5 +212,20 @@
   </data>
   <data name="NoItems" xml:space="preserve">
     <value>No hay elementos para mostrar</value>
+  </data>
+  <data name="PhNickName" xml:space="preserve">
+    <value>Sobre nombre</value>
+  </data>
+  <data name="PhPersonalId" xml:space="preserve">
+    <value>Documento de identidad</value>
+  </data>
+  <data name="Option_IdType" xml:space="preserve">
+    <value>Tipo de documento de identidad</value>
+  </data>
+  <data name="PhCellPhone" xml:space="preserve">
+    <value>Teléfono móvil</value>
+  </data>
+  <data name="UserProfile_Title" xml:space="preserve">
+    <value>Perfil de usuario</value>
   </data>
 </root>
