@@ -3,21 +3,88 @@
     x:Class="Ecommerce.Mobile.Views.ProductPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Ecommerce.Mobile.Controls"
     xmlns:extension="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
 
     <StackLayout>
+
         <StackLayout.Background>
-            <LinearGradientBrush EndPoint="0.1,1">
-                <GradientStop Offset="0.1" Color="#0C79BB" />
-                <GradientStop Offset="1.0" Color="#E81E2C" />
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Offset="0.1" Color="#4199d5" />
+                <GradientStop Offset="1.0" Color="#00d4ff" />
             </LinearGradientBrush>
         </StackLayout.Background>
 
+        <Grid
+            Padding="30,30,30,0"
+            RowDefinitions="Auto, Auto, Auto"
+            RowSpacing="30">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    HeightRequest="24"
+                    Source="menu.png"
+                    VerticalOptions="Center"
+                    WidthRequest="24" />
+                <Image
+                    Grid.Column="2"
+                    HeightRequest="24"
+                    Source="Cart.png"
+                    VerticalOptions="Center"
+                    WidthRequest="24" />
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                ColumnDefinitions="*, Auto"
+                ColumnSpacing="15">
 
+                <controls:StandardEntry
+                    Padding="10"
+                    BackgroundColor="#E6EAEA"
+                    BorderColor="Gray"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Keyboard="Text"
+                    Opacity="0.5"
+                    Placeholder="Search"
+                    PlaceholderColor="Gray" />
+                <!--<StackLayout Orientation="Horizontal" Spacing="15">
+                    <Path
+                        Aspect="Uniform"
+                        Data="M17.8901 16.8296L12.6613 11.6007C13.653 10.3764 14.25 8.81977 14.25 7.12503C14.25 3.19631 11.0537 0 7.12499 0C3.19627 0 0 3.19631 0 7.12503C0 11.0537 3.19631 14.2501 7.12503 14.2501C8.81977 14.2501 10.3764 13.653 11.6007 12.6613L16.8296 17.8902C16.9761 18.0366 17.2135 18.0366 17.36 17.8902L17.8902 17.3599C18.0366 17.2135 18.0366 16.976 17.8901 16.8296ZM7.12503 12.75C4.02322 12.75 1.50001 10.2268 1.50001 7.12503C1.50001 4.02322 4.02322 1.50001 7.12503 1.50001C10.2268 1.50001 12.75 4.02322 12.75 7.12503C12.75 10.2268 10.2268 12.75 7.12503 12.75Z"
+                        Fill="#2D2942"
+                        HeightRequest="18"
+                        Opacity="0.5"
+                        VerticalOptions="Center"
+                        WidthRequest="18" />
+                    <Label
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Opacity="0.5"
+                        Text="Search"
+                        TextColor="#2D2942"
+                        VerticalOptions="Center" />
+                </StackLayout>-->
+
+                <Grid Grid.Column="1" HorizontalOptions="End">
+                    <Ellipse
+                        Fill="White"
+                        HeightRequest="42"
+                        WidthRequest="42" />
+                    <Image
+                        HeightRequest="20"
+                        Source="Filter.png"
+                        VerticalOptions="Center"
+                        WidthRequest="20" />
+                </Grid>
+            </Grid>
+        </Grid>
         <CollectionView
             x:Name="categoryList"
             HeightRequest="35"
@@ -33,7 +100,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid Margin="10">
+                    <Grid Margin="30,0,0,0">
                         <Label
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
@@ -86,6 +153,7 @@
                             extension:Skeleton.BackgroundColor="#c6c6c5"
                             extension:Skeleton.IsBusy="{Binding IsBusy}"
                             BorderColor="Silver"
+                            CornerRadius="15"
                             VerticalOptions="Fill">
 
                             <StackLayout
@@ -93,7 +161,9 @@
                                 Spacing="20"
                                 VerticalOptions="CenterAndExpand">
 
-                                <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+
+                                <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
                                     <Frame
                                         Padding="0"
                                         extension:Skeleton.BackgroundColor="#c6c6c5"
@@ -199,5 +269,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
     </StackLayout>
 </ContentPage>

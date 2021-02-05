@@ -62,7 +62,7 @@ namespace Ecommerce.Mobile.ViewModels
 
         private async void ViewProductDetail()
         {
-
+            if (SelectedProduct == null) return;
            
             var parameters = new NavigationParameters();
             parameters.Add("Product", SelectedProduct);
