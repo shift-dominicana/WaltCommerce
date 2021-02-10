@@ -367,6 +367,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What do yo want to search?.
+        /// </summary>
+        public static string PhSearch {
+            get {
+                return ResourceManager.GetString("PhSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telephone.
         /// </summary>
         public static string PhTelephone {

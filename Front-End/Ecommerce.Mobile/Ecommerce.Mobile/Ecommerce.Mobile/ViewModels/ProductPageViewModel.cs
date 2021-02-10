@@ -1,6 +1,7 @@
 ﻿using Common.Models.ProductCategories;
 using Common.Models.Products;
 using Ecommerce.Mobile.Services;
+using NHibernate.Linq;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
@@ -20,6 +21,8 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _categoryCommand;
         private ProductCategory _categorySelected;
         private bool _isBusy;
+        private DelegateCommand _filterCommand;
+        private string _critery;
 
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -27,20 +30,20 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;
             CategoryModelList = new ObservableCollection<ProductCategory>();
             ProductList = new ObservableCollection<Product>();
+            FullProductList = new ObservableCollection<Product>();
             IsBusy = true;
 
 
         }
 
-        public DelegateCommand ViewProductCommand => _viewProductCommand = new DelegateCommand(ViewProductDetail);        
+        public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));        
         public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
         //public DelegateCommand NavigateToDetail => _navigateToDetail ?? (_navigateToDetail = new DelegateCommand(OpenDetail));
-
-
+        public DelegateCommand FilterCommand => _filterCommand ?? (_filterCommand = new DelegateCommand(FIlterData));       
 
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
-        //public ObservableCollection<Products> ProductModelList { get; set; }
+        public ObservableCollection<Product> FullProductList { get; set; }        
 
         public Product SelectedProduct
         {
@@ -58,6 +61,12 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _isBusy;
             set => SetProperty(ref _isBusy, value);
+        }
+
+        public string Critery 
+        { 
+            get => _critery; 
+            set =>SetProperty(ref _critery,value); 
         }
 
         private async void ViewProductDetail()
@@ -112,7 +121,9 @@ namespace Ecommerce.Mobile.ViewModels
                 }
 
             }
-            
+
+            FullProductList = ProductList;
+
             IsBusy = false;
         }
 
@@ -132,6 +143,29 @@ namespace Ecommerce.Mobile.ViewModels
             }
         }
 
+        private void FIlterData()
+        {
+            ProductList.Clear();
+            //string param = Critery;
+            var list = FullProductList.Where(f => f.Name == Critery).ToList();
+
+            //var result = from u in FullProductList where SqlMethods.Like(u.Name, "%m%") select u;
+            //var list = result.ToList();
+            //var list = (List<Product>)from f in FullProductList
+            //                                 where SqlMethods.Like(f.Name, $"%{Critery}%")
+            //                                 select f;
+
+            ProductList = new ObservableCollection<Product>(list);
+
+
+            //List<Users> users = (List<Users>)from u in TVDB.Users
+            //                                 where SqlMethods.Like(u.Username, "%" + keyword + "%")
+            //                                 select u;
+
+            //string[] users = new string[] { "Paul", "Steve", "Annick", "Yannick" };
+        }
+
+
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
             //null for select the same product multiple times
@@ -139,5 +173,6 @@ namespace Ecommerce.Mobile.ViewModels
             if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
                 await GetProducts();
         }
+
     }
 }

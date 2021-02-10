@@ -21,7 +21,11 @@
                 Margin="5"
                 FontSize="Medium"
                 Text="{i18n:Translate wBirthDay}" />
-            <DatePicker Date="{Binding BirthDay}" />
+
+            <DatePicker Date="{Binding BirthDay}" Format="dd/MM/yyyy" />
+
+
+
 
             <Entry
                 Keyboard="Telephone"

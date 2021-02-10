@@ -44,7 +44,7 @@
                 ColumnDefinitions="*, Auto"
                 ColumnSpacing="15">
 
-                <controls:StandardEntry
+                <!--<controls:StandardEntry
                     Padding="10"
                     BackgroundColor="#E6EAEA"
                     BorderColor="Gray"
@@ -53,7 +53,14 @@
                     Keyboard="Text"
                     Opacity="0.5"
                     Placeholder="Search"
-                    PlaceholderColor="Gray" />
+                    PlaceholderColor="Gray" />-->
+
+                <SearchBar
+                    x:Name="searchBar"
+                    Placeholder="{i18n:Translate PhSearch}"
+                    SearchCommand="{Binding FilterCommand}"
+                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                    Text="{Binding Critery}" />
                 <!--<StackLayout Orientation="Horizontal" Spacing="15">
                     <Path
                         Aspect="Uniform"
