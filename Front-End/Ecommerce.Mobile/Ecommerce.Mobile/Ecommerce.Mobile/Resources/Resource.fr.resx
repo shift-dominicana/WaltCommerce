@@ -228,4 +228,19 @@
   <data name="UserProfile_Title" xml:space="preserve">
     <value>Profil utilisateur</value>
   </data>
+  <data name="Gender_Female" xml:space="preserve">
+    <value>Féminin</value>
+  </data>
+  <data name="Gender_Male" xml:space="preserve">
+    <value>Masculin</value>
+  </data>
+  <data name="Gender_NonBinary" xml:space="preserve">
+    <value>non-binaire</value>
+  </data>
+  <data name="Option_GenderType" xml:space="preserve">
+    <value>Sélectionnez votre sexe</value>
+  </data>
+  <data name="MustLogIn" xml:space="preserve">
+    <value>S’il vous plaît connectez-vous pour voir votre profil!</value>
+  </data>
 </root>

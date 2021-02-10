@@ -1,4 +1,5 @@
-﻿using Prism.Navigation;
+﻿using Ecommerce.Mobile.Helpers;
+using Prism.Navigation;
 using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -23,21 +24,16 @@ namespace Ecommerce.Mobile.Views
             var lastNavigated = navStack.Last();
 
 
-            _idPage = Preferences.Get("menuPage", "default_value");
-            if (_idPage.Equals("GatewayPageViewModel")
-                || _idPage.Equals("DetailOpenRequestPageViewModel")
-                || _idPage.Equals("ChatPageViewModel")
-                || _idPage.Equals("OpenRequestPageViewModel"))
+            _idPage = Preferences.Get(Settings.ActualPage, "");
+            if (_idPage.Equals("UserProfilePage")
+                || _idPage.Equals("AddressPage")
+                || _idPage.Equals("OrdersPage"))
              
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    if (await DisplayAlert("Información", "¿Esta seguro que desea cerrar la sesión?", "Salir", "Cancelar"))
-                    {
-                        base.OnBackButtonPressed();
-
-                        await _navigationService.NavigateAsync("/NavigationPage/LoginPage");
-                    }
+                    base.OnBackButtonPressed();
+                    await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");   
                 });
             }
             else

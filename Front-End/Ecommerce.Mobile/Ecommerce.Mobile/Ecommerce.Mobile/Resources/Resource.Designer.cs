@@ -259,6 +259,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Log In For see your profile!.
+        /// </summary>
+        public static string MustLogIn {
+            get {
+                return ResourceManager.GetString("MustLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No items to display.
         /// </summary>
         public static string NoItems {

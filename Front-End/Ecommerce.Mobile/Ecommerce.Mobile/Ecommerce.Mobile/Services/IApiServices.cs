@@ -25,7 +25,6 @@ namespace Ecommerce.Mobile.Services
             string urlBase,
             string servicePrefix,
             string controller,
-            int id,
             T model,
             string tokenType,
             string accessToken);

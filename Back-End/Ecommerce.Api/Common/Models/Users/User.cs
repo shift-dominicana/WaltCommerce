@@ -26,6 +26,8 @@ namespace Common.Models.Users
 
         public String PersonalId { get; set; }
 
+        public bool Confirmed { get; set; }
+
         public PersonalIdTypeEnum PersonalIdType { get; set; }
 
         public GenderEnum Gender { get; set; }

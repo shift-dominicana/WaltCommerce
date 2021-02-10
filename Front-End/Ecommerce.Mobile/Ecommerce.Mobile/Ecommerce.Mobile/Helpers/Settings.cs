@@ -9,6 +9,7 @@ namespace Ecommerce.Mobile.Helpers
         public const string IsLogin = Identificator + "IsLogin";
         public const string FullName = Identificator + "FullName";
         public const string UserData = Identificator + "UserData";
+        public const string ActualPage = Identificator + "ActualPage";
 
     }
 }

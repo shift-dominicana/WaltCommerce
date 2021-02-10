@@ -9,7 +9,7 @@
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="True">
 
 
     <StackLayout>
@@ -182,7 +182,7 @@
                                             LoadingPlaceholder="LoaderImage"
                                             RetryCount="3"
                                             RetryDelay="600"
-                                            Source="{Binding ImageUrl}" />
+                                            Source="{Binding MainImageUrl}" />
                                     </Frame>
                                 </Grid>
                                 <Grid

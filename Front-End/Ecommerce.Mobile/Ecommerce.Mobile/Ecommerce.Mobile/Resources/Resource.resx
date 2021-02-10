@@ -183,6 +183,9 @@
   <data name="MustFillFields" xml:space="preserve">
     <value>You must complete the fields in order to process the request.</value>
   </data>
+  <data name="MustLogIn" xml:space="preserve">
+    <value>Please Log In For see your profile!</value>
+  </data>
   <data name="NoItems" xml:space="preserve">
     <value>No items to display</value>
   </data>

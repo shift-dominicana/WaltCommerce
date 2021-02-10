@@ -129,7 +129,6 @@ namespace Ecommerce.Mobile.Services
         string urlBase,
         string servicePrefix,
         string controller,
-        int id,
         T model,
         string tokenType,
         string accessToken)
@@ -152,7 +151,7 @@ namespace Ecommerce.Mobile.Services
                     tokenType.Equals("") ? _tokenType : tokenType,
                     accessToken);
 
-                var url = $"{urlBase}{servicePrefix}{controller}/{id}";
+                var url = $"{urlBase}{servicePrefix}{controller}";
                 var response = await client.PutAsync(url, content);
                 var answer = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)

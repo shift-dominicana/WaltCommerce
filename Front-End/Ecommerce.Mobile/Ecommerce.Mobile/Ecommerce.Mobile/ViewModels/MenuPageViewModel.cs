@@ -92,13 +92,9 @@ namespace Ecommerce.Mobile.ViewModels
 
                 return;
             }
-            else if (Menu.Page.Equals("ProfilePage")) 
-            {
-                await _navigationService.NavigateAsync("/NavigationPage/UserProfilePage");
-            }
 
+            Preferences.Set(Settings.ActualPage, Menu.Page);
             var parameter = new NavigationParameters();
-            parameter.Add("User", User);
             await _navigationService.NavigateAsync($"/MenuPage/NavigationPage/{Menu.Page}", parameter);
 
         }
