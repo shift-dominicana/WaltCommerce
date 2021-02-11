@@ -243,4 +243,7 @@
   <data name="MustLogIn" xml:space="preserve">
     <value>Por favor, inicie sesión para ver su perfil !!</value>
   </data>
+  <data name="PhSearch" xml:space="preserve">
+    <value>¿Qué deseas buscar?</value>
+  </data>
 </root>

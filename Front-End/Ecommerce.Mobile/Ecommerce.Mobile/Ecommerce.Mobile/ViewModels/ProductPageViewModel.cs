@@ -39,7 +39,10 @@ namespace Ecommerce.Mobile.ViewModels
         public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));        
         public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
         //public DelegateCommand NavigateToDetail => _navigateToDetail ?? (_navigateToDetail = new DelegateCommand(OpenDetail));
-        public DelegateCommand FilterCommand => _filterCommand ?? (_filterCommand = new DelegateCommand(FIlterData));       
+        public DelegateCommand<string> FilterCommand => new DelegateCommand<string>((string text) =>
+        {
+            FIlterData(text);
+        });
 
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
@@ -61,12 +64,6 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _isBusy;
             set => SetProperty(ref _isBusy, value);
-        }
-
-        public string Critery 
-        { 
-            get => _critery; 
-            set =>SetProperty(ref _critery,value); 
         }
 
         private async void ViewProductDetail()
@@ -121,9 +118,8 @@ namespace Ecommerce.Mobile.ViewModels
                 }
 
             }
-
-            FullProductList = ProductList;
-
+            
+            FullProductList = new ObservableCollection<Product>(ProductList);
             IsBusy = false;
         }
 
@@ -143,26 +139,15 @@ namespace Ecommerce.Mobile.ViewModels
             }
         }
 
-        private void FIlterData()
+        private void FIlterData(string text)
         {
             ProductList.Clear();
-            //string param = Critery;
-            var list = FullProductList.Where(f => f.Name == Critery).ToList();
+            
+            text = text?.ToLower()??"";
+            var list = FullProductList.Where(f => f.Name.ToLower().Contains(text)).ToList();
 
-            //var result = from u in FullProductList where SqlMethods.Like(u.Name, "%m%") select u;
-            //var list = result.ToList();
-            //var list = (List<Product>)from f in FullProductList
-            //                                 where SqlMethods.Like(f.Name, $"%{Critery}%")
-            //                                 select f;
+            list.ForEach(l => ProductList.Add(l));
 
-            ProductList = new ObservableCollection<Product>(list);
-
-
-            //List<Users> users = (List<Users>)from u in TVDB.Users
-            //                                 where SqlMethods.Like(u.Username, "%" + keyword + "%")
-            //                                 select u;
-
-            //string[] users = new string[] { "Paul", "Steve", "Annick", "Yannick" };
         }
 
 
