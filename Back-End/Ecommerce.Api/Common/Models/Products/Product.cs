@@ -18,7 +18,7 @@ namespace Common.Models.Products
         public String MainImageUrl { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
-        public String Identificator { get; set; }
+        public String Identificator { get; set; } 
         public float Price { get; set; }
         public int Stock { get; set; }
         public ProductColor ProductColor { get; set; }
@@ -33,5 +33,12 @@ namespace Common.Models.Products
         public bool isNewProduct { set; get; }
         public String Model { get; set; }
 
+        //Id for relate products with diferents colours and size.
+        //TODO: Validate that products with the same colour and size don't get the same SharedId because is the same product.
+        public String SharedId { get; set; }
+
+        //Product with sharedId May not be presented on menu
+        //TODO: In the Group of Product with the same SharedId a least One must have this mark.
+        public bool PresentOnMenu { get; set; }
     }
 }
