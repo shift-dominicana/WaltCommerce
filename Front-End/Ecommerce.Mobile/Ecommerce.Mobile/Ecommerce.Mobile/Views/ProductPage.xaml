@@ -16,81 +16,39 @@
 
         <StackLayout.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                <GradientStop Offset="0.1" Color="#4199d5" />
-                <GradientStop Offset="1.0" Color="#00d4ff" />
+                <GradientStop Offset="0.1" Color="White" />
+                <GradientStop Offset="1.0" Color="WhiteSmoke" />
             </LinearGradientBrush>
         </StackLayout.Background>
 
         <Grid
-            Padding="30,30,30,0"
+            Margin="20,20,20,0"
             RowDefinitions="Auto, Auto, Auto"
             RowSpacing="30">
-            <Grid ColumnDefinitions="Auto, *, Auto">
+            <Grid ColumnDefinitions="Auto,Auto,Auto">
                 <ImageButton
                     BackgroundColor="Transparent"
                     HeightRequest="24"
                     Source="menu.png"
                     VerticalOptions="Center"
                     WidthRequest="24" />
+
+                <SearchBar
+                    x:Name="searchBar"
+                    Grid.Column="1"
+                    Placeholder="{i18n:Translate PhSearch}"
+                    SearchCommand="{Binding FilterCommand}"
+                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                    Text="{Binding Critery}" />
                 <Image
                     Grid.Column="2"
                     HeightRequest="24"
                     Source="Cart.png"
                     VerticalOptions="Center"
                     WidthRequest="24" />
+
             </Grid>
-            <Grid
-                Grid.Row="1"
-                ColumnDefinitions="*, Auto"
-                ColumnSpacing="15">
 
-                <!--<controls:StandardEntry
-                    Padding="10"
-                    BackgroundColor="#E6EAEA"
-                    BorderColor="Gray"
-                    BorderThickness="1"
-                    CornerRadius="10"
-                    Keyboard="Text"
-                    Opacity="0.5"
-                    Placeholder="Search"
-                    PlaceholderColor="Gray" />-->
-
-                <SearchBar
-                    x:Name="searchBar"
-                    Placeholder="{i18n:Translate PhSearch}"
-                    SearchCommand="{Binding FilterCommand}"
-                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
-                    Text="{Binding Critery}" />
-                <!--<StackLayout Orientation="Horizontal" Spacing="15">
-                    <Path
-                        Aspect="Uniform"
-                        Data="M17.8901 16.8296L12.6613 11.6007C13.653 10.3764 14.25 8.81977 14.25 7.12503C14.25 3.19631 11.0537 0 7.12499 0C3.19627 0 0 3.19631 0 7.12503C0 11.0537 3.19631 14.2501 7.12503 14.2501C8.81977 14.2501 10.3764 13.653 11.6007 12.6613L16.8296 17.8902C16.9761 18.0366 17.2135 18.0366 17.36 17.8902L17.8902 17.3599C18.0366 17.2135 18.0366 16.976 17.8901 16.8296ZM7.12503 12.75C4.02322 12.75 1.50001 10.2268 1.50001 7.12503C1.50001 4.02322 4.02322 1.50001 7.12503 1.50001C10.2268 1.50001 12.75 4.02322 12.75 7.12503C12.75 10.2268 10.2268 12.75 7.12503 12.75Z"
-                        Fill="#2D2942"
-                        HeightRequest="18"
-                        Opacity="0.5"
-                        VerticalOptions="Center"
-                        WidthRequest="18" />
-                    <Label
-                        FontSize="15"
-                        HorizontalOptions="Center"
-                        Opacity="0.5"
-                        Text="Search"
-                        TextColor="#2D2942"
-                        VerticalOptions="Center" />
-                </StackLayout>-->
-
-                <Grid Grid.Column="1" HorizontalOptions="End">
-                    <Ellipse
-                        Fill="White"
-                        HeightRequest="42"
-                        WidthRequest="42" />
-                    <Image
-                        HeightRequest="20"
-                        Source="Filter.png"
-                        VerticalOptions="Center"
-                        WidthRequest="20" />
-                </Grid>
-            </Grid>
         </Grid>
         <CollectionView
             x:Name="categoryList"
@@ -107,12 +65,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid Margin="30,0,0,0">
+                    <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="10">
+
                         <Label
-                            FontSize="16"
+                            Margin="10,0,0,0"
+                            FontSize="20"
                             HorizontalOptions="CenterAndExpand"
                             Text="{Binding Description}"
-                            TextColor="White"
+                            TextColor="Black"
                             VerticalOptions="CenterAndExpand" />
 
 
@@ -137,7 +97,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <CollectionView
-            Margin="10"
+            Margin="10,5,10,5"
             extension:Skeleton.Animation="{extension:DefaultAnimation Source=Fade,
                                                                       Interval='4000'}"
             extension:Skeleton.IsBusy="{Binding IsBusy}"
@@ -150,114 +110,62 @@
             VerticalOptions="StartAndExpand"
             VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" />
+                <GridItemsLayout
+                    HorizontalItemSpacing="15"
+                    Orientation="Vertical"
+                    Span="2" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <StackLayout Margin="3">
-                        <Frame
-                            extension:Skeleton.BackgroundColor="#c6c6c5"
-                            extension:Skeleton.IsBusy="{Binding IsBusy}"
-                            BorderColor="Silver"
-                            CornerRadius="15"
-                            VerticalOptions="Fill">
+                    <Grid HeightRequest="300" RowDefinitions="*,Auto,Auto">
 
-                            <StackLayout
-                                Orientation="Horizontal"
-                                Spacing="20"
-                                VerticalOptions="CenterAndExpand">
+                        <Grid RowDefinitions="*,30,30">
+                            <Frame
+                                Grid.Row="0"
+                                Padding="0"
+                                CornerRadius="10"
+                                HasShadow="False">
+                                <ffimageloading:CachedImage
+                                    Aspect="Fill"
+                                    Background="Transparent"
+                                    CacheDuration="50"
+                                    DownsampleToViewSize="true"
+                                    ErrorPlaceholder="ErrorImage"
+                                    LoadingPlaceholder="LoaderImage"
+                                    RetryCount="3"
+                                    RetryDelay="600"
+                                    Source="{Binding MainImageUrl}"
+                                    WidthRequest="50" />
+                            </Frame>
+                            <Label
+                                Grid.Row="1"
+                                Margin="5,0,0,0"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Name}"
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" />
 
-
-
-                                <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
-                                    <Frame
-                                        Padding="0"
-                                        extension:Skeleton.BackgroundColor="#c6c6c5"
-                                        extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                        BackgroundColor="White"
-                                        CornerRadius="20"
-                                        HasShadow="False"
-                                        IsClippedToBounds="True"
-                                        WidthRequest="70">
-                                        <ffimageloading:CachedImage
-                                            Background="Transparent"
-                                            CacheDuration="50"
-                                            DownsampleToViewSize="true"
-                                            ErrorPlaceholder="ErrorImage"
-                                            HeightRequest="100"
-                                            LoadingPlaceholder="LoaderImage"
-                                            RetryCount="3"
-                                            RetryDelay="600"
-                                            Source="{Binding MainImageUrl}" />
-                                    </Frame>
-                                </Grid>
-                                <Grid
-                                    ColumnDefinitions="Auto,Auto"
-                                    RowDefinitions="Auto,Auto,Auto"
-                                    RowSpacing="1">
-                                    <Frame
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Padding="0"
-                                        extension:Skeleton.BackgroundColor="#c6c6c5"
-                                        extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                        BackgroundColor="Transparent"
-                                        CornerRadius="5"
-                                        HasShadow="False">
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="1"
+                            <Label Grid.Row="2" Margin="5,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
                                             FontSize="Medium"
-                                            Text="{Binding Name}"
-                                            TextColor="Black"
-                                            VerticalTextAlignment="Center" />
-                                    </Frame>
-                                    <Frame
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        Padding="0"
-                                        extension:Skeleton.BackgroundColor="#c6c6c5"
-                                        extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                        BackgroundColor="Transparent"
-                                        CornerRadius="5"
-                                        HasShadow="False">
-                                        <Label
-                                            Grid.Row="2"
-                                            Grid.Column="1"
-                                            extension:Skeleton.BackgroundColor="#c6c6c5"
-                                            extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                            FontSize="Body"
-                                            Text="{Binding Description}"
-                                            TextColor="Black" />
-                                    </Frame>
-                                    <Frame
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        Padding="0"
-                                        extension:Skeleton.BackgroundColor="#c6c6c5"
-                                        extension:Skeleton.IsBusy="{Binding IsBusy}"
-                                        BackgroundColor="Transparent"
-                                        CornerRadius="5"
-                                        HasShadow="False">
-                                        <Label Grid.Row="3" Grid.Column="1">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontSize="Large" Text="$RD " />
-                                                    <Span
-                                                        FontAttributes="Bold"
-                                                        FontSize="Large"
-                                                        Text="{Binding Price, StringFormat='{0:#,0.#0}'}"
-                                                        TextColor="Red" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </Frame>
-                                </Grid>
-                            </StackLayout>
-                        </Frame>
-                        <StackLayout.Resources>
-                            <Style TargetType="StackLayout">
+                                            Text="$RD "
+                                            TextColor="Red" />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Price, StringFormat='{0:#,0.#0}'}"
+                                            TextColor="Red" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Grid>
+
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
                                 <Setter Property="VisualStateManager.VisualStateGroups">
                                     <VisualStateGroupList>
                                         <VisualStateGroup x:Name="CommonStates">
@@ -271,8 +179,8 @@
                                     </VisualStateGroupList>
                                 </Setter>
                             </Style>
-                        </StackLayout.Resources>
-                    </StackLayout>
+                        </Grid.Resources>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
