@@ -9,22 +9,19 @@
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True"
-    NavigationPage.HasNavigationBar="True">
+    NavigationPage.HasNavigationBar="False">
 
 
     <StackLayout>
 
-        <StackLayout.Background>
+        <!--<StackLayout.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                 <GradientStop Offset="0.1" Color="White" />
                 <GradientStop Offset="1.0" Color="WhiteSmoke" />
             </LinearGradientBrush>
-        </StackLayout.Background>
+        </StackLayout.Background>-->
 
-        <Grid
-            Margin="20,20,20,0"
-            RowDefinitions="Auto, Auto, Auto"
-            RowSpacing="30">
+        <Grid Margin="20,20,20,20" RowSpacing="30">
             <Grid ColumnDefinitions="Auto,Auto,Auto">
                 <ImageButton
                     BackgroundColor="Transparent"
@@ -58,7 +55,7 @@
             SelectedItem="{Binding CategorySelected}"
             SelectionChangedCommand="{Binding CategoryCommand}"
             SelectionMode="Single"
-            VerticalOptions="Start">
+            VerticalOptions="Fill">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" />
             </CollectionView.ItemsLayout>
@@ -113,12 +110,15 @@
                 <GridItemsLayout
                     HorizontalItemSpacing="15"
                     Orientation="Vertical"
-                    Span="2" />
+                    Span="2"
+                    VerticalItemSpacing="20" />
             </CollectionView.ItemsLayout>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid HeightRequest="300" RowDefinitions="*,Auto,Auto">
+                    <Grid HeightRequest="200" WidthRequest="100">
+
 
                         <Grid RowDefinitions="*,30,30">
                             <Frame
