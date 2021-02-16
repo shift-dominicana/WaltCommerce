@@ -2,8 +2,9 @@
 using Common.Models.Products;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Linq;
+
 
 namespace Ecommerce.Mobile.ViewModels
 {
@@ -17,7 +18,11 @@ namespace Ecommerce.Mobile.ViewModels
         public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
+
+             SimilarProducts = new ObservableCollection<Product>();
+             FullProductList = new ObservableCollection<Product>();
         }
+
 
         public Product Product
         {
@@ -31,11 +36,28 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _category, value);
         }
 
+        public ObservableCollection<Product> SimilarProducts { get; set; }
+        public ObservableCollection<Product> FullProductList { get; set; }
+
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Product = parameters.GetValue<Product>("Product");            
-            base.OnNavigatedTo(parameters);
+            Product = parameters.GetValue<Product>("Product");
+            FullProductList = parameters.GetValue<ObservableCollection<Product>>("AllProducts");
+            try
+            {  
+                foreach (Product p in FullProductList) {
+                    if (p.SharedId != null) {
+                        if (p.SharedId.Equals(Product.SharedId)) {
+                            SimilarProducts.Add(p);
+                        }
+                    }
+                }
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
         }
+
     }
 }

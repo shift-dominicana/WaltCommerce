@@ -16,6 +16,7 @@ namespace DataLayer.ContextExtension.Products
             builder.HasOne(x => x.ProductCategory);//.WithMany(x => x.Products).HasForeignKey(x => x.ProductCategoryFKey);
             builder.Property(x => x.isNewProduct).IsRequired();
             builder.Property(x => x.SharedId).HasMaxLength(8);
+            builder.HasIndex(x => x.SharedId).IsUnique();
         }
     }
 }

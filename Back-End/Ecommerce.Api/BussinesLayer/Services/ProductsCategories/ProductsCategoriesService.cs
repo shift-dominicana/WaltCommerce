@@ -26,7 +26,10 @@ namespace BussinesLayer.Services.ProductsCategories
             .Include(p => p.Products)
             .ThenInclude(p => p.ProductImages)
             .Include(p => p.Products)
-            .ThenInclude(p => p.Specs).ToListAsync();
+            .ThenInclude(p => p.Specs)
+            .Include(p => p.Products)
+            .ThenInclude(p => p.ProductColor).ToListAsync();
+
 
             return products;
         }

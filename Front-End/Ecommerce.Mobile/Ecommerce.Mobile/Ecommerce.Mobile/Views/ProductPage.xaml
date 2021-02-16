@@ -120,7 +120,7 @@
                     <Grid HeightRequest="200" WidthRequest="100">
 
 
-                        <Grid RowDefinitions="*,30,30">
+                        <Grid RowDefinitions="*,30,30, Auto, Auto">
                             <Frame
                                 Grid.Row="0"
                                 Padding="0"

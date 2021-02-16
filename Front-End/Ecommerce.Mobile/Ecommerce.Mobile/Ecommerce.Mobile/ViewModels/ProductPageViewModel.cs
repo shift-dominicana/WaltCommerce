@@ -1,10 +1,8 @@
 ﻿using Common.Models.ProductCategories;
 using Common.Models.Products;
 using Ecommerce.Mobile.Services;
-using NHibernate.Linq;
 using Prism.Commands;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -38,7 +36,6 @@ namespace Ecommerce.Mobile.ViewModels
 
         public DelegateCommand ViewProductCommand => _viewProductCommand ?? (_viewProductCommand = new DelegateCommand(ViewProductDetail));        
         public DelegateCommand CategoryCommand => _categoryCommand ?? (_categoryCommand = new DelegateCommand(CategoryFilter));
-        //public DelegateCommand NavigateToDetail => _navigateToDetail ?? (_navigateToDetail = new DelegateCommand(OpenDetail));
         public DelegateCommand<string> FilterCommand => new DelegateCommand<string>((string text) =>
         {
             FIlterData(text);
@@ -72,15 +69,8 @@ namespace Ecommerce.Mobile.ViewModels
            
             var parameters = new NavigationParameters();
             parameters.Add("Product", SelectedProduct);
-            //var Category = CategoryModelList.Where(c=>c.Id == SelectedProduct.ProductCategory.Id);
-
-            //var CategoryModel = new ProductCategory()
-            //{
-            //    Identificator = Category.FirstOrDefault().Identificator,
-            //    Description = Category.FirstOrDefault().Description
-            //};
-
-            //parameters.Add("Category", CategoryModel);
+            parameters.Add("AllProducts", FullProductList);
+            
            await _navigationService.NavigateAsync("ProductDetailPage", parameters);                                   
         }
 
