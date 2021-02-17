@@ -52,11 +52,11 @@
 
             <CollectionView
                 x:Name="colorList"
-                HeightRequest="40"
+                HeightRequest="50"
                 HorizontalScrollBarVisibility="Never"
                 ItemsSource="{Binding SimilarProducts}"
-                SelectedItem="{Binding TestNOTIMPLEMENTED}"
-                SelectionChangedCommand="{Binding ChangeColourCommand}"
+                SelectedItem="{Binding SelectedColor}"
+                SelectionChangedCommand="{Binding ChangeColorCommand}"
                 SelectionMode="Single"
                 VerticalOptions="Start">
                 <CollectionView.ItemsLayout>
@@ -67,12 +67,21 @@
 
                         <Grid Margin="0,0,0,0" Padding="0,0,0,0">
 
-                            <Button
-                                Margin="10"
-                                BackgroundColor="{Binding ProductColor.HexCode}"
-                                CornerRadius="90"
-                                HeightRequest="0"
-                                WidthRequest="30" />
+                            <Frame
+                                Margin="0,0,5,0"
+                                HeightRequest="50"
+                                WidthRequest="60">
+                                <ImageButton
+                                    Padding="0"
+                                    Aspect="Fill"
+                                    BackgroundColor="{Binding ProductColor.HexCode}"
+                                    CornerRadius="60"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding ProductColor.ImageColorUrl}"
+                                    VerticalOptions="Start"
+                                    WidthRequest="60" />
+                            </Frame>
 
                             <Grid.Resources>
                                 <Style TargetType="Grid">

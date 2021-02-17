@@ -1,5 +1,6 @@
-﻿using Common.Models.ProductCategories;
+using Common.Models.ProductCategories;
 using Common.Models.Products;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
@@ -12,7 +13,9 @@ namespace Ecommerce.Mobile.ViewModels
     {
         private INavigationService _navigationService;
         private Product _product;
+        private Product _selectedProductColor;
         private ProductCategory _category;
+        private DelegateCommand _changeColorCommand;
 
 
         public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
@@ -23,6 +26,18 @@ namespace Ecommerce.Mobile.ViewModels
              FullProductList = new ObservableCollection<Product>();
         }
 
+        public DelegateCommand ChangeColorCommand => _changeColorCommand ?? (_changeColorCommand = new DelegateCommand(ChangeProduct));
+
+        private async void ChangeProduct()
+        {
+            if (_selectedProductColor == null) return;
+
+            var parameters = new NavigationParameters();
+            parameters.Add("Product", _selectedProductColor);
+            parameters.Add("AllProducts", FullProductList);
+
+            await _navigationService.NavigateAsync("../ProductDetailPage", parameters);
+        }
 
         public Product Product
         {
@@ -34,6 +49,12 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _category;
             set => SetProperty(ref _category, value);
+        }
+
+        public Product SelectedColor
+        {
+            get => _selectedProductColor;
+            set => SetProperty(ref _selectedProductColor, value);
         }
 
         public ObservableCollection<Product> SimilarProducts { get; set; }
