@@ -250,6 +250,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must have an account to add items to the shopping car!.
+        /// </summary>
+        public static string MustAccount {
+            get {
+                return ResourceManager.GetString("MustAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must complete the fields in order to process the request..
         /// </summary>
         public static string MustFillFields {
@@ -367,7 +376,7 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What do yo want to search?.
+        ///   Looks up a localized string similar to What are you looking for?.
         /// </summary>
         public static string PhSearch {
             get {

@@ -180,6 +180,9 @@
   <data name="MenuOptProfile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="MustAccount" xml:space="preserve">
+    <value>You must have an account to add items to the shopping car!</value>
+  </data>
   <data name="MustFillFields" xml:space="preserve">
     <value>You must complete the fields in order to process the request.</value>
   </data>
@@ -220,7 +223,7 @@
     <value>Personal Id</value>
   </data>
   <data name="PhSearch" xml:space="preserve">
-    <value>What do yo want to search?</value>
+    <value>What are you looking for?</value>
   </data>
   <data name="PhTelephone" xml:space="preserve">
     <value>Telephone</value>

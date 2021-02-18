@@ -155,8 +155,8 @@
                     Grid.Column="1"
                     BindingContext="{x:Reference QtyStepper}"
                     FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{Binding Value}" />
+                    FontSize="Medium"                    
+                    Text="{Binding ValueItems}" />
                 <Stepper
                     x:Name="QtyStepper"
                     Grid.Row="4"
@@ -170,7 +170,7 @@
                 <Button
                     Grid.Row="0"
                     BackgroundColor="Navy"
-                    Command="{Binding AddToCartCommand}"
+                    Command="{Binding ShoppingCarCommand}"
                     CornerRadius="10"
                     FontSize="Medium"
                     Text="{i18n:Translate DpAddToCart}"

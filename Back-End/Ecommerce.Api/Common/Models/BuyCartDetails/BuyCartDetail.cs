@@ -10,6 +10,6 @@ namespace Common.Models.BuyCartDetails
         public int BuyCartId { get; set; }
         public Product Product { get; set; }
         public int ProductId { get; set; }
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

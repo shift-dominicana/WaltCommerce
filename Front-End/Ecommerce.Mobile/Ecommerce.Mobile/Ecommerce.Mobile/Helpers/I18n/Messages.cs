@@ -44,6 +44,7 @@ namespace Ecommerce.Mobile.Helpers.I18n
 
         //Profile
         public static string MustLogIn => Resource.MustLogIn;
+        public static string MustAccount => Resource.MustAccount;
 
     }
 }

@@ -1,17 +1,30 @@
+
 using Common.Models.ProductCategories;
 using Common.Models.Products;
+using Common.Enums;
+using Common.Models.BuyCartDetails;
+using Common.Models.BuyCarts;
+using Common.Models.ProductCategories;
+using Common.Models.Products;
+using Common.Models.Token;
+using Common.Models.Users;
+using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Helpers.I18n;
+using Ecommerce.Mobile.Services;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-
+using Xamarin.Essentials;
 
 namespace Ecommerce.Mobile.ViewModels
 {
     public class ProductDetailPageViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
+        private readonly IApiServices _apiServices;
         private Product _product;
         private Product _selectedProductColor;
         private ProductCategory _category;
@@ -19,11 +32,20 @@ namespace Ecommerce.Mobile.ViewModels
 
 
         public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+
+        private AccessToken _accessToken;
+        private User _user;
+        private DelegateCommand _shoppingCarCommand;
+        private int _valueItems;
+        
+        public ProductDetailPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
+
         {
             _navigationService = navigationService;
-
-             SimilarProducts = new ObservableCollection<Product>();
-             FullProductList = new ObservableCollection<Product>();
+            _apiServices = apiServices;
+            SimilarProducts = new ObservableCollection<Product>();
+            FullProductList = new ObservableCollection<Product>();
+            ValueItems = 1;
         }
 
         public DelegateCommand ChangeColorCommand => _changeColorCommand ?? (_changeColorCommand = new DelegateCommand(ChangeProduct));
@@ -39,6 +61,9 @@ namespace Ecommerce.Mobile.ViewModels
             await _navigationService.NavigateAsync("../ProductDetailPage", parameters);
         }
 
+        public DelegateCommand ShoppingCarCommand => _shoppingCarCommand ?? (_shoppingCarCommand = new DelegateCommand(AddToShoppingCar));
+
+
         public Product Product
         {
             get => _product;
@@ -51,10 +76,22 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _category, value);
         }
 
+
         public Product SelectedColor
         {
             get => _selectedProductColor;
             set => SetProperty(ref _selectedProductColor, value);
+        }
+        public User User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        public int ValueItems
+        {
+            get => _valueItems;
+            set => SetProperty(ref _valueItems, value);
         }
 
         public ObservableCollection<Product> SimilarProducts { get; set; }
@@ -66,19 +103,73 @@ namespace Ecommerce.Mobile.ViewModels
             Product = parameters.GetValue<Product>("Product");
             FullProductList = parameters.GetValue<ObservableCollection<Product>>("AllProducts");
             try
-            {  
-                foreach (Product p in FullProductList) {
-                    if (p.SharedId != null) {
-                        if (p.SharedId.Equals(Product.SharedId)) {
+            {
+                foreach (Product p in FullProductList)
+                {
+                    if (p.SharedId != null)
+                    {
+                        if (p.SharedId.Equals(Product.SharedId))
+                        {
                             SimilarProducts.Add(p);
                         }
                     }
                 }
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
             }
+
+
+            var UserData = Preferences.Get(Settings.UserData, "");
+            _accessToken = JsonConvert.DeserializeObject<AccessToken>(UserData);
+
         }
+
+
+        private async void AddToShoppingCar()
+        {
+            if (_accessToken is AccessToken)
+            {
+
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.ConnectionError, Messages.Accept);
+                    return;
+                }
+
+                var shopping = new BuyCartDetail()
+                {                    
+                    IsDeleted = false,                            
+                    CreationDate = DateTime.Now,
+                    CreatedBy = "Admin",                    
+                    Product = this.Product,                    
+                    BuyCart = _accessToken.Cart,
+                    Quantity =  ValueItems,                    
+
+                };
+
+                var url = App.Current.Resources["UrlAPI"].ToString();
+
+                var response = await _apiServices.PostAsync<BuyCartDetail>(url, "/api", "/BuyCartDetail", shopping, "", _accessToken.Token);
+                if (!response.IsSuccess)
+                {
+                    if (response.Message == "")
+                    {
+                        response.Message = Messages.ConnectionError;
+                    }
+                    await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
+                    return;
+                }               
+
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.MustAccount, Messages.Accept);
+
+            }
+        }
+
 
     }
 }

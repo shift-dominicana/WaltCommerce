@@ -8,8 +8,9 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     prism:ViewModelLocator.AutowireViewModel="True"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="True">
 
 
     <StackLayout>
@@ -21,8 +22,8 @@
             </LinearGradientBrush>
         </StackLayout.Background>-->
 
-        <Grid Margin="20,20,20,20" RowSpacing="30">
-            <Grid ColumnDefinitions="Auto,Auto,Auto">
+        <Grid Margin="20" RowSpacing="30">
+            <Grid ColumnDefinitions="Auto,*,Auto">
                 <ImageButton
                     BackgroundColor="Transparent"
                     HeightRequest="24"
@@ -37,12 +38,22 @@
                     SearchCommand="{Binding FilterCommand}"
                     SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                     Text="{Binding Critery}" />
-                <Image
+
+                <xct:BadgeView
                     Grid.Column="2"
-                    HeightRequest="24"
-                    Source="Cart.png"
-                    VerticalOptions="Center"
-                    WidthRequest="24" />
+                    BackgroundColor="Red"
+                    BadgePosition="TopRight"
+                    FontAttributes="Bold"
+                    FontSize="Caption"
+                    Text="{Binding ValueShoppingCar}"
+                    TextColor="White">
+                    <Image
+                        HeightRequest="35"
+                        Source="Cart.png"
+                        VerticalOptions="Center"
+                        WidthRequest="35" />
+
+                </xct:BadgeView>
 
             </Grid>
 
@@ -117,7 +128,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid HeightRequest="200" WidthRequest="100">
+                    <Grid HeightRequest="250" WidthRequest="100">
 
 
                         <Grid RowDefinitions="*,30,30, Auto, Auto">

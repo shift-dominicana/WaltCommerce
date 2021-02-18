@@ -32,7 +32,7 @@ namespace Ecommerce.Api.Controllers.Core
             return NoContent();
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Create(TEntity entity)
         {
             var reqResult = await _service.CreateAsync(entity);

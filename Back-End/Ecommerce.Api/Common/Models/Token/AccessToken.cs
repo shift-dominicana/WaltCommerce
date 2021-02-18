@@ -1,4 +1,5 @@
-﻿using Common.Models.Users;
+﻿using Common.Models.BuyCarts;
+using Common.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Common.Models.Token
     {
         public User User { get; set; }
         public string Token { get; set; }
+        public BuyCart Cart { get; set; }
     }
 }
