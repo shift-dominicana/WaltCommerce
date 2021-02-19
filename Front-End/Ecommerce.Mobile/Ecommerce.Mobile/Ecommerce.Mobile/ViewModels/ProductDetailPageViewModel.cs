@@ -1,8 +1,16 @@
-﻿using Common.Models.ProductCategories;
+
+using Common.Models.BuyCartDetails;
+using Common.Models.ProductCategories;
 using Common.Models.Products;
+using Common.Models.Token;
+using Common.Models.Users;
+using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Helpers.I18n;
+using Ecommerce.Mobile.Services;
+using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 
@@ -15,11 +23,13 @@ namespace Ecommerce.Mobile.ViewModels
         private Product _product;
         private Product _selectedProductColor;
         private ProductCategory _category;
+        private DelegateCommand _changeColorCommand;
         private AccessToken _accessToken;
         private User _user;
         private DelegateCommand _shoppingCarCommand;
         private int _valueItems;
-        
+
+
         public ProductDetailPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
@@ -118,13 +128,13 @@ namespace Ecommerce.Mobile.ViewModels
                 }
 
                 var shopping = new BuyCartDetail()
-                {                    
-                    IsDeleted = false,                            
+                {
+                    IsDeleted = false,
                     CreationDate = DateTime.Now,
-                    CreatedBy = "Admin",                    
-                    Product = this.Product,                    
+                    CreatedBy = "Admin",
+                    Product = this.Product,
                     BuyCart = _accessToken.Cart,
-                    Quantity =  ValueItems,                    
+                    Quantity = ValueItems,
 
                 };
 
@@ -139,7 +149,7 @@ namespace Ecommerce.Mobile.ViewModels
                     }
                     await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
                     return;
-                }               
+                }
 
             }
             else

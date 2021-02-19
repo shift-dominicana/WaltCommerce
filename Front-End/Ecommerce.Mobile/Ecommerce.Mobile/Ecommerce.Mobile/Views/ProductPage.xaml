@@ -106,10 +106,6 @@
         </CollectionView>
         <CollectionView
             Margin="10,5,10,5"
-            extension:Skeleton.Animation="{extension:DefaultAnimation Source=Fade,
-                                                                      Interval='4000'}"
-            extension:Skeleton.IsBusy="{Binding IsBusy}"
-            extension:Skeleton.IsParent="True"
             EmptyView="{i18n:Translate Noitems}"
             ItemsSource="{Binding ProductList}"
             SelectedItem="{Binding SelectedProduct}"
