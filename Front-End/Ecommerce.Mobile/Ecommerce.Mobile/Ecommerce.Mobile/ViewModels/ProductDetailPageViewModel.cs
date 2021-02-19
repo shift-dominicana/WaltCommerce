@@ -71,17 +71,6 @@ namespace Ecommerce.Mobile.ViewModels
             get => _selectedProductColor;
             set => SetProperty(ref _selectedProductColor, value);
         }
-        public User User
-        {
-            get => _user;
-            set => SetProperty(ref _user, value);
-        }
-
-        public int ValueItems
-        {
-            get => _valueItems;
-            set => SetProperty(ref _valueItems, value);
-        }
 
         public ObservableCollection<Product> SimilarProducts { get; set; }
         public ObservableCollection<Product> FullProductList { get; set; }

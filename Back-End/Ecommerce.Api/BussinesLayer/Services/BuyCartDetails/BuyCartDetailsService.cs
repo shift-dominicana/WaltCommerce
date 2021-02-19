@@ -23,6 +23,7 @@ namespace BussinesLayer.Services.BuyCartDetails
         public override async Task<BuyCartDetailViewModel> CreateAsync(BuyCartDetail entity)
         {
             _context.Entry(entity.BuyCart).State = EntityState.Unchanged;
+            _context.Entry(entity.Product).State = EntityState.Unchanged;
             await _context.AddAsync(entity);
             if (await CommitAsync())
             {

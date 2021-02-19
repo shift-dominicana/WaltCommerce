@@ -8,6 +8,6 @@ namespace DataLayer.ViewModels.BuyCartDetails
     {
         public BuyCart buyCart { get; set; }
         public Product product { get; set; }
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }
