@@ -1,18 +1,5 @@
-
-using Common.Models.ProductCategories;
+﻿using Common.Models.ProductCategories;
 using Common.Models.Products;
-using Common.Enums;
-using Common.Models.BuyCartDetails;
-using Common.Models.BuyCarts;
-using Common.Models.ProductCategories;
-using Common.Models.Products;
-using Common.Models.Token;
-using Common.Models.Users;
-using Ecommerce.Mobile.Helpers;
-using Ecommerce.Mobile.Helpers.I18n;
-using Ecommerce.Mobile.Services;
-using Newtonsoft.Json;
-using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
@@ -28,18 +15,12 @@ namespace Ecommerce.Mobile.ViewModels
         private Product _product;
         private Product _selectedProductColor;
         private ProductCategory _category;
-        private DelegateCommand _changeColorCommand;
-
-
-        public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
-
         private AccessToken _accessToken;
         private User _user;
         private DelegateCommand _shoppingCarCommand;
         private int _valueItems;
         
         public ProductDetailPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
-
         {
             _navigationService = navigationService;
             _apiServices = apiServices;
@@ -48,21 +29,7 @@ namespace Ecommerce.Mobile.ViewModels
             ValueItems = 1;
         }
 
-        public DelegateCommand ChangeColorCommand => _changeColorCommand ?? (_changeColorCommand = new DelegateCommand(ChangeProduct));
-
-        private async void ChangeProduct()
-        {
-            if (_selectedProductColor == null) return;
-
-            var parameters = new NavigationParameters();
-            parameters.Add("Product", _selectedProductColor);
-            parameters.Add("AllProducts", FullProductList);
-
-            await _navigationService.NavigateAsync("../ProductDetailPage", parameters);
-        }
-
         public DelegateCommand ShoppingCarCommand => _shoppingCarCommand ?? (_shoppingCarCommand = new DelegateCommand(AddToShoppingCar));
-
 
         public Product Product
         {
@@ -74,6 +41,18 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _category;
             set => SetProperty(ref _category, value);
+        }
+
+        public User User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        public int ValueItems
+        {
+            get => _valueItems;
+            set => SetProperty(ref _valueItems, value);
         }
 
 
