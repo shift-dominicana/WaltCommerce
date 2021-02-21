@@ -44,12 +44,28 @@
             <Setter Property="CornerRadius" Value="10" />
         </Style>-->
 
-        <Style TargetType="{x:Type Button}">
+        <Style TargetType="Button">
             <Setter Property="Margin" Value="15,0,15,15" />
             <Setter Property="CornerRadius" Value="15" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             <Setter Property="TextColor" Value="White" />
             <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.8" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
         </Style>
         <Style x:Key="ButtonNormal" TargetType="Button" />
 
@@ -62,9 +78,12 @@
             <Setter Property="BarTextColor" Value="White" />
         </Style>
 
+
+
+
         <ResourceDictionary>
-            <!--<x:String x:Key="UrlAPI">https://192.168.1.112:5001</x:String>-->
-            <x:String x:Key="UrlAPI">https://10.0.0.19:5001</x:String>
+            <x:String x:Key="UrlAPI">https://192.168.1.112:5001</x:String>
+            <!--<x:String x:Key="UrlAPI">https://10.0.0.19:5001</x:String>-->
             <!--<x:String x:Key="UrlAPILock">https://api-production.august.com</x:String>-->
             <!--<x:String x:Key="UrlAPI">https://192.168.1.108:5001</x:String>-->
         </ResourceDictionary>

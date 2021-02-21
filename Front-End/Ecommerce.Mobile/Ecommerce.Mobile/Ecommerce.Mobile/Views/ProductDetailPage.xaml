@@ -155,7 +155,7 @@
                     Grid.Column="1"
                     BindingContext="{x:Reference QtyStepper}"
                     FontAttributes="Bold"
-                    FontSize="Medium"                    
+                    FontSize="Medium"
                     Text="{Binding ValueItems}" />
                 <Stepper
                     x:Name="QtyStepper"
@@ -175,7 +175,7 @@
                     FontSize="Medium"
                     Text="{i18n:Translate DpAddToCart}"
                     TextColor="White"
-                    VerticalOptions="EndAndExpand" />
+                    VerticalOptions="EndAndExpand"/>
 
                 <Button
                     Grid.Row="1"
@@ -185,7 +185,7 @@
                     FontSize="Medium"
                     Text="Buy Now"
                     TextColor="White"
-                    VerticalOptions="EndAndExpand" />
+                    VerticalOptions="EndAndExpand"/>
             </Grid>
 
             <BoxView

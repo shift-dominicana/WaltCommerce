@@ -30,7 +30,7 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;            
             _isEnabled = true;
             Title = Messages.TtRegisUser;
-            //RemoveCache();
+            RemoveCache();
         }
 
         private void RemoveCache()

@@ -19,8 +19,7 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _categoryCommand;
         private ProductCategory _categorySelected;
         private bool _isBusy;
-        private DelegateCommand _filterCommand;
-        private string _critery;
+        
 
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
