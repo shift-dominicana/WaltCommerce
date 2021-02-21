@@ -7,8 +7,6 @@
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-
-
     <ScrollView>
         <StackLayout Padding="5,2,5,2">
             <CarouselView
@@ -41,7 +39,6 @@
                                         HorizontalOptions="Center"
                                         Source="{Binding ImageUrl}"
                                         WidthRequest="350" />
-
 
                                 </StackLayout>
                             </Frame>
@@ -105,7 +102,11 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+            <Grid
+                ColumnDefinitions="Auto, *"
+                ColumnSpacing="40"
+                RowDefinitions="Auto,Auto,Auto"
+                VerticalOptions="End">
                 <Label
                     Grid.Row="0"
                     Grid.Column="0"
@@ -143,26 +144,64 @@
                     </Label.FormattedText>
                 </Label>
 
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{i18n:Translate DpQuatity}" />
+
+            </Grid>
+
+            <Grid
+                x:Name="QuantitySelect"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="End">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
 
                 <Label
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    BindingContext="{x:Reference QtyStepper}"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    Text="{Binding ValueItems}" />
-                <Stepper
-                    x:Name="QtyStepper"
-                    Grid.Row="4"
                     Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="18"
                     HorizontalOptions="Start"
-                    Increment="1" />
+                    Text="Quantity"
+                    VerticalOptions="Start" />
+
+
+                <Frame
+                    Grid.Column="1"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="Black"
+                    CornerRadius="25"
+                    HasShadow="False"
+                    HeightRequest="50"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Command="{Binding DecreaseButtonCmd}"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource QuantityButton}"
+                    Text="-"
+                    VerticalOptions="Center" />
+                <Button
+                    Grid.Column="1"
+                    Margin="0,0,10,0"
+                    Command="{Binding IncreaseButtonCmd}"
+                    HorizontalOptions="End"
+                    Style="{StaticResource QuantityButton}"
+                    Text="+"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="{Binding Qty}"
+                    VerticalOptions="Center" />
+
             </Grid>
 
 
@@ -175,7 +214,7 @@
                     FontSize="Medium"
                     Text="{i18n:Translate DpAddToCart}"
                     TextColor="White"
-                    VerticalOptions="EndAndExpand"/>
+                    VerticalOptions="EndAndExpand" />
 
                 <Button
                     Grid.Row="1"
@@ -185,7 +224,7 @@
                     FontSize="Medium"
                     Text="Buy Now"
                     TextColor="White"
-                    VerticalOptions="EndAndExpand"/>
+                    VerticalOptions="EndAndExpand" />
             </Grid>
 
             <BoxView

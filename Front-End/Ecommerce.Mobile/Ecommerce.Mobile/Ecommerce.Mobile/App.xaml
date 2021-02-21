@@ -18,6 +18,13 @@
         <Color x:Key="BackgroundPagesColor">#f2f7f5</Color>
         <Color x:Key="LabelInformacion">#009251</Color>
 
+        <Color x:Key="Background">#151E34</Color>
+        <Color x:Key="AccentColor">#FBC96D</Color>
+        <Color x:Key="PillColor">Gray</Color>
+        <Color x:Key="PillTextColor">#000</Color>
+        <Color x:Key="BodyTextColor">White</Color>
+
+
 
         <ResourceDictionary>
             <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
@@ -78,12 +85,20 @@
             <Setter Property="BarTextColor" Value="White" />
         </Style>
 
-
-
+        <Style x:Key="QuantityButton" TargetType="Button">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BorderColor" Value="{StaticResource PillTextColor}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource PillTextColor}" />
+            <Setter Property="BackgroundColor" Value="LightYellow" />
+            <Setter Property="HeightRequest" Value="35" />
+            <Setter Property="WidthRequest" Value="35" />
+        </Style>
 
         <ResourceDictionary>
-            <x:String x:Key="UrlAPI">https://192.168.1.112:5001</x:String>
-            <!--<x:String x:Key="UrlAPI">https://10.0.0.19:5001</x:String>-->
+            <!--<x:String x:Key="UrlAPI">https://192.168.1.112:5001</x:String>-->
+            <x:String x:Key="UrlAPI">https://10.0.0.19:5000</x:String>
             <!--<x:String x:Key="UrlAPILock">https://api-production.august.com</x:String>-->
             <!--<x:String x:Key="UrlAPI">https://192.168.1.108:5001</x:String>-->
         </ResourceDictionary>

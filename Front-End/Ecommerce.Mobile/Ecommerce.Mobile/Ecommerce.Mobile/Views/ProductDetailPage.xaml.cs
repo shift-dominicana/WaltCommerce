@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace Ecommerce.Mobile.Views
 {
@@ -8,5 +9,6 @@ namespace Ecommerce.Mobile.Views
         {
             InitializeComponent();
         }
+
     }
 }

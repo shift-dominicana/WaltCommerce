@@ -12,6 +12,7 @@ using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Xamarin.Essentials;
 
 namespace Ecommerce.Mobile.ViewModels
@@ -23,12 +24,15 @@ namespace Ecommerce.Mobile.ViewModels
         private Product _product;
         private Product _selectedProductColor;
         private ProductCategory _category;
-        private DelegateCommand _changeColorCommand;
+
+        private DelegateCommand _decreaseButtonCmd;
+        private DelegateCommand _increaseButton;
+
         private AccessToken _accessToken;
         private User _user;
         private DelegateCommand _shoppingCarCommand;
-        private int _valueItems;
-
+        private int _qty;
+        private DelegateCommand _changeColorCommand;
 
         public ProductDetailPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -36,10 +40,40 @@ namespace Ecommerce.Mobile.ViewModels
             _apiServices = apiServices;
             SimilarProducts = new ObservableCollection<Product>();
             FullProductList = new ObservableCollection<Product>();
-            ValueItems = 1;
+            Qty = 1;
         }
 
         public DelegateCommand ShoppingCarCommand => _shoppingCarCommand ?? (_shoppingCarCommand = new DelegateCommand(AddToShoppingCar));
+
+        public DelegateCommand DecreaseButtonCmd => _decreaseButtonCmd ?? (_decreaseButtonCmd = new DelegateCommand(DecreaseQty));
+
+        private void DecreaseQty()
+        {
+            if (Qty == 1)
+                return;
+
+            Qty--;
+        }
+
+        public DelegateCommand IncreaseButtonCmd => _increaseButton ?? (_increaseButton = new DelegateCommand(IncreaseQty));
+
+        private void IncreaseQty()
+        {
+            Qty ++;
+        }
+
+        public DelegateCommand ChangeColorCommand => _changeColorCommand ?? (_changeColorCommand = new DelegateCommand(ChangeProduct));
+
+        private async void ChangeProduct()
+        {
+            if (_selectedProductColor == null) return;
+
+            var parameters = new NavigationParameters();
+            parameters.Add("Product", _selectedProductColor);
+            parameters.Add("AllProducts", FullProductList);
+
+            await _navigationService.NavigateAsync("../ProductDetailPage", parameters);
+        }
 
         public Product Product
         {
@@ -59,10 +93,10 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _user, value);
         }
 
-        public int ValueItems
+        public int Qty
         {
-            get => _valueItems;
-            set => SetProperty(ref _valueItems, value);
+            get => _qty;
+            set => SetProperty(ref _qty, value);
         }
 
 
@@ -123,7 +157,7 @@ namespace Ecommerce.Mobile.ViewModels
                     CreatedBy = "Admin",
                     Product = this.Product,
                     BuyCart = _accessToken.Cart,
-                    Quantity = ValueItems,
+                    Quantity = Qty,
 
                 };
 
