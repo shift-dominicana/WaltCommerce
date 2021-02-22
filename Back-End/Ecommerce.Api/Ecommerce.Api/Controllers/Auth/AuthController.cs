@@ -4,6 +4,7 @@ using BussinesLayer.Interfaces.Users;
 using Common.Models.UserRequest;
 using Common.Models.Users;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Controllers.Auth
 {
@@ -24,20 +25,20 @@ namespace Ecommerce.Api.Controllers.Auth
 
 
         [HttpPost("Login")]
-        public IActionResult Login(UserRequest credentials)
+        public async Task<IActionResult> Login(UserRequest credentials)
         {
-            User user = _userService.Authenticate(credentials.Email, credentials.Password);
+            User user = await  _userService.Authenticate(credentials.Email, credentials.Password);
 
             if (user == null) return BadRequest("invalid login");
             var token = _service.BuildToken(user);
 
-            var cart = _buyCartsService.GetAsync(c => c.UserId == user.Id);
+            var cart = await _buyCartsService.GetAsync(c => c.UserId == user.Id);
 
             var UserResponse = new
             {
                 user,
                 token,
-                Cart = cart.Result
+                Cart = cart
             };
 
 

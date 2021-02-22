@@ -6,6 +6,7 @@ using Common.Models.BuyCarts;
 using Common.Models.Users;
 using DataLayer.Contexts;
 using DataLayer.ViewModels.Users;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,12 +24,12 @@ namespace BussinesLayer.Services.Users
             _mapper = mapper;
         }
 
-        public User Authenticate(string email, string password)
+        public async Task<User> Authenticate(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Email == email);
+            var user = await _context.Users.SingleOrDefaultAsync(x => x.Email == email);
             
 
             // check if username exists

@@ -25,49 +25,5 @@ namespace Ecommerce.Api.Controllers.Users
             _buyCartsService = buyCartsService;
         }
 
-        [HttpGet("Authenticate/{email}/{password}")]
-        public IActionResult Authenticate([FromRoute] string email, [FromRoute] string password)
-        {
-
-            var user = _userService.Authenticate(email, password);
-
-            if (user == null)
-                return BadRequest("Email or password is incorrect");
-           
-
-            return Ok(new
-            {
-                Id = user.Id,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                //Token = tokenString
-
-            });
-
-        }
-
-        //public override async Task<IActionResult> Create(User entity)
-        //{
-        //    var userDto = base.Create(entity);
-
-
-        //    var car = new BuyCart()
-        //    {
-        //        User = entity,
-        //        IsDeleted = false,
-        //        isPickup = true,
-        //        payMode = PayModeEnum.CASH,
-        //        CreationDate = DateTime.Now,
-        //        CreatedBy = "Admin",
-        //        taxReceipt = false
-
-        //    };
-
-        //    await _buyCartsService.CreateAsync(car);
-        //    return Ok(userDto);
-        //}
-
-
     }
 }

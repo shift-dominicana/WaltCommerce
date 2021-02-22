@@ -1,12 +1,17 @@
 ﻿using Common.Models.ProductCategories;
 using Common.Models.Products;
+using Common.Models.Token;
+using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Helpers.CartDetail;
 using Ecommerce.Mobile.Services;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Ecommerce.Mobile.ViewModels
 {
@@ -19,7 +24,10 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _categoryCommand;
         private ProductCategory _categorySelected;
         private bool _isBusy;
-        
+        private AccessToken _accessToken;
+        private int _itemValue;
+
+
 
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -29,7 +37,6 @@ namespace Ecommerce.Mobile.ViewModels
             ProductList = new ObservableCollection<Product>();
             FullProductList = new ObservableCollection<Product>();
             IsBusy = true;
-
 
         }
 
@@ -48,6 +55,12 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _selectedProduct;
             set => SetProperty(ref _selectedProduct, value);
+        }
+
+        public int ItemValue
+        {
+            get => _itemValue;
+            set => SetProperty(ref _itemValue, value);
         }
 
         public ProductCategory CategorySelected
@@ -146,7 +159,16 @@ namespace Ecommerce.Mobile.ViewModels
             SelectedProduct = null;
             if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
                 await GetProducts();
-        }
 
+
+            var UserData = Preferences.Get(Settings.UserData, "");
+            _accessToken = JsonConvert.DeserializeObject<AccessToken>(UserData);
+
+            if (_accessToken is AccessToken)
+            {
+                var items = CartDetail_ApiCalls.GetCountItemsDetail(_accessToken.Cart.Id);
+
+            }
+        }
     }
 }

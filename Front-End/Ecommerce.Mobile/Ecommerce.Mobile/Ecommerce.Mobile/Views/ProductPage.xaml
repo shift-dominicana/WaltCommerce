@@ -45,7 +45,7 @@
                     BadgePosition="TopRight"
                     FontAttributes="Bold"
                     FontSize="Caption"
-                    Text="{Binding ValueShoppingCar}"
+                    Text="{Binding ItemValue}"
                     TextColor="White">
                     <Image
                         HeightRequest="35"
