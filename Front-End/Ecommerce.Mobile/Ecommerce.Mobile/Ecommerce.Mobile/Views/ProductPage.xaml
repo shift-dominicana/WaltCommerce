@@ -24,12 +24,12 @@
 
         <Grid Margin="20" RowSpacing="30">
             <Grid ColumnDefinitions="Auto,*,Auto">
-                <ImageButton
+                <!--<ImageButton
                     BackgroundColor="Transparent"
                     HeightRequest="24"
                     Source="menu.png"
                     VerticalOptions="Center"
-                    WidthRequest="24" />
+                    WidthRequest="24"/>-->
 
                 <SearchBar
                     x:Name="searchBar"

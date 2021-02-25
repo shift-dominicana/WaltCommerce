@@ -11,7 +11,7 @@
         <Color x:Key="ColorTextPrimary">#00944F</Color>
         <Color x:Key="ColorHeaderSection">#efefef</Color>
         <Color x:Key="ColorTextPrimaryDark">#00644F</Color>
-        <Color x:Key="Accent">#CB0000</Color>
+        <Color x:Key="Accent">Navy</Color>
         <Color x:Key="NavigationPrimary">#00944F</Color>
         <Color x:Key="TitleResumenColor">#FFCF06</Color>
         <Color x:Key="MontoColor">#008a41</Color>
@@ -81,8 +81,8 @@
         </Style>
 
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="{StaticResource Accent}" />
-            <Setter Property="BarTextColor" Value="White" />
+            <Setter Property="BarBackgroundColor" Value="#FAFAFA" />
+            <Setter Property="BarTextColor" Value="Navy" />
         </Style>
 
         <Style x:Key="QuantityButton" TargetType="Button">

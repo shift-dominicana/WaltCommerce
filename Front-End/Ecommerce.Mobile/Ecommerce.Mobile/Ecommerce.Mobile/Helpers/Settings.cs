@@ -11,6 +11,6 @@ namespace Ecommerce.Mobile.Helpers
         public const string UserData = Identificator + "UserData";
         public const string ActualPage = Identificator + "ActualPage";
         public const string Cart = Identificator + "Cart";
-
+        public const string ItemsCart = Identificator + "ItemsCart";
     }
 }

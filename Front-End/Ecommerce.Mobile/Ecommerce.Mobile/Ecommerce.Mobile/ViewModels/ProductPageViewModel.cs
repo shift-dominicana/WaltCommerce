@@ -2,7 +2,6 @@
 using Common.Models.Products;
 using Common.Models.Token;
 using Ecommerce.Mobile.Helpers;
-using Ecommerce.Mobile.Helpers.CartDetail;
 using Ecommerce.Mobile.Services;
 using Newtonsoft.Json;
 using Prism.Commands;
@@ -160,15 +159,8 @@ namespace Ecommerce.Mobile.ViewModels
             if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
                 await GetProducts();
 
+            ItemValue = Preferences.Get(Settings.ItemsCart, 0);
 
-            var UserData = Preferences.Get(Settings.UserData, "");
-            _accessToken = JsonConvert.DeserializeObject<AccessToken>(UserData);
-
-            if (_accessToken is AccessToken)
-            {
-                var items = CartDetail_ApiCalls.GetCountItemsDetail(_accessToken.Cart.Id);
-
-            }
         }
     }
 }
