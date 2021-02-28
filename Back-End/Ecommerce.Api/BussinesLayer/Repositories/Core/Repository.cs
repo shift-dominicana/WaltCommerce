@@ -36,7 +36,7 @@ namespace BussinesLayer.Repositories.Core
             await _dbSet.AddAsync(entity);
         }
 
-        public async Task<TModel> GeTModelByIdAsync(int id)
+        public virtual async Task<TModel> GeTModelByIdAsync(int id)
             => await _dbSet.FindAsync(id);
 
         public async Task<bool> AnyAsync(Expression<Func<TModel, bool>> predicate)
@@ -130,7 +130,7 @@ namespace BussinesLayer.Repositories.Core
             return null;
         }
 
-        public async Task<TViewModel> EditAsync(TModel model)
+        public virtual async Task<TViewModel> EditAsync(TModel model)
         {
             var updated = _context.Update(model).Entity;
             if (await CommitAsync())

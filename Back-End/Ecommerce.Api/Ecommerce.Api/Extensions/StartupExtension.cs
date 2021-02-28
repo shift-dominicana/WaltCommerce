@@ -11,6 +11,7 @@ using BussinesLayer.Interfaces.ProductsImages;
 using BussinesLayer.Interfaces.ProductsSizes;
 using BussinesLayer.Interfaces.ProductsSpecifications;
 using BussinesLayer.Interfaces.Roles;
+using BussinesLayer.Interfaces.UserAddresses;
 using BussinesLayer.Interfaces.Users;
 using BussinesLayer.Services.Auth;
 using BussinesLayer.Services.Brands;
@@ -24,6 +25,7 @@ using BussinesLayer.Services.ProductsImages;
 using BussinesLayer.Services.ProductsSizes;
 using BussinesLayer.Services.ProductsSpecifications;
 using BussinesLayer.Services.Roles;
+using BussinesLayer.Services.UserAddresses;
 using BussinesLayer.Services.Users;
 using DataLayer.Contexts;
 using DataLayer.Settings;
@@ -72,6 +74,7 @@ namespace Ecommerce.Api.Extensions
             services.AddTransient<IProductsSpecificationsService, ProductsSpecificationsService>();
             services.AddTransient<IBuyCartsService, BuyCartsService>();
             services.AddTransient<IBuyCartDetailsService, BuyCartDetailsService>();
+            services.AddTransient<IUserAddressesService, UserAddressesService>();
         }
 
         public static void ConfigureAutomapper(this IServiceCollection services)
