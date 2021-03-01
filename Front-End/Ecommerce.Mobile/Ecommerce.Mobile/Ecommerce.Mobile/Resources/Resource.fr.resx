@@ -246,4 +246,10 @@
   <data name="PhSearch" xml:space="preserve">
     <value>Qu’est-ce que tu veux chercher ?!</value>
   </data>
+  <data name="MustAccount" xml:space="preserve">
+    <value>Vous devez avoir un compte pour ajouter des articles à la voiture d&amp;#39;achat !!</value>
+  </data>
+  <data name="UserAddresses_Title" xml:space="preserve">
+    <value>Adresses</value>
+  </data>
 </root>

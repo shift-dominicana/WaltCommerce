@@ -61,7 +61,7 @@ namespace Ecommerce.Mobile.ViewModels
                  new Menu
                 {
                     Icon = IconFont.EnvelopeOpenText,
-                    Page = "AddressPage",
+                    Page = "UserAddreressesPage",
                     Title = Messages.MenuOptAddresses
                 },
                   new Menu

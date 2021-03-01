@@ -210,6 +210,9 @@
   <data name="PhFirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="PhIndication" xml:space="preserve">
+    <value>Indications</value>
+  </data>
   <data name="PhLastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
@@ -228,6 +231,9 @@
   <data name="PhTelephone" xml:space="preserve">
     <value>Telephone</value>
   </data>
+  <data name="SaveCurrentLocationLbl" xml:space="preserve">
+    <value>Save With Current Location</value>
+  </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
   </data>
@@ -236,6 +242,9 @@
   </data>
   <data name="TtRegisUser" xml:space="preserve">
     <value>Add User</value>
+  </data>
+  <data name="UserAddresses_Title" xml:space="preserve">
+    <value>Addresses</value>
   </data>
   <data name="UserCreated" xml:space="preserve">
     <value>User was created successfully !</value>
@@ -248,5 +257,8 @@
   </data>
   <data name="wSave" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="wSaveLocation" xml:space="preserve">
+    <value>Save Address</value>
   </data>
 </root>

@@ -246,4 +246,10 @@
   <data name="PhSearch" xml:space="preserve">
     <value>Was will yo suchen?!</value>
   </data>
+  <data name="MustAccount" xml:space="preserve">
+    <value>Sie müssen ein Konto haben, um Artikel zum Einkaufswagen hinzuzufügen !!</value>
+  </data>
+  <data name="UserAddresses_Title" xml:space="preserve">
+    <value>Adressen</value>
+  </data>
 </root>

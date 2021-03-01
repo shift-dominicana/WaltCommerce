@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Ecommerce.Mobile.Views.UserAddreressesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{i18n:Translate UserAddresses_Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <StackLayout>
+        <Entry Placeholder="{i18n:Translate PhAddressName}" Text="{Binding AddressName}" />
+        <Editor
+            HeightRequest="100"
+            Placeholder="{i18n:Translate PhIndication}"
+            Text="{Binding Indication}" />
+        <Label Text="{i18n:Translate SaveCurrentLocationLbl}" />
+        <Button
+            Command="{Binding SaveCommand}"
+            IsEnabled="{Binding IsEnabled}"
+            Text="{i18n:Translate wSaveLocation}"
+            VerticalOptions="Start" />
+    </StackLayout>
+
+</ContentPage>

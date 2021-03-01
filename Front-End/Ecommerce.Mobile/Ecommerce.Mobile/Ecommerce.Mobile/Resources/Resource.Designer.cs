@@ -340,6 +340,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Indications.
+        /// </summary>
+        public static string PhIndication {
+            get {
+                return ResourceManager.GetString("PhIndication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string PhLastName {
@@ -394,6 +403,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save With Current Location.
+        /// </summary>
+        public static string SaveCurrentLocationLbl {
+            get {
+                return ResourceManager.GetString("SaveCurrentLocationLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign In.
         /// </summary>
         public static string SignIn {
@@ -417,6 +435,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string TtRegisUser {
             get {
                 return ResourceManager.GetString("TtRegisUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Addresses.
+        /// </summary>
+        public static string UserAddresses_Title {
+            get {
+                return ResourceManager.GetString("UserAddresses_Title", resourceCulture);
             }
         }
         
@@ -453,6 +480,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string wSave {
             get {
                 return ResourceManager.GetString("wSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Address.
+        /// </summary>
+        public static string wSaveLocation {
+            get {
+                return ResourceManager.GetString("wSaveLocation", resourceCulture);
             }
         }
     }
