@@ -304,11 +304,29 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address Name.
+        /// </summary>
+        public static string PhAddressName {
+            get {
+                return ResourceManager.GetString("PhAddressName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cell Phone.
         /// </summary>
         public static string PhCellPhone {
             get {
                 return ResourceManager.GetString("PhCellPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string PhCity {
+            get {
+                return ResourceManager.GetString("PhCity", resourceCulture);
             }
         }
         
@@ -336,6 +354,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string PhFirstName {
             get {
                 return ResourceManager.GetString("PhFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to House/Building/Apt.
+        /// </summary>
+        public static string PhHouseNumber {
+            get {
+                return ResourceManager.GetString("PhHouseNumber", resourceCulture);
             }
         }
         
@@ -385,11 +412,38 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Province.
+        /// </summary>
+        public static string PhProvince {
+            get {
+                return ResourceManager.GetString("PhProvince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What are you looking for?.
         /// </summary>
         public static string PhSearch {
             get {
                 return ResourceManager.GetString("PhSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sector.
+        /// </summary>
+        public static string PhSector {
+            get {
+                return ResourceManager.GetString("PhSector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street.
+        /// </summary>
+        public static string PhStreet {
+            get {
+                return ResourceManager.GetString("PhStreet", resourceCulture);
             }
         }
         

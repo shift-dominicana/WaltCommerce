@@ -198,8 +198,14 @@
   <data name="Option_IdType" xml:space="preserve">
     <value>Select your Personal Id Type</value>
   </data>
+  <data name="PhAddressName" xml:space="preserve">
+    <value>Address Name</value>
+  </data>
   <data name="PhCellPhone" xml:space="preserve">
     <value>Cell Phone</value>
+  </data>
+  <data name="PhCity" xml:space="preserve">
+    <value>City</value>
   </data>
   <data name="PhConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -209,6 +215,9 @@
   </data>
   <data name="PhFirstName" xml:space="preserve">
     <value>First Name</value>
+  </data>
+  <data name="PhHouseNumber" xml:space="preserve">
+    <value>House/Building/Apt</value>
   </data>
   <data name="PhIndication" xml:space="preserve">
     <value>Indications</value>
@@ -225,8 +234,17 @@
   <data name="PhPersonalId" xml:space="preserve">
     <value>Personal Id</value>
   </data>
+  <data name="PhProvince" xml:space="preserve">
+    <value>Province</value>
+  </data>
   <data name="PhSearch" xml:space="preserve">
     <value>What are you looking for?</value>
+  </data>
+  <data name="PhSector" xml:space="preserve">
+    <value>Sector</value>
+  </data>
+  <data name="PhStreet" xml:space="preserve">
+    <value>Street</value>
   </data>
   <data name="PhTelephone" xml:space="preserve">
     <value>Telephone</value>

@@ -252,4 +252,31 @@
   <data name="UserAddresses_Title" xml:space="preserve">
     <value>Adresses</value>
   </data>
+  <data name="PhIndication" xml:space="preserve">
+    <value>Indications</value>
+  </data>
+  <data name="SaveCurrentLocationLbl" xml:space="preserve">
+    <value>Économisez avec l’emplacement actuel!</value>
+  </data>
+  <data name="wSaveLocation" xml:space="preserve">
+    <value>Enregistrer l'adresse</value>
+  </data>
+  <data name="PhCity" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="PhHouseNumber" xml:space="preserve">
+    <value>Maison/Bâtiment/Apt!</value>
+  </data>
+  <data name="PhProvince" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="PhSector" xml:space="preserve">
+    <value>SECTEUR</value>
+  </data>
+  <data name="PhStreet" xml:space="preserve">
+    <value>Rue</value>
+  </data>
+  <data name="PhAddressName" xml:space="preserve">
+    <value>Nom de l'adresse</value>
+  </data>
 </root>

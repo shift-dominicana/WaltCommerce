@@ -3,6 +3,7 @@
     x:Class="Ecommerce.Mobile.Views.UserAddreressesPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behavior="clr-namespace:Ecommerce.Mobile.Behaviors"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     Title="{i18n:Translate UserAddresses_Title}"
@@ -10,10 +11,26 @@
 
     <StackLayout>
         <Entry Placeholder="{i18n:Translate PhAddressName}" Text="{Binding AddressName}" />
+        <Entry Placeholder="{i18n:Translate PhProvince}" Text="{Binding Province}" />
+        <Entry Placeholder="{i18n:Translate PhCity}" Text="{Binding City}" />
+        <Entry Placeholder="{i18n:Translate PhSector}" Text="{Binding Sector}" />
+        <Entry Placeholder="{i18n:Translate PhStreet}" Text="{Binding Street}" />
+        <Entry Placeholder="{i18n:Translate PhHouseNumber}" Text="{Binding HouseNumber}" />
         <Editor
-            HeightRequest="100"
+            HeightRequest="90"
             Placeholder="{i18n:Translate PhIndication}"
             Text="{Binding Indication}" />
+
+
+        <Entry
+            Keyboard="Telephone"
+            Placeholder="{i18n:Translate PhCellPhone}"
+            Text="{Binding Cellphone}">
+
+            <Entry.Behaviors>
+                <Behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
+            </Entry.Behaviors>
+        </Entry>
         <Label Text="{i18n:Translate SaveCurrentLocationLbl}" />
         <Button
             Command="{Binding SaveCommand}"

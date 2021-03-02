@@ -11,5 +11,11 @@ namespace Common.Models.UsersAddresses
         public float Latitude { get; set; }
         public float Longitude { get; set; }
         public User User { get; set; }
+        public String Street { get; set; }
+        public String Sector { get; set; }
+        public String HouseNumber { get; set; }
+        public String City { get; set; }
+        public String Telephone { get; set; }
+        public String Province { get; set; }
     }
 }
