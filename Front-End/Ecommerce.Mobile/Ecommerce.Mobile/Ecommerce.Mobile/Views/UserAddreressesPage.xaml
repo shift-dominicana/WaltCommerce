@@ -19,19 +19,19 @@
         <Editor
             HeightRequest="90"
             Placeholder="{i18n:Translate PhIndication}"
-            Text="{Binding Indication}" />
-
+            Text="{Binding Reference}" />
 
         <Entry
             Keyboard="Telephone"
             Placeholder="{i18n:Translate PhCellPhone}"
-            Text="{Binding Cellphone}">
+            Text="{Binding Telephone}">
 
             <Entry.Behaviors>
                 <Behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
             </Entry.Behaviors>
         </Entry>
         <Label Text="{i18n:Translate SaveCurrentLocationLbl}" />
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
         <Button
             Command="{Binding SaveCommand}"
             IsEnabled="{Binding IsEnabled}"

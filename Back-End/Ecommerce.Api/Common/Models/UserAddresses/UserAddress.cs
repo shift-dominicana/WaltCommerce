@@ -8,8 +8,8 @@ namespace Common.Models.UsersAddresses
     {
         public String Name { get; set; }
         public String Reference { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public User User { get; set; }
         public String Street { get; set; }
         public String Sector { get; set; }
