@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Ecommerce.Mobile.Views.AddressListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{i18n:Translate AddressList_Title}"
+    prism:ViewModelLocator.AutowireViewModel="True" />

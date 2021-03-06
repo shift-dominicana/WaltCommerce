@@ -70,6 +70,24 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List.
+        /// </summary>
+        public static string AddressList_Title {
+            get {
+                return ResourceManager.GetString("AddressList_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Addresses.
+        /// </summary>
+        public static string AddressTabbedPage_Title {
+            get {
+                return ResourceManager.GetString("AddressTabbedPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to log out?.
         /// </summary>
         public static string AskLogOut {
@@ -493,7 +511,7 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Addresses.
+        ///   Looks up a localized string similar to Record.
         /// </summary>
         public static string UserAddresses_Title {
             get {

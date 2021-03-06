@@ -16,9 +16,11 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Ecommerce.Mobile.Helpers;
 
+
+
 namespace Ecommerce.Mobile.ViewModels
 {
-    public class UserAddreressesPageViewModel : ViewModelBase
+    public class UserAddressPageViewModel : ViewModelBase
     {
         private DelegateCommand _saveCommand;
         private string _addressName;
@@ -37,7 +39,7 @@ namespace Ecommerce.Mobile.ViewModels
         private AccessToken _accessToken;
         private User _user;
 
-        public UserAddreressesPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
+        public UserAddressPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiServices = apiServices;
@@ -73,7 +75,7 @@ namespace Ecommerce.Mobile.ViewModels
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location == null) 
+                if (location == null)
                 {
                     location = await Geolocation.GetLocationAsync(new GeolocationRequest()
                     {
@@ -89,7 +91,7 @@ namespace Ecommerce.Mobile.ViewModels
                     Address.Longitude = location.Longitude;
                     Debug.WriteLine($"{Address.Latitude} , {Address.Longitude}");
                 }
-                else 
+                else
                 {
                     Debug.WriteLine($"No GPS");
                 }

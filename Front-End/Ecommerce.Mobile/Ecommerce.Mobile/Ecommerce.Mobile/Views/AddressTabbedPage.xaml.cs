@@ -2,9 +2,9 @@
 
 namespace Ecommerce.Mobile.Views
 {
-    public partial class UserAddreressesPage : ContentPage
+    public partial class AddressTabbedPage : TabbedPage
     {
-        public UserAddreressesPage()
+        public AddressTabbedPage()
         {
             InitializeComponent();
         }

@@ -120,6 +120,12 @@
   <data name="Accept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="AddressList_Title" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="AddressTabbedPage_Title" xml:space="preserve">
+    <value>Addresses</value>
+  </data>
   <data name="AskLogOut" xml:space="preserve">
     <value>Are you sure you want to log out?</value>
   </data>
@@ -262,7 +268,7 @@
     <value>Add User</value>
   </data>
   <data name="UserAddresses_Title" xml:space="preserve">
-    <value>Addresses</value>
+    <value>Record</value>
   </data>
   <data name="UserCreated" xml:space="preserve">
     <value>User was created successfully !</value>

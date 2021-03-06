@@ -37,8 +37,8 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
 	<key>CFBundleLocalizations</key>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>We need get the Customer Address to send the Items to Home or Work Office.</string>
+  <!--<key>NSLocationWhenInUseUsageDescription</key>
+  <string>We need get the Customer Address to send the Items to Home or Work Office.</string>-->
 	<array>
 		<string>es</string>
 		<string>de</string>
