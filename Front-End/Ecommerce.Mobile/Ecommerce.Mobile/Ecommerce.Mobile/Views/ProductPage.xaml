@@ -39,21 +39,29 @@
                     SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                     Text="{Binding Critery}" />
 
-                <xct:BadgeView
-                    Grid.Column="2"
-                    BackgroundColor="Red"
-                    BadgePosition="TopRight"
-                    FontAttributes="Bold"
-                    FontSize="Caption"
-                    Text="{Binding ItemValue}"
-                    TextColor="White">
-                    <Image
-                        HeightRequest="35"
-                        Source="Cart.png"
-                        VerticalOptions="Center"
-                        WidthRequest="35" />
 
-                </xct:BadgeView>
+                <Frame
+                    Grid.Column="2"
+                    Padding="0"
+                    BackgroundColor="Transparent">
+                    <xct:BadgeView
+                        BackgroundColor="Red"
+                        BadgePosition="TopRight"
+                        FontAttributes="Bold"
+                        FontSize="Caption"
+                        Text="{Binding ItemValue}"
+                        TextColor="White">
+                        <Image
+                            HeightRequest="35"
+                            Source="Cart.png"
+                            VerticalOptions="Center"
+                            WidthRequest="35" />
+                    </xct:BadgeView>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewCartCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
 
             </Grid>
 
