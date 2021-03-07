@@ -38,6 +38,7 @@ namespace Ecommerce.Mobile.ViewModels
             Preferences.Remove(Settings.FullName);
             Preferences.Remove(Settings.Token);
             Preferences.Remove(Settings.UserData);
+            Preferences.Remove(Settings.ItemsCart);
         }
 
         public DelegateCommand UserRegisterCommand => _userRegisterCommand ?? (_userRegisterCommand = new DelegateCommand(RegisterUser));

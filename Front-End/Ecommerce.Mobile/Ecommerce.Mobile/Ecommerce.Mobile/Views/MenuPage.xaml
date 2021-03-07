@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage
     x:Class="Ecommerce.Mobile.Views.MenuPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:local="clr-namespace:Ecommerce.Mobile"
     xmlns:locator="clr-namespace:Ecommerce.Mobile.Behaviors"
     xmlns:prism="http://prismlibrary.com"
-    xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <MasterDetailPage.Master>

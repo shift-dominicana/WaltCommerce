@@ -37,6 +37,8 @@ namespace Ecommerce.Mobile
             containerRegistry.RegisterForNavigation<UserAddressPage, UserAddressPageViewModel>();
             containerRegistry.RegisterForNavigation<AddressTabbedPage, AddressTabbedPageViewModel>();
             containerRegistry.RegisterForNavigation<AddressListPage, AddressListPageViewModel>();
+            containerRegistry.RegisterForNavigation<UserAddreressesPage, UserAddreressesPageViewModel>();
+            containerRegistry.RegisterForNavigation<CartDetailPage, CartDetailPageViewModel>();
         }
     }
 }

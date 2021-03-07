@@ -1,4 +1,4 @@
-﻿using Common.Models.ProductCategories;
+using Common.Models.ProductCategories;
 using Common.Models.Products;
 using Common.Models.Token;
 using Ecommerce.Mobile.Helpers;
@@ -23,9 +23,8 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _categoryCommand;
         private ProductCategory _categorySelected;
         private bool _isBusy;
-        private AccessToken _accessToken;
         private int _itemValue;
-
+        private DelegateCommand _viewCartCommand;
 
 
         public ProductPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
@@ -45,6 +44,9 @@ namespace Ecommerce.Mobile.ViewModels
         {
             FIlterData(text);
         });
+
+        public DelegateCommand ViewCartCommand => _viewCartCommand ?? (_viewCartCommand = new DelegateCommand(OpenCartDetail));
+
 
         public ObservableCollection<ProductCategory> CategoryModelList { get; set; }
         public ObservableCollection<Product> ProductList { get; set; }
@@ -161,6 +163,11 @@ namespace Ecommerce.Mobile.ViewModels
 
             ItemValue = Preferences.Get(Settings.ItemsCart, 0);
 
+        }
+
+        private async void OpenCartDetail()
+        {
+            await _navigationService.NavigateAsync("CartDetailPage");
         }
     }
 }
