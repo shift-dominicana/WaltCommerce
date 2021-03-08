@@ -5,6 +5,9 @@ using Common.Models.BuyCartDetails;
 using DataLayer.Contexts;
 using DataLayer.ViewModels.BuyCartDetails;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.BuyCartDetails
@@ -33,5 +36,13 @@ namespace BussinesLayer.Services.BuyCartDetails
             return null;
         }
 
+        public async Task<IEnumerable<BuyCartDetail>> GetUserCartDetail(int id)
+        {
+            var products = await _context.BuyCartDetails.Where(c => c.BuyCartId == id)
+            .Include(p => p.Product)
+            .ToListAsync();
+
+            return products;
+        }
     }
 }

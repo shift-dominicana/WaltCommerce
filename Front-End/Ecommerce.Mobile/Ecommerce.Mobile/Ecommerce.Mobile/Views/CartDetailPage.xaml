@@ -21,28 +21,28 @@
         </StackLayout>
 
         <CollectionView
-            Grid.Row="2"
+            Grid.Row="1"
             EmptyView="{i18n:Translate Noitems}"
-            ItemsSource="{Binding CartDetails}"
-            SelectedItem="{Binding SelectedProduct}"
-            SelectionChangedCommand="{Binding ViewProductCommand}"
+            ItemsSource="{Binding CartUserDetail}"
             SelectionMode="Single"
             VerticalOptions="StartAndExpand"
             VerticalScrollBarVisibility="Never">
 
-
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
                     <Grid>
 
 
-                        <Grid RowDefinitions="*,30,30, Auto, Auto">
+                        <Grid RowDefinitions="*,30,30, auto, auto">
                             <Frame
                                 Grid.Row="0"
                                 Padding="0"
                                 CornerRadius="10"
-                                HasShadow="False">
+                                HasShadow="false">
                                 <ffimageloading:CachedImage
                                     Aspect="Fill"
                                     Background="Transparent"
@@ -58,9 +58,9 @@
                             <Label
                                 Grid.Row="1"
                                 Margin="5,0,0,0"
-                                FontSize="Medium"
+                                FontSize="Large"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{Binding Name}"
+                                Text="{Binding Quantity}"
                                 TextColor="Black"
                                 VerticalTextAlignment="Center" />
 
@@ -80,7 +80,7 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <Frame
+                            <!--<Frame
                                 Margin="0"
                                 Padding="0"
                                 BackgroundColor="#F7F7F7"
@@ -152,7 +152,7 @@
                                     </StackLayout>
 
                                 </StackLayout>
-                            </Frame>
+                            </Frame>-->
                         </Grid>
 
                         <Grid.Resources>

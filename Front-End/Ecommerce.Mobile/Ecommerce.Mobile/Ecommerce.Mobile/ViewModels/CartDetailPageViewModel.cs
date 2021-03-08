@@ -28,10 +28,10 @@ namespace Ecommerce.Mobile.ViewModels
         {
             _navigationService = navigationService;
             _apiServices = apiServices;
-            CartDetails = new ObservableCollection<BuyCartDetail>();
+            CartUserDetail = new ObservableCollection<BuyCartDetail>();
         }
 
-        public ObservableCollection<BuyCartDetail> CartDetails 
+        public ObservableCollection<BuyCartDetail> CartUserDetail 
         {
             get => _cartDetails; 
             set => SetProperty(ref _cartDetails, value); 
@@ -40,7 +40,7 @@ namespace Ecommerce.Mobile.ViewModels
         private async Task GetItemsDetail()
         {
 
-           var url = App.Current.Resources["UrlAPI"].ToString();
+            var url = App.Current.Resources["UrlAPI"].ToString();
 
             var response = await _apiServices.GetListAsync<BuyCartDetail>(url, "/api", $"/BuyCartDetail/GetCartItems?BuyCart={_accessToken.Cart.Id}", "", "");
 
@@ -56,7 +56,7 @@ namespace Ecommerce.Mobile.ViewModels
 
             var List = (List<BuyCartDetail>)response.Result;
 
-            List.ForEach(i => CartDetails.Add(i));
+            List.ForEach(i => CartUserDetail.Add(i));
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)

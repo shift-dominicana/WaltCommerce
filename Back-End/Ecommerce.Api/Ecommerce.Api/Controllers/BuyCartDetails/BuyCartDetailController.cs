@@ -23,9 +23,10 @@ namespace Ecommerce.Api.Controllers.BuyCartDetails
         public async Task<IActionResult> GetCartItems(int BuyCart)
         {
 
-            var cartDetail = await _buyCartDetailService.GetList(c => c.BuyCartId == BuyCart && c.IsDeleted == false);
+            var cartDetail = await _buyCartDetailService.GetUserCartDetail(BuyCart); 
             //var List = (BuyCartDetail)cartDetail;
             return Ok(cartDetail);
         }
+
     }
 }
