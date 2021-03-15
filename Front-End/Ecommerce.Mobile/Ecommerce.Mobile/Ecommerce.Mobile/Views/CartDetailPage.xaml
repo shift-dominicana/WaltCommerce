@@ -10,18 +10,17 @@
 
 
 
-    <Grid RowDefinitions="50,*">
+    <Grid RowDefinitions="Auto,70">
 
-        <StackLayout Grid.Row="0" Orientation="Horizontal">
 
-            <Button
-                BackgroundColor="BurlyWood"
-                HorizontalOptions="EndAndExpand"
-                Text="Pay" />
-        </StackLayout>
+
+
+        <Button Grid.Row="1" Text="Buy Now" />
+
 
         <CollectionView
-            Grid.Row="1"
+            Grid.Row="0"
+            Margin="10"
             EmptyView="{i18n:Translate Noitems}"
             ItemsSource="{Binding CartUserDetail}"
             SelectionMode="Single"
@@ -29,20 +28,25 @@
             VerticalScrollBarVisibility="Never">
 
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid>
 
 
-                        <Grid RowDefinitions="*,30,30, auto, auto">
-                            <Frame
-                                Grid.Row="0"
-                                Padding="0"
-                                CornerRadius="10"
-                                HasShadow="false">
+
+                    <Frame>
+
+
+                        <Grid
+                            ColumnDefinitions="Auto,*"
+                            RowDefinitions="Auto,Auto"
+                            RowSpacing="2">
+
+
+                            <Frame HasShadow="False">
+
                                 <ffimageloading:CachedImage
                                     Aspect="Fill"
                                     Background="Transparent"
@@ -52,35 +56,88 @@
                                     LoadingPlaceholder="LoaderImage"
                                     RetryCount="3"
                                     RetryDelay="600"
-                                    Source="{Binding MainImageUrl}"
-                                    WidthRequest="50" />
+                                    Source="{Binding Product.MainImageUrl}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="100" />
                             </Frame>
+
                             <Label
-                                Grid.Row="1"
-                                Margin="5,0,0,0"
+                                Grid.Column="1"
                                 FontSize="Large"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{Binding Quantity}"
-                                TextColor="Black"
-                                VerticalTextAlignment="Center" />
+                                Text="{Binding Product.Name}"
+                                TextColor="Black" />
 
-                            <Label Grid.Row="2" Margin="5,0,0,0">
+
+                            <Label Grid.Row="1" Grid.Column="1">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span
-                                            FontSize="Medium"
-                                            Text="$RD "
-                                            TextColor="Red" />
-                                        <Span
-                                            FontAttributes="Bold"
-                                            FontSize="Medium"
-                                            Text="{Binding Price, StringFormat='{0:#,0.#0}'}"
-                                            TextColor="Red" />
+                                        <Span FontSize="Medium" Text="$RD " />
+                                        <Span FontSize="Medium" Text="{Binding Product.Price, StringFormat='{0:#,0.#0}'}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
 
-                            <!--<Frame
+
+
+                            <Frame
+                                Grid.Column="1"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                BorderColor="Black"
+                                CornerRadius="25"
+                                HasShadow="False"
+                                HeightRequest="50"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center" />
+
+                            <Button
+                                Grid.Column="1"
+                                Margin="10,0,0,0"
+                                Command="{Binding DecreaseButtonCmd}"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource QuantityButton}"
+                                Text="-"
+                                VerticalOptions="Center" />
+                            <Button
+                                Grid.Column="1"
+                                Margin="0,0,10,0"
+                                Command="{Binding IncreaseButtonCmd}"
+                                HorizontalOptions="End"
+                                Style="{StaticResource QuantityButton}"
+                                Text="+"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                Grid.Column="1"
+                                HorizontalOptions="Center"
+                                Text="{Binding Quantity}"
+                                VerticalOptions="Center" />
+
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+
+
+                        </Grid>
+
+
+                    </Frame>
+
+                    <!--<Frame
                                 Margin="0"
                                 Padding="0"
                                 BackgroundColor="#F7F7F7"
@@ -153,25 +210,9 @@
 
                                 </StackLayout>
                             </Frame>-->
-                        </Grid>
 
-                        <Grid.Resources>
-                            <Style TargetType="Grid">
-                                <Setter Property="VisualStateManager.VisualStateGroups">
-                                    <VisualStateGroupList>
-                                        <VisualStateGroup x:Name="CommonStates">
-                                            <VisualState x:Name="Normal" />
-                                            <VisualState x:Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateGroupList>
-                                </Setter>
-                            </Style>
-                        </Grid.Resources>
-                    </Grid>
+
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

@@ -22,6 +22,9 @@ namespace Ecommerce.Mobile.ViewModels
         private readonly IApiServices _apiServices;
         private AccessToken _accessToken;
         private ObservableCollection<BuyCartDetail> _cartDetails;
+        private DelegateCommand _decreaseButtonCmd;
+        private DelegateCommand _increaseButton;
+        private int _qty;
 
         public CartDetailPageViewModel(INavigationService navigationService, 
             IApiServices apiServices) : base(navigationService)
@@ -29,7 +32,29 @@ namespace Ecommerce.Mobile.ViewModels
             _navigationService = navigationService;
             _apiServices = apiServices;
             CartUserDetail = new ObservableCollection<BuyCartDetail>();
+           
         }
+
+        //public DelegateCommand DecreaseButtonCmd => _decreaseButtonCmd ?? (_decreaseButtonCmd = new DelegateCommand(DecreaseQty));
+
+        //private void DecreaseQty()
+        //{
+        //    if (Qty == 1)
+        //        return;
+
+        //    Qty--;
+        //}
+
+        //public DelegateCommand IncreaseButtonCmd => _increaseButton ?? (_increaseButton = new DelegateCommand(IncreaseQty));
+
+        //private void IncreaseQty()
+        //{
+        //    Qty++;
+        //}
+
+
+
+        
 
         public ObservableCollection<BuyCartDetail> CartUserDetail 
         {
@@ -57,6 +82,7 @@ namespace Ecommerce.Mobile.ViewModels
             var List = (List<BuyCartDetail>)response.Result;
 
             List.ForEach(i => CartUserDetail.Add(i));
+            
         }
 
         public async override void OnNavigatedTo(INavigationParameters parameters)
