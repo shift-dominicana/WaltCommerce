@@ -1,4 +1,4 @@
-﻿using BussinesLayer.Interfaces.UserAddresses;
+using BussinesLayer.Interfaces.UserAddresses;
 using Common.Models.UsersAddresses;
 using DataLayer.ViewModels.UserAddresses;
 using Ecommerce.Api.Controllers.Core;
@@ -20,6 +20,13 @@ namespace Ecommerce.Api.Controllers.UserAddresses
         public UserAddressController(IUserAddressesService service) : base(service)
         {
             _userAddressService = service;
+        }
+
+        [HttpGet("GetUserAddresses/{userId}")]
+        public async Task<IActionResult> GetUserAddresses(int userId)
+        {
+            var userAddresses = await _userAddressService.GetUserAddress(userId);
+            return Ok(userAddresses);
         }
     }
 }

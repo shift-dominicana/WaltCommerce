@@ -6,6 +6,7 @@ using DataLayer.Contexts;
 using DataLayer.ViewModels.UserAddresses;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.UserAddresses
@@ -25,10 +26,10 @@ namespace BussinesLayer.Services.UserAddresses
         public override async Task<UserAddressViewModel> EditAsync(UserAddress entity) 
         {
             _context.Entry(entity.User).State = EntityState.Unchanged;
-            var updated = _context.Update(entity).Entity;
+            entity = _context.Update(entity).Entity;
             if (await CommitAsync())
             {
-                var mapped = _mapper.Map<UserAddressViewModel>(updated);
+                var mapped = _mapper.Map<UserAddressViewModel>(entity);
                 return mapped;
             }
             return null;
@@ -53,14 +54,17 @@ namespace BussinesLayer.Services.UserAddresses
             return addresses;
         }
 
-        public override async Task<UserAddress> GeTModelByIdAsync(int id)
-        {
 
-            var address = await _context.UserAddresses.Include(addr => addr.User).SingleAsync(userAdd => userAdd.Id == id);
-            return address;
+        public async Task<IEnumerable<UserAddress>> GetUserAddress(int id)
+        {
+            var userAdrresses = await _context.UserAddresses.Where(c => c.User.Id == id && c.IsDeleted == false)
+            .Include(p => p.User)
+            .ToListAsync();
+
+            return userAdrresses;
         }
-            
-     
-            
+
+
+
     }
 }
