@@ -279,4 +279,22 @@
   <data name="PhAddressName" xml:space="preserve">
     <value>Adressname</value>
   </data>
+  <data name="AddressList_Title" xml:space="preserve">
+    <value>Meine Adressen</value>
+  </data>
+  <data name="AddressTabbedPage_Title" xml:space="preserve">
+    <value>Adressen</value>
+  </data>
+  <data name="tBtnAddNewAddress" xml:space="preserve">
+    <value>Adresse hinzufügen</value>
+  </data>
+  <data name="TimeOutMessage" xml:space="preserve">
+    <value>Konnte keine Verbindung zum Server herstellen. Bitte versuchen Sie es erneut!</value>
+  </data>
+  <data name="CreateAddressMsg" xml:space="preserve">
+    <value>Adresse erfolgreich erstellt</value>
+  </data>
+  <data name="UpdateAddressMsg" xml:space="preserve">
+    <value>Adresse erfolgreich aktualisiert!!</value>
+  </data>
 </root>

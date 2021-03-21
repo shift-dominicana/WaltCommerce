@@ -58,17 +58,23 @@ namespace Ecommerce.Mobile.ViewModels
                     Page = "UserProfilePage",
                     Title = Messages.MenuOptProfile
                 },
-                 new Menu
+                new Menu
                 {
                     Icon = IconFont.EnvelopeOpenText,
-                    Page = "AddressTabbedPage",
+                    Page = "AddressListPage",
                     Title = Messages.MenuOptAddresses
                 },
-                  new Menu
+                new Menu
                 {
                     Icon = IconFont.InfoCircle,
                     Page = "OrdersPage",
                     Title = Messages.MenuOptOrders
+                },
+                new Menu
+                {
+                    Icon = IconFont.Mobile,
+                    Page = "ProductPage",
+                    Title = Messages.MenuOptProducts
                 },
                 new Menu
                 {

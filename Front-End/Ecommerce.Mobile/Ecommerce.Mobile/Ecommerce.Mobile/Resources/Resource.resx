@@ -121,7 +121,7 @@
     <value>Accept</value>
   </data>
   <data name="AddressList_Title" xml:space="preserve">
-    <value>List</value>
+    <value>My Addresses</value>
   </data>
   <data name="AddressTabbedPage_Title" xml:space="preserve">
     <value>Addresses</value>
@@ -134,6 +134,9 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="CreateAddressMsg" xml:space="preserve">
+    <value>Address Created Successfully!</value>
   </data>
   <data name="DpAddToCart" xml:space="preserve">
     <value>Add To Cart</value>
@@ -182,6 +185,9 @@
   </data>
   <data name="MenuOptOrders" xml:space="preserve">
     <value>Orders</value>
+  </data>
+  <data name="MenuOptProducts" xml:space="preserve">
+    <value>View Products</value>
   </data>
   <data name="MenuOptProfile" xml:space="preserve">
     <value>Profile</value>
@@ -261,11 +267,20 @@
   <data name="SignIn" xml:space="preserve">
     <value>Sign In</value>
   </data>
+  <data name="tBtnAddNewAddress" xml:space="preserve">
+    <value>Add Address</value>
+  </data>
+  <data name="TimeOutMessage" xml:space="preserve">
+    <value>Could not connect to the Server please try again later.</value>
+  </data>
   <data name="TtLogin" xml:space="preserve">
     <value>Log In</value>
   </data>
   <data name="TtRegisUser" xml:space="preserve">
     <value>Add User</value>
+  </data>
+  <data name="UpdateAddressMsg" xml:space="preserve">
+    <value>Address Updated Successfully!</value>
   </data>
   <data name="UserAddresses_Title" xml:space="preserve">
     <value>Record</value>

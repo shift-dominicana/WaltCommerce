@@ -7,10 +7,11 @@
     xmlns:local="clr-namespace:Ecommerce.Mobile.Views"
     xmlns:prism="http://prismlibrary.com"
     Title="{i18n:Translate AddressTabbedPage_Title}"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BindingContext="{Binding Page}">
 
     <TabbedPage.Children>
-        <local:UserAddressPage />
         <local:AddressListPage />
+        <local:UserAddressPage />
     </TabbedPage.Children>
 </TabbedPage>

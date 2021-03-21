@@ -279,4 +279,22 @@
   <data name="PhAddressName" xml:space="preserve">
     <value>Nombre de dirección</value>
   </data>
+  <data name="AddressList_Title" xml:space="preserve">
+    <value>Mis direcciones</value>
+  </data>
+  <data name="AddressTabbedPage_Title" xml:space="preserve">
+    <value>Direcciones</value>
+  </data>
+  <data name="tBtnAddNewAddress" xml:space="preserve">
+    <value>Agregar dirección</value>
+  </data>
+  <data name="TimeOutMessage" xml:space="preserve">
+    <value>¡No se pudo conectar al servidor API! Inténtalo de nuevo más tarde.</value>
+  </data>
+  <data name="CreateAddressMsg" xml:space="preserve">
+    <value>Dirección creada correctamente</value>
+  </data>
+  <data name="UpdateAddressMsg" xml:space="preserve">
+    <value>Dirección actualizada correctamente</value>
+  </data>
 </root>

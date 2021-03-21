@@ -40,11 +40,19 @@ namespace Ecommerce.Mobile.Helpers.I18n
         public static string MenuOptAddresses => Resource.MenuOptAddresses;
         public static string MenuOptOrders => Resource.MenuOptOrders;
         public static string MenuOptLogOut => Resource.MenuOptLogOut;
+        public static string MenuOptProducts => Resource.MenuOptProducts;
         public static string AskLogOut => Resource.AskLogOut;
 
         //Profile
         public static string MustLogIn => Resource.MustLogIn;
         public static string MustAccount => Resource.MustAccount;
+
+        public static string TimeOutMessage => Resource.TimeOutMessage;
+
+        //Address
+        public static string CreateAddressMsg => Resource.CreateAddressMsg;
+        public static string UpdateAddressMsg => Resource.UpdateAddressMsg;
+
 
     }
 }

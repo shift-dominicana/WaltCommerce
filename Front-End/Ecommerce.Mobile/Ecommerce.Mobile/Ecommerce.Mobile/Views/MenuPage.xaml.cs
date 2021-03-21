@@ -26,7 +26,7 @@ namespace Ecommerce.Mobile.Views
 
             _idPage = Preferences.Get(Settings.ActualPage, "");
             if (_idPage.Equals("UserProfilePage")
-                || _idPage.Equals("AddressPage")
+                || _idPage.Equals("AddressListPage")
                 || _idPage.Equals("OrdersPage"))
              
             {

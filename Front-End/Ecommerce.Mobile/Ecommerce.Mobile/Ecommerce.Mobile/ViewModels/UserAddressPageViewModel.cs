@@ -23,6 +23,7 @@ namespace Ecommerce.Mobile.ViewModels
     public class UserAddressPageViewModel : ViewModelBase
     {
         private DelegateCommand _saveCommand;
+        private int _id;
         private string _addressName;
         private string _province;
         private string _city;
@@ -38,6 +39,7 @@ namespace Ecommerce.Mobile.ViewModels
         private IApiServices _apiServices;
         private AccessToken _accessToken;
         private User _user;
+        private bool IsEditing;
 
         public UserAddressPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -56,7 +58,7 @@ namespace Ecommerce.Mobile.ViewModels
                 return;
             }
 
-            var valid = await ValidaDatos();
+            var valid = await Validate();
             if (!valid) return;
 
             IsRunning = true;
@@ -145,12 +147,12 @@ namespace Ecommerce.Mobile.ViewModels
             IsRunning = false;
             IsEnabled = true;
 
-            await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.UserCreated, Messages.Accept);
-            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");
+            await App.Current.MainPage.DisplayAlert(Messages.Info,  (Address.Id == 0 ? Messages.CreateAddressMsg : Messages.UpdateAddressMsg), Messages.Accept);
+            await _navigationService.NavigateAsync("/MenuPage/NavigationPage/AddressListPage");
 
         }
 
-        public async Task<bool> ValidaDatos()
+        public async Task<bool> Validate()
         {
             if (string.IsNullOrEmpty(AddressName)
                 || string.IsNullOrEmpty(Province)
@@ -185,6 +187,12 @@ namespace Ecommerce.Mobile.ViewModels
         {
             get => _isEnabled;
             set => SetProperty(ref _isEnabled, value);
+        }
+
+        public int Id
+        {
+            get => _id;
+            set => SetProperty(ref _id, value);
         }
 
         public string AddressName
@@ -241,9 +249,23 @@ namespace Ecommerce.Mobile.ViewModels
             set => SetProperty(ref _user, value);
         }
 
+        private void LoadData()
+        {
+            Id = Address.Id;
+            AddressName = Address.Name;
+            Province = Address.Province;
+            City = Address.City;
+            Sector = Address.Sector;
+            Street = Address.Street;
+            HouseNumber = Address.HouseNumber;
+            Reference = Address.Reference;
+            Telephone = Address.Telephone;
+            User = Address.Id == 0 ? User: Address.User;
+        }
+
         public async override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Address = new UserAddress();
+            Address = parameters.GetValue<UserAddress>("SelectedAddress") is null ?  new UserAddress(): parameters.GetValue<UserAddress>("SelectedAddress");
 
             var UserData = Preferences.Get(Settings.UserData, "");
             _accessToken = JsonConvert.DeserializeObject<AccessToken>(UserData);
@@ -251,6 +273,7 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 User = _accessToken.User;
                 base.OnNavigatedTo(parameters);
+                LoadData();
             }
             else
             {

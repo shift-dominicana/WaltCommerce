@@ -70,7 +70,7 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to List.
+        ///   Looks up a localized string similar to My Addresses.
         /// </summary>
         public static string AddressList_Title {
             get {
@@ -111,6 +111,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address Created Successfully!.
+        /// </summary>
+        public static string CreateAddressMsg {
+            get {
+                return ResourceManager.GetString("CreateAddressMsg", resourceCulture);
             }
         }
         
@@ -255,6 +264,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string MenuOptOrders {
             get {
                 return ResourceManager.GetString("MenuOptOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Products.
+        /// </summary>
+        public static string MenuOptProducts {
+            get {
+                return ResourceManager.GetString("MenuOptProducts", resourceCulture);
             }
         }
         
@@ -493,6 +511,24 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Address.
+        /// </summary>
+        public static string tBtnAddNewAddress {
+            get {
+                return ResourceManager.GetString("tBtnAddNewAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not connect to the Server please try again later..
+        /// </summary>
+        public static string TimeOutMessage {
+            get {
+                return ResourceManager.GetString("TimeOutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log In.
         /// </summary>
         public static string TtLogin {
@@ -507,6 +543,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string TtRegisUser {
             get {
                 return ResourceManager.GetString("TtRegisUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address Updated Successfully!.
+        /// </summary>
+        public static string UpdateAddressMsg {
+            get {
+                return ResourceManager.GetString("UpdateAddressMsg", resourceCulture);
             }
         }
         

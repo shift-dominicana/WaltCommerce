@@ -2,6 +2,7 @@ using Common.Models.ProductCategories;
 using Common.Models.Products;
 using Common.Models.Token;
 using Ecommerce.Mobile.Helpers;
+using Ecommerce.Mobile.Helpers.I18n;
 using Ecommerce.Mobile.Services;
 using Newtonsoft.Json;
 using Prism.Commands;
@@ -99,19 +100,19 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 if (response.Message == "")
                 {
-                    response.Message = "No se pudo conectar con el Servidor por favor intente más tarde.";
+                    response.Message = Messages.ConnectionError;
                 }
 
 
-                await Prism.PrismApplicationBase.Current.MainPage.DisplayAlert("Información", response.Message.ToString(), "Aceptar");
+                await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
                 await _navigationService.GoBackToRootAsync();
                 return;
             }
 
-            var ListProducts = (List<ProductCategory>)response.Result;
-            ListProducts.ForEach(x => CategoryModelList.Add(x));
-            
-            //var list = ListProducts.Select(x => x.Products).ToList();            
+            var ListCategories = (List<ProductCategory>)response.Result;
+            ListCategories.ForEach(x => CategoryModelList.Add(x));
+
+            //var list = ListCategories.Select(x => x.Products).ToList();            
             foreach (ProductCategory x in CategoryModelList)
             {
 
