@@ -35,4 +35,11 @@
         CARD = 3,
         PAYPAL = 4
     }
+
+    public enum OrderStatusEnum 
+    {
+        Requested = 1,
+        Dispatched = 2,
+        Delivered = 3
+    }
 }

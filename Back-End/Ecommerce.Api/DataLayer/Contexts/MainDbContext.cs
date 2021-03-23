@@ -25,6 +25,8 @@ using Common.Models.Products;
 using Microsoft.EntityFrameworkCore;
 using Common.Models.UsersAddresses;
 using DataLayer.ContextExtension.UserAddresses;
+using Common.Models.Orders;
+using Common.Models.OrderDetails;
 
 namespace DataLayer.Contexts
 {
@@ -65,5 +67,9 @@ namespace DataLayer.Contexts
         public DbSet<BuyCart> BuyCarts { get; set; }
         public DbSet<BuyCartDetail> BuyCartDetails { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+
+
     }
 }

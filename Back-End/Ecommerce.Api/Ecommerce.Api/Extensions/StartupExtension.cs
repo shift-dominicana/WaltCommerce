@@ -3,6 +3,8 @@ using BussinesLayer.Interfaces.Auth;
 using BussinesLayer.Interfaces.Brands;
 using BussinesLayer.Interfaces.BuyCartDetails;
 using BussinesLayer.Interfaces.BuyCarts;
+using BussinesLayer.Interfaces.OrderDetails;
+using BussinesLayer.Interfaces.Orders;
 using BussinesLayer.Interfaces.PersonsTypeCategories;
 using BussinesLayer.Interfaces.Products;
 using BussinesLayer.Interfaces.ProductsCategories;
@@ -17,6 +19,8 @@ using BussinesLayer.Services.Auth;
 using BussinesLayer.Services.Brands;
 using BussinesLayer.Services.BuyCartDetails;
 using BussinesLayer.Services.BuyCarts;
+using BussinesLayer.Services.OrderDetails;
+using BussinesLayer.Services.Orders;
 using BussinesLayer.Services.PersonsTypeCategories;
 using BussinesLayer.Services.Products;
 using BussinesLayer.Services.ProductsCategories;
@@ -75,6 +79,11 @@ namespace Ecommerce.Api.Extensions
             services.AddTransient<IBuyCartsService, BuyCartsService>();
             services.AddTransient<IBuyCartDetailsService, BuyCartDetailsService>();
             services.AddTransient<IUserAddressesService, UserAddressesService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<IOrderDetailService, OrderDetailService>();
+
+
+
         }
 
         public static void ConfigureAutomapper(this IServiceCollection services)
