@@ -11,6 +11,6 @@ namespace BussinesLayer.Interfaces.OrderDetails
 {
     public interface IOrderDetailService : IRepository<OrderDetail, OrderDetailViewModel>
     {
-        
+        public Task<IEnumerable<OrderDetail>> GetUserOrderDetail(int id);
     }
 }

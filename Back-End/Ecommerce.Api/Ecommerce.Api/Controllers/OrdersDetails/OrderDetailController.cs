@@ -4,6 +4,7 @@ using Common.Models.OrderDetails;
 using DataLayer.ViewModels.OrderDetails;
 using Ecommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Ecommerce.Api.Controllers.OrdersDetails
 {
@@ -16,5 +17,15 @@ namespace Ecommerce.Api.Controllers.OrdersDetails
         {
             _orderDetailService = service;
         }
+
+        [HttpGet("GetOrderItems")]
+        public async Task<IActionResult> GetOrderItems(int OrderId)
+        {
+
+            var cartDetail = await _orderDetailService.GetUserOrderDetail(OrderId);
+            //var List = (BuyCartDetail)cartDetail;
+            return Ok(cartDetail);
+        }
+
     }
 }
