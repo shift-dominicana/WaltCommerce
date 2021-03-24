@@ -27,6 +27,7 @@ namespace Ecommerce.Api
             services.ConfigureAutomapper();
             services.ConfigureSwagger();
             services.ConfigureAddControllers();
+            services.ConfigureMail(Configuration);
 
         }
 
