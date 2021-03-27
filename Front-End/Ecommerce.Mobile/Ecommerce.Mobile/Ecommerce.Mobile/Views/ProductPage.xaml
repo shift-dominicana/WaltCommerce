@@ -142,6 +142,7 @@
                                 <ffimageloading:CachedImage
                                     Aspect="Fill"
                                     Background="Transparent"
+                                    BitmapOptimizations="True"
                                     CacheDuration="50"
                                     DownsampleToViewSize="true"
                                     ErrorPlaceholder="ErrorImage"
@@ -149,7 +150,7 @@
                                     RetryCount="3"
                                     RetryDelay="600"
                                     Source="{Binding MainImageUrl}"
-                                    WidthRequest="50" />
+                                    WidthRequest="120" />
                             </Frame>
                             <Label
                                 Grid.Row="1"
