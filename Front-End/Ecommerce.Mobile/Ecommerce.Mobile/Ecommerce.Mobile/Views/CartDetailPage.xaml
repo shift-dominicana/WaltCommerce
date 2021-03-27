@@ -33,35 +33,53 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-
-
-
-                    <Frame>
-
+                    <Frame
+                        Margin="0"
+                        Padding="0"
+                        HeightRequest="130"
+                        VerticalOptions="Fill">
 
                         <Grid
-                            ColumnDefinitions="Auto,*"
-                            RowDefinitions="Auto,Auto"
+                            Margin="0"
+                            Padding="0"
                             RowSpacing="2">
 
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*" />
+                                <ColumnDefinition Width="60*" />
+                            </Grid.ColumnDefinitions>
 
-                            <Frame HasShadow="False">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
-                                <ffimageloading:CachedImage
-                                    Aspect="Fill"
-                                    Background="Transparent"
-                                    CacheDuration="50"
-                                    DownsampleToViewSize="true"
-                                    ErrorPlaceholder="ErrorImage"
-                                    LoadingPlaceholder="LoaderImage"
-                                    RetryCount="3"
-                                    RetryDelay="600"
-                                    Source="{Binding Product.MainImageUrl}"
-                                    VerticalOptions="CenterAndExpand"
-                                    WidthRequest="100" />
-                            </Frame>
+                            <Grid RowDefinitions="120">
 
+                                <Frame
+                                    Grid.Row="0"
+                                    Padding="0"
+                                    CornerRadius="10"
+                                    HasShadow="False">
+
+                                    <ffimageloading:CachedImage
+                                        Aspect="Fill"
+                                        Background="Transparent"
+                                        CacheDuration="50"
+                                        DownsampleToViewSize="true"
+                                        ErrorPlaceholder="ErrorImage"
+                                        LoadingPlaceholder="LoaderImage"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="{Binding Product.MainImageUrl}"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="120" />
+                                </Frame>
+
+                            </Grid>
                             <Label
+                                Grid.Row="0"
                                 Grid.Column="1"
                                 FontSize="Large"
                                 HorizontalOptions="StartAndExpand"
@@ -69,7 +87,52 @@
                                 TextColor="Black" />
 
 
-                            <Label Grid.Row="1" Grid.Column="1">
+
+
+                            <Grid
+                                x:Name="QuantitySelect"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End">
+
+
+
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Black"
+                                    CornerRadius="25"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Center" />
+
+                                <Button
+                                    Margin="10,0,0,0"
+                                    Command="{Binding DecreaseButtonCmd}"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource QuantityButton}"
+                                    Text="-"
+                                    VerticalOptions="Center" />
+
+                                <Button
+                                    Margin="0,0,10,0"
+                                    Command="{Binding IncreaseButtonCmd}"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource QuantityButton}"
+                                    Text="+"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Quantity}"
+                                    VerticalOptions="Center" />
+
+                            </Grid>
+
+
+                            <Label Grid.Row="2" Grid.Column="1">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span FontSize="Medium" Text="$RD " />
@@ -77,42 +140,6 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-
-
-
-                            <Frame
-                                Grid.Column="1"
-                                Padding="0"
-                                BackgroundColor="Transparent"
-                                BorderColor="Black"
-                                CornerRadius="25"
-                                HasShadow="False"
-                                HeightRequest="50"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Center" />
-
-                            <Button
-                                Grid.Column="1"
-                                Margin="10,0,0,0"
-                                Command="{Binding DecreaseButtonCmd}"
-                                HorizontalOptions="Start"
-                                Style="{StaticResource QuantityButton}"
-                                Text="-"
-                                VerticalOptions="Center" />
-                            <Button
-                                Grid.Column="1"
-                                Margin="0,0,10,0"
-                                Command="{Binding IncreaseButtonCmd}"
-                                HorizontalOptions="End"
-                                Style="{StaticResource QuantityButton}"
-                                Text="+"
-                                VerticalOptions="Center" />
-
-                            <Label
-                                Grid.Column="1"
-                                HorizontalOptions="Center"
-                                Text="{Binding Quantity}"
-                                VerticalOptions="Center" />
 
                             <Grid.Resources>
                                 <Style TargetType="Grid">
@@ -134,84 +161,7 @@
 
                         </Grid>
 
-
                     </Frame>
-
-                    <!--<Frame
-                                Margin="0"
-                                Padding="0"
-                                BackgroundColor="#F7F7F7"
-                                CornerRadius="8"
-                                HasShadow="False">
-                                <StackLayout Orientation="Horizontal">
-                                    <StackLayout
-                                        HeightRequest="40"
-                                        VerticalOptions="FillAndExpand"
-                                        WidthRequest="40">
-                                        <Label
-                                            FontSize="16"
-                                            HorizontalOptions="Center"
-                                            Text="+"
-                                            TextColor="Black"
-                                            VerticalOptions="CenterAndExpand"
-                                            VerticalTextAlignment="Center">
-                                            <Label.FontFamily>
-                                                <OnPlatform x:TypeArguments="x:String">
-                                                    <On Platform="Android" Value="SFPro.ttf#Bold" />
-                                                </OnPlatform>
-                                            </Label.FontFamily>
-                                        </Label>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding IncreaseTapCommand}" CommandParameter="{Binding numbers}" />
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout>
-
-                                    <StackLayout
-                                        HeightRequest="40"
-                                        VerticalOptions="FillAndExpand"
-                                        WidthRequest="40">
-                                        <Label
-                                            FontSize="16"
-                                            HorizontalOptions="Center"
-                                            Text="{Binding numbers}"
-                                            TextColor="Black"
-                                            VerticalOptions="CenterAndExpand"
-                                            VerticalTextAlignment="Center">
-                                            <Label.FontFamily>
-                                                <OnPlatform x:TypeArguments="x:String">
-                                                    <On Platform="Android" Value="SFPro.ttf#Bold" />
-                                                </OnPlatform>
-                                            </Label.FontFamily>
-                                        </Label>
-                                    </StackLayout>
-
-
-                                    <StackLayout
-                                        HeightRequest="40"
-                                        VerticalOptions="FillAndExpand"
-                                        WidthRequest="40">
-                                        <Label
-                                            FontSize="16"
-                                            HorizontalOptions="Center"
-                                            Text="-"
-                                            TextColor="Black"
-                                            VerticalOptions="CenterAndExpand"
-                                            VerticalTextAlignment="Center">
-                                            <Label.FontFamily>
-                                                <OnPlatform x:TypeArguments="x:String">
-                                                    <On Platform="Android" Value="SFPro.ttf#Bold" />
-                                                </OnPlatform>
-                                            </Label.FontFamily>
-                                        </Label>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding DecreseTapCommand}" CommandParameter="{Binding .}" />
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout>
-
-                                </StackLayout>
-                            </Frame>-->
-
-
 
                 </DataTemplate>
             </CollectionView.ItemTemplate>
