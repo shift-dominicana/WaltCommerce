@@ -5,7 +5,10 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using System;
 using System.IO;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Mails
@@ -45,10 +48,12 @@ namespace BussinesLayer.Services.Mails
             builder.HtmlBody = mailRequest.Body;
             email.Body = builder.ToMessageBody();
             using var smtp = new SmtpClient();
-            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTlsWhenAvailable);
+            smtp.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.Auto);
             smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
         }
+
     }
 }
