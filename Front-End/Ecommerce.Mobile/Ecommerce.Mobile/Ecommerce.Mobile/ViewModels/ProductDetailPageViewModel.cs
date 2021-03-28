@@ -178,7 +178,7 @@ namespace Ecommerce.Mobile.ViewModels
                 }
 
 
-                await GetCountItemsDetail();
+                await Utilities.GetCountItemsCartDetail(_apiServices, _accessToken);
 
 
             }
@@ -187,35 +187,6 @@ namespace Ecommerce.Mobile.ViewModels
                 await App.Current.MainPage.DisplayAlert(Messages.Info, Messages.MustAccount, Messages.Accept);
 
             }
-        }
-
-        private async Task GetCountItemsDetail() {
-
-            int count = 0;
-            var url = Prism.PrismApplicationBase.Current.Resources["UrlAPI"].ToString();
-            //var Token = Preferences.Get(Settings.Token, "");
-
-            var response = await _apiServices.GetListAsync<BuyCartDetail>(url, "/api", $"/BuyCartDetail/GetCartItems?BuyCart={_accessToken.Cart.Id}", "", "");
-
-            if (!response.IsSuccess)
-            {
-                if (response.Message == "")
-                {
-                    response.Message = Messages.ConnectionError;
-                }
-                await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
-                return;
-            }
-
-            var List = (List<BuyCartDetail>)response.Result;
-            
-            if (response.Result != null)
-            {
-                count = List.ToList().Select(x => x.Quantity).Sum();
-            }
-
-            Preferences.Set(Settings.ItemsCart, count);
-
         }
 
     }

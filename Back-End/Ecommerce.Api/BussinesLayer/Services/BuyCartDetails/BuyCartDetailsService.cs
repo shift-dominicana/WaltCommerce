@@ -38,7 +38,7 @@ namespace BussinesLayer.Services.BuyCartDetails
 
         public async Task<IEnumerable<BuyCartDetail>> GetUserCartDetail(int id)
         {
-            var products = await _context.BuyCartDetails.Where(c => c.BuyCartId == id)
+            var products = await _context.BuyCartDetails.Where(c => c.BuyCartId == id && c.IsDeleted == false)
             .Include(p => p.Product)
             .ToListAsync();
 

@@ -117,7 +117,8 @@ namespace Ecommerce.Mobile.ViewModels
             var access = (AccessToken)response.Result;
             Preferences.Set(Settings.FullName, $"{access.User.FirstName} {access.User.LastName}"); 
             Preferences.Set(Settings.Token, access.Token);
-            Preferences.Set(Settings.UserData, JsonConvert.SerializeObject(access));            
+            Preferences.Set(Settings.UserData, JsonConvert.SerializeObject(access));
+            await Utilities.GetCountItemsCartDetail(_apiServices, access);
 
             await _navigationService.NavigateAsync("/MenuPage/NavigationPage/ProductPage");
         }

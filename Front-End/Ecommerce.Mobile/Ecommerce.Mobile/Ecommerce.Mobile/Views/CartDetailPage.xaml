@@ -18,11 +18,15 @@
         <Button Grid.Row="1" Text="Buy Now" />
 
 
+
+
         <CollectionView
+            x:Name="CartCollection"
             Grid.Row="0"
             Margin="10"
             EmptyView="{i18n:Translate Noitems}"
             ItemsSource="{Binding CartUserDetail}"
+            SelectedItem="{Binding CartItemSelected}"
             SelectionMode="Single"
             VerticalOptions="StartAndExpand"
             VerticalScrollBarVisibility="Never">
@@ -96,9 +100,13 @@
                                 HorizontalOptions="Fill"
                                 VerticalOptions="End">
 
-
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
 
                                 <Frame
+                                    Grid.Column="0"
                                     Padding="0"
                                     BackgroundColor="Transparent"
                                     BorderColor="Black"
@@ -109,24 +117,38 @@
                                     VerticalOptions="Center" />
 
                                 <Button
+                                    Grid.Column="0"
                                     Margin="10,0,0,0"
-                                    Command="{Binding DecreaseButtonCmd}"
+                                    Command="{Binding Path=BindingContext.DecreaseButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
                                     HorizontalOptions="Start"
                                     Style="{StaticResource QuantityButton}"
                                     Text="-"
                                     VerticalOptions="Center" />
 
                                 <Button
+                                    Grid.Column="0"
                                     Margin="0,0,10,0"
-                                    Command="{Binding IncreaseButtonCmd}"
+                                    Command="{Binding Path=BindingContext.IncreaseButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
                                     HorizontalOptions="End"
                                     Style="{StaticResource QuantityButton}"
                                     Text="+"
                                     VerticalOptions="Center" />
 
                                 <Label
+                                    Grid.Column="0"
                                     HorizontalOptions="Center"
                                     Text="{Binding Quantity}"
+                                    VerticalOptions="Center" />
+
+                                <ImageButton
+                                    Grid.Column="1"
+                                    Margin="0,0,10,0"
+                                    Command="{Binding Path=BindingContext.DeleteButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="Center"
+                                    Source="delete.png"
                                     VerticalOptions="Center" />
 
                             </Grid>
@@ -166,6 +188,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </Grid>
 </ContentPage>
