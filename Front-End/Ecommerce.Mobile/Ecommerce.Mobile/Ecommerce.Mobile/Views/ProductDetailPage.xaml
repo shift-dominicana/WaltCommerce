@@ -3,6 +3,7 @@
     x:Class="Ecommerce.Mobile.Views.ProductDetailPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     prism:ViewModelLocator.AutowireViewModel="True">
@@ -33,7 +34,7 @@
                                 VerticalOptions="StartAndExpand">
                                 <StackLayout>
 
-                                    <Image
+                                    <ffimageloading:CachedImage
                                         Aspect="Fill"
                                         HeightRequest="350"
                                         HorizontalOptions="Center"
