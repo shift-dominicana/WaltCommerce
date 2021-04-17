@@ -192,6 +192,12 @@
   <data name="MenuOptProfile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Method_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="Method_Pickup" xml:space="preserve">
+    <value>Pick up</value>
+  </data>
   <data name="MustAccount" xml:space="preserve">
     <value>You must have an account to add items to the shopping car!</value>
   </data>
@@ -209,6 +215,15 @@
   </data>
   <data name="Option_IdType" xml:space="preserve">
     <value>Select your Personal Id Type</value>
+  </data>
+  <data name="PayButtontxt" xml:space="preserve">
+    <value>Proceed to Buy</value>
+  </data>
+  <data name="PayM_Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="PayM_Transfer" xml:space="preserve">
+    <value>Bank Transfer</value>
   </data>
   <data name="PhAddressName" xml:space="preserve">
     <value>Address Name</value>
@@ -261,6 +276,12 @@
   <data name="PhTelephone" xml:space="preserve">
     <value>Telephone</value>
   </data>
+  <data name="QPayOrder" xml:space="preserve">
+    <value>How do you like to pay the order?</value>
+  </data>
+  <data name="QReciveOrder" xml:space="preserve">
+    <value>How do you like to receive the order?</value>
+  </data>
   <data name="SaveCurrentLocationLbl" xml:space="preserve">
     <value>Save With Current Location</value>
   </data>
@@ -272,6 +293,9 @@
   </data>
   <data name="TimeOutMessage" xml:space="preserve">
     <value>Could not connect to the Server please try again later.</value>
+  </data>
+  <data name="TSummaryOrder" xml:space="preserve">
+    <value>Order Summary</value>
   </data>
   <data name="TtLogin" xml:space="preserve">
     <value>Log In</value>

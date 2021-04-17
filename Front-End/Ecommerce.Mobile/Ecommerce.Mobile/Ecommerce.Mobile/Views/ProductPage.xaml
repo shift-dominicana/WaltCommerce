@@ -130,14 +130,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid HeightRequest="250" WidthRequest="100">
+                    <Grid HeightRequest="400" WidthRequest="100">
 
 
                         <Grid RowDefinitions="*,30,30, Auto, Auto">
                             <Frame
                                 Grid.Row="0"
                                 Padding="0"
-                                CornerRadius="10"
+                                CornerRadius="0"
                                 HasShadow="False">
                                 <ffimageloading:CachedImage
                                     Aspect="Fill"

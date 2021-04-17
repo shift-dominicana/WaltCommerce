@@ -286,6 +286,24 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delivery.
+        /// </summary>
+        public static string Method_Delivery {
+            get {
+                return ResourceManager.GetString("Method_Delivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick up.
+        /// </summary>
+        public static string Method_Pickup {
+            get {
+                return ResourceManager.GetString("Method_Pickup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must have an account to add items to the shopping car!.
         /// </summary>
         public static string MustAccount {
@@ -336,6 +354,33 @@ namespace Ecommerce.Mobile.Resources {
         public static string Option_IdType {
             get {
                 return ResourceManager.GetString("Option_IdType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to Buy.
+        /// </summary>
+        public static string PayButtontxt {
+            get {
+                return ResourceManager.GetString("PayButtontxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash.
+        /// </summary>
+        public static string PayM_Cash {
+            get {
+                return ResourceManager.GetString("PayM_Cash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Transfer.
+        /// </summary>
+        public static string PayM_Transfer {
+            get {
+                return ResourceManager.GetString("PayM_Transfer", resourceCulture);
             }
         }
         
@@ -493,6 +538,24 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How do you like to pay the order?.
+        /// </summary>
+        public static string QPayOrder {
+            get {
+                return ResourceManager.GetString("QPayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How do you like to receive the order?.
+        /// </summary>
+        public static string QReciveOrder {
+            get {
+                return ResourceManager.GetString("QReciveOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save With Current Location.
         /// </summary>
         public static string SaveCurrentLocationLbl {
@@ -525,6 +588,15 @@ namespace Ecommerce.Mobile.Resources {
         public static string TimeOutMessage {
             get {
                 return ResourceManager.GetString("TimeOutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Summary.
+        /// </summary>
+        public static string TSummaryOrder {
+            get {
+                return ResourceManager.GetString("TSummaryOrder", resourceCulture);
             }
         }
         

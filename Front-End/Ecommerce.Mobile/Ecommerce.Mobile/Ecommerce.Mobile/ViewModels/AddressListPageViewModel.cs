@@ -76,7 +76,7 @@ namespace Ecommerce.Mobile.ViewModels
             AddressesList.Clear();
             var url = App.Current.Resources["UrlAPI"].ToString();
             //var Token = Preferences.Get(Settings.Token, "");
-            var response = await _apiServices.GetListAsync<UserAddress>(url, "/api", $"/UserAddress/GetUserAddresses/{User.Id}", "", "");         
+            var response = await _apiServices.GetListAsync<UserAddress>(url, "/api", $"/UserAddress/GetUserAddresses/{User.Id}", "", "");
             if (!response.IsSuccess)
             {
                 if (response.Message == "")
@@ -104,7 +104,10 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 User = _preferences.User;
                 base.OnNavigatedTo(parameters);
-                GetAddress();
+                var List  = await Utilities.GetAddress(_apiServices, _preferences.User.Id);
+                List.ForEach(x => AddressesList.Add(x));
+
+                //GetAddress();
             }
             else
             {

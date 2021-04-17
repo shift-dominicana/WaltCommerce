@@ -17,6 +17,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace Ecommerce.Mobile.ViewModels
 {
@@ -176,9 +177,12 @@ namespace Ecommerce.Mobile.ViewModels
                     await App.Current.MainPage.DisplayAlert(Messages.Info, response.Message, Messages.Accept);
                     return;
                 }
-
-
                 await Utilities.GetCountItemsCartDetail(_apiServices, _accessToken);
+
+                await App.Current.MainPage.DisplayToastAsync("Agregado Correctamente!", 5000);
+                //await App.Current.MainPage.DisplayAlert(Messages.Info, "Agregado Correctamente!", Messages.Accept);
+
+                
 
 
             }

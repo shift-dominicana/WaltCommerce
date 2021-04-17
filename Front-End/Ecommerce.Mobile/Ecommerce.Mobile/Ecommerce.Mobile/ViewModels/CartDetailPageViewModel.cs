@@ -26,6 +26,7 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _increaseButton;
         private int _qty;
         private BuyCartDetail _cartItemSelected;
+        private DelegateCommand _paymentCommand;
 
         public CartDetailPageViewModel(INavigationService navigationService, 
             IApiServices apiServices) : base(navigationService)
@@ -103,6 +104,19 @@ namespace Ecommerce.Mobile.ViewModels
             ObservableCollection<BuyCartDetail> Collection = new ObservableCollection<BuyCartDetail>(CartUserDetail);
             CartUserDetail.Clear();
             CartUserDetail = new ObservableCollection<BuyCartDetail>(Collection);
+        }
+
+        public DelegateCommand PaymentCommand => _paymentCommand ?? (_paymentCommand = new DelegateCommand(OpenPaymentPage));
+
+        private async void OpenPaymentPage()
+        {
+            if (CartUserDetail.Count <= 0)
+                return;
+
+            var parameters = new NavigationParameters();
+            parameters.Add("CartDetails", CartUserDetail);
+
+            await _navigationService.NavigateAsync("PaymentPage", parameters);
         }
 
         public int Quantity
@@ -220,10 +234,14 @@ namespace Ecommerce.Mobile.ViewModels
             base.OnNavigatedTo(parameters);
             var UserData = Preferences.Get(Settings.UserData, "");
             _accessToken = JsonConvert.DeserializeObject<AccessToken>(UserData);
-            if (_accessToken is AccessToken)
-            {
-                await GetItemsDetail(); 
 
+            if (parameters.GetNavigationMode() != Prism.Navigation.NavigationMode.Back)
+            {
+                if (_accessToken is AccessToken)
+                {
+                    await GetItemsDetail();
+
+                }
             }
         }
     }
