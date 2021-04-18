@@ -4,32 +4,66 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Behavior="clr-namespace:Ecommerce.Mobile.Behaviors"
+    xmlns:ctr="clr-namespace:Ecommerce.Mobile.Controls"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     Title="{i18n:Translate UserAddresses_Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
 
-    <StackLayout>
-        <Entry Placeholder="{i18n:Translate PhAddressName}" Text="{Binding AddressName}" />
-        <Entry Placeholder="{i18n:Translate PhProvince}" Text="{Binding Province}" />
-        <Entry Placeholder="{i18n:Translate PhCity}" Text="{Binding City}" />
-        <Entry Placeholder="{i18n:Translate PhSector}" Text="{Binding Sector}" />
-        <Entry Placeholder="{i18n:Translate PhStreet}" Text="{Binding Street}" />
-        <Entry Placeholder="{i18n:Translate PhHouseNumber}" Text="{Binding HouseNumber}" />
+    <StackLayout Margin="10">
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhAddressName}"
+            Text="{Binding AddressName}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhProvince}"
+            Text="{Binding Province}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhCity}"
+            Text="{Binding City}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhSector}"
+            Text="{Binding Sector}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhStreet}"
+            Text="{Binding Street}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhHouseNumber}"
+            Text="{Binding HouseNumber}" />
         <Editor
             HeightRequest="90"
             Placeholder="{i18n:Translate PhIndication}"
             Text="{Binding Reference}" />
 
-        <Entry
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
             Keyboard="Telephone"
             Placeholder="{i18n:Translate PhCellPhone}"
             Text="{Binding Telephone}">
 
-            <Entry.Behaviors>
+            <ctr:StandardEntry.Behaviors>
                 <Behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
-            </Entry.Behaviors>
-        </Entry>
+            </ctr:StandardEntry.Behaviors>
+        </ctr:StandardEntry>
         <Label Text="{i18n:Translate SaveCurrentLocationLbl}" />
         <ActivityIndicator IsRunning="{Binding IsRunning}" />
         <Button

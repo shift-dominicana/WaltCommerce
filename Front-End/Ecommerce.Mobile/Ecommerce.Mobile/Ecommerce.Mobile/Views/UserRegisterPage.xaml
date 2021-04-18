@@ -3,6 +3,7 @@
     x:Class="Ecommerce.Mobile.Views.UserRegisterPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctr="clr-namespace:Ecommerce.Mobile.Controls"
     xmlns:i18n="clr-namespace:Ecommerce.Mobile.Helpers.I18n"
     xmlns:prism="http://prismlibrary.com"
     Title="{Binding Title}"
@@ -10,20 +11,44 @@
 
 
     <StackLayout Margin="20">
-        <Entry Placeholder="{i18n:Translate PhFirstName}" Text="{Binding FirstName}" />
-        <Entry Placeholder="{i18n:Translate PhLastName}" Text="{Binding LastName}" />
-        <Entry Placeholder="{i18n:Translate PhEmail}" Text="{Binding Email}" />
-        <Entry
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhFirstName}"
+            Text="{Binding FirstName}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhLastName}"
+            Text="{Binding LastName}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhEmail}"
+            Text="{Binding Email}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
             IsPassword="True"
             Placeholder="{i18n:Translate PhPassword}"
             Text="{Binding Password}" />
 
-        <Entry
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
             IsPassword="True"
             Placeholder="{i18n:Translate PhConfirmPassword}"
             Text="{Binding ConfirmPassword}" />
 
-        <Entry
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
             Keyboard="Telephone"
             Placeholder="{i18n:Translate PhTelephone}"
             Text="{Binding Telephone}" />
