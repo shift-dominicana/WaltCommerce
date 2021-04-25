@@ -1,61 +1,28 @@
 <div>
-  <div class="air__utils__heading">
-    <h5>Dashboard: Analytics</h5>
-  </div>
-  <div class="row">
-    <div class="col-xl-8 col-lg-6">
-      <h5 class="text-dark mb-4">Google Analytics Home</h5>
-      <div class="card">
-        <kit-chart-2>
-        </kit-chart-2>
-      </div>
-      <div class="row">
-        <div class="col-xl-6 col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <kit-chart-9>
-              </kit-chart-9>
-            </div>
-          </div>
-          <h5 class="text-dark mb-4">How do you acquire users?</h5>
-          <div class="card">
-            <div class="card-body">
-              <kit-chart-5>
-              </kit-chart-5>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <kit-chart-10>
-              </kit-chart-10>
-            </div>
-          </div>
-          <h5 class="text-dark mb-4">How are your active users trending over time?</h5>
-          <div class="card">
-            <div class="card-body">
-              <kit-chart-1>
-              </kit-chart-1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4 col-lg-6">
-      <h5 class="text-dark mb-4">Ask analytics Intelligence</h5>
-      <div class="card">
-        <div class="card-body">
-          <kit-list-15>
-          </kit-list-15>
-        </div>
-      </div>
-      <h5 class="text-dark mb-4">What are your top devices?</h5>
-      <div class="card">
-        <div class="card-body">
-          <kit-list-12>
-          </kit-list-12>
-        </div>
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="titulo">Productos</h5>
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let product of listProducts">
+              <td>{{ product.id }}</td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.stock }}</td>
+              <td class="text-right">
+                <a href="javascript: void(0);" class="btn btn-sm btn-light" slot="actions">
+                  <i class="fe fe-edit mr-1"></i> Edit
+                </a>
+              </td>
+              <td class="text-right">
+                <a href="javascript: void(0);" class="btn btn-sm btn-light" slot="actions">
+                  <i class="fe fe-trash mr-1"></i> Remove
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
