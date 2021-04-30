@@ -11,13 +11,11 @@ using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.Forms.OpenWhatsApp;
+
 
 namespace Ecommerce.Mobile.ViewModels
 {
@@ -37,6 +35,7 @@ namespace Ecommerce.Mobile.ViewModels
         private DelegateCommand _shoppingCarCommand;
         private int _qty;
         private DelegateCommand _changeColorCommand;
+        private DelegateCommand _askWhatsappCommand;
 
         public ProductDetailPageViewModel(INavigationService navigationService, IApiServices apiServices) : base(navigationService)
         {
@@ -50,6 +49,20 @@ namespace Ecommerce.Mobile.ViewModels
         public DelegateCommand ShoppingCarCommand => _shoppingCarCommand ?? (_shoppingCarCommand = new DelegateCommand(AddToShoppingCar));
 
         public DelegateCommand DecreaseButtonCmd => _decreaseButtonCmd ?? (_decreaseButtonCmd = new DelegateCommand(DecreaseQty));
+
+        public DelegateCommand AskWhatsappCommand => _askWhatsappCommand ?? (_askWhatsappCommand = new DelegateCommand(GoToWhatsapp));
+
+        private async void GoToWhatsapp()
+        {
+            try
+            {
+                Chat.Open("+18497078318", "Holaa desde la app Eco-loco !!");
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error Whatsapp", ex.Message, "OK");
+            }
+        }
 
         private void DecreaseQty()
         {

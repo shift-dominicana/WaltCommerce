@@ -13,21 +13,11 @@
 
     <StackLayout>
 
-        <!--<StackLayout.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                <GradientStop Offset="0.1" Color="White" />
-                <GradientStop Offset="1.0" Color="WhiteSmoke" />
-            </LinearGradientBrush>
-        </StackLayout.Background>-->
+
 
         <Grid Margin="20" RowSpacing="30">
             <Grid ColumnDefinitions="Auto,*,Auto">
-                <!--<ImageButton
-                    BackgroundColor="Transparent"
-                    HeightRequest="24"
-                    Source="menu.png"
-                    VerticalOptions="Center"
-                    WidthRequest="24"/>-->
+
 
                 <SearchBar
                     x:Name="searchBar"
@@ -66,28 +56,42 @@
         </Grid>
         <CollectionView
             x:Name="categoryList"
-            HeightRequest="35"
+            Margin="10,0,10,0"
+            HeightRequest="45"
+            HorizontalOptions="Center"
             HorizontalScrollBarVisibility="Never"
             ItemsSource="{Binding CategoryModelList}"
             SelectedItem="{Binding CategorySelected}"
             SelectionChangedCommand="{Binding CategoryCommand}"
             SelectionMode="Single"
-            VerticalOptions="Fill">
+            VerticalOptions="Center">
             <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" />
+                <LinearItemsLayout ItemSpacing="5" Orientation="Horizontal" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="10">
+                    <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="0">
 
-                        <Label
-                            Margin="10,0,0,0"
-                            FontSize="20"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{Binding Description}"
-                            TextColor="Black"
-                            VerticalOptions="CenterAndExpand" />
+                        <Frame
+                            x:Name="frameCategory"
+                            Margin="0,0,0,0"
+                            Padding="1,1,1,1"
+                            BackgroundColor="Transparent"
+                            HeightRequest="15"
+                            OutlineColor="Black"
+                            WidthRequest="130">
+                            <StackLayout VerticalOptions="FillAndExpand">
+                                <Label
+                                    Margin="0,5,0,0"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Description}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center" />
+
+                            </StackLayout>
+                        </Frame>
 
 
                         <Grid.Resources>
@@ -98,7 +102,7 @@
                                             <VisualState x:Name="Normal" />
                                             <VisualState x:Name="Selected">
                                                 <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    <Setter Property="BackgroundColor" Value="red" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
@@ -133,7 +137,11 @@
                     <Grid HeightRequest="400" WidthRequest="100">
 
 
-                        <Grid RowDefinitions="*,30,30, Auto, Auto">
+                        <Grid
+                            Margin="0,0,0,0"
+                            Padding="0,0,0,0"
+                            RowDefinitions="*,20,20"
+                            RowSpacing="0">
                             <Frame
                                 Grid.Row="0"
                                 Padding="0"
@@ -155,24 +163,29 @@
                             <Label
                                 Grid.Row="1"
                                 Margin="5,0,0,0"
-                                FontSize="Medium"
+                                Padding="0,0,0,0"
+                                FontSize="Small"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding Name}"
                                 TextColor="Black"
                                 VerticalTextAlignment="Center" />
 
-                            <Label Grid.Row="2" Margin="5,0,0,0">
+                            <Label
+                                Grid.Row="2"
+                                Margin="5,0,0,0"
+                                Padding="0,0,0,0">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span
-                                            FontSize="Medium"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
                                             Text="$RD "
                                             TextColor="Red" />
                                         <Span
                                             FontAttributes="Bold"
-                                            FontSize="Medium"
+                                            FontSize="Small"
                                             Text="{Binding Price, StringFormat='{0:#,0.#0}'}"
-                                            TextColor="Red" />
+                                            TextColor="Black" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

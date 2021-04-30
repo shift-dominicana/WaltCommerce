@@ -133,6 +133,15 @@ namespace Ecommerce.Mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy throut Whatsapp.
+        /// </summary>
+        public static string DpAskWhatsapp {
+            get {
+                return ResourceManager.GetString("DpAskWhatsapp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string DpCategory {

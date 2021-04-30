@@ -141,6 +141,9 @@
   <data name="DpAddToCart" xml:space="preserve">
     <value>Add To Cart</value>
   </data>
+  <data name="DpAskWhatsapp" xml:space="preserve">
+    <value>Buy throut Whatsapp</value>
+  </data>
   <data name="DpCategory" xml:space="preserve">
     <value>Category</value>
   </data>

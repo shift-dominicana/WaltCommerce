@@ -220,10 +220,10 @@
                 <Button
                     Grid.Row="1"
                     BackgroundColor="Navy"
-                    Command="{Binding AddToCartCommand}"
+                    Command="{Binding AskWhatsappCommand}"
                     CornerRadius="10"
                     FontSize="Medium"
-                    Text="Buy Now"
+                    Text="{i18n:Translate DpAskWhatsapp}"
                     TextColor="White"
                     VerticalOptions="EndAndExpand" />
             </Grid>
