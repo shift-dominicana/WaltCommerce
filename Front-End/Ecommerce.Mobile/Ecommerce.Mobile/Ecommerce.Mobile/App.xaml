@@ -23,6 +23,12 @@
         <Color x:Key="PillColor">Gray</Color>
         <Color x:Key="PillTextColor">#000</Color>
         <Color x:Key="BodyTextColor">White</Color>
+        <Color x:Key="PrimaryColor">#000</Color>
+
+        <!--  Icons  -->
+        <x:String x:Key="List">&#xf00b;</x:String>
+        <x:String x:Key="ShoppingCart">&#xf07a;</x:String>
+
 
 
 

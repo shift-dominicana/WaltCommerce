@@ -8,42 +8,80 @@
     xmlns:prism="http://prismlibrary.com"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     prism:ViewModelLocator.AutowireViewModel="True"
-    NavigationPage.HasNavigationBar="True">
-
+    NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
 
+        <Grid Margin="10" RowSpacing="30">
+            <Grid
+                Margin="0"
+                Padding="0"
+                ColumnDefinitions="15*,72*,13*">
+                <ImageButton
+                    Grid.Column="0"
+                    HeightRequest="40"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="40"
+                    Clicked="MasterDetailButton_Pressed">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="{DynamicResource MaterialFontFamily}"
+                            Glyph="{StaticResource List}"
+                            Size="40"
+                            Color="{StaticResource PrimaryColor}" />
+                    </ImageButton.Source>
+                </ImageButton>
+                
+                
 
-
-        <Grid Margin="20" RowSpacing="30">
-            <Grid ColumnDefinitions="Auto,*,Auto">
-
-
-                <SearchBar
-                    x:Name="searchBar"
+                <Frame
                     Grid.Column="1"
-                    Placeholder="{i18n:Translate PhSearch}"
-                    SearchCommand="{Binding FilterCommand}"
-                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
-                    Text="{Binding Critery}" />
+                    Margin="0,0,0,0"
+                    Padding="1,1,1,1"
+                    BackgroundColor="Transparent"
+                    HeightRequest="15"
+                    OutlineColor="Black"
+                    WidthRequest="130">
 
+                    <SearchBar
+                        x:Name="searchBar"
+                        Margin="0"
+                        BackgroundColor="Transparent"
+                        Keyboard="Text"
+                        Placeholder="{i18n:Translate PhSearch}"
+                        SearchCommand="{Binding FilterCommand}"
+                        SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
+                        Text="{Binding Critery}" />
+                </Frame>
 
                 <Frame
                     Grid.Column="2"
+                    Margin="0"
                     Padding="0"
                     BackgroundColor="Transparent">
                     <xct:BadgeView
+                        Margin="0"
+                        Padding="0"
                         BackgroundColor="Red"
-                        BadgePosition="TopRight"
+                        BadgePosition="TopLeft"
                         FontAttributes="Bold"
-                        FontSize="Caption"
+                        FontSize="Small"
                         Text="{Binding ItemValue}"
                         TextColor="White">
                         <Image
-                            HeightRequest="35"
-                            Source="Cart.png"
+                            HeightRequest="40"
                             VerticalOptions="Center"
-                            WidthRequest="35" />
+                            WidthRequest="40" >
+                            <Image.Source>
+                                <FontImageSource
+                                FontFamily="{DynamicResource MaterialFontFamily}"
+                                Glyph="{StaticResource ShoppingCart}"
+                                Size="60"
+                                Color="{StaticResource PrimaryColor}" />
+                            </Image.Source>
+                        </Image>
+                        
                     </xct:BadgeView>
 
                     <Frame.GestureRecognizers>
@@ -76,15 +114,16 @@
                         <Frame
                             x:Name="frameCategory"
                             Margin="0,0,0,0"
-                            Padding="1,1,1,1"
+                            Padding="1,0,1,0"
                             BackgroundColor="Transparent"
-                            HeightRequest="15"
+                            CornerRadius="20"
+                            HeightRequest="1"
                             OutlineColor="Black"
-                            WidthRequest="130">
+                            WidthRequest="100">
                             <StackLayout VerticalOptions="FillAndExpand">
                                 <Label
                                     Margin="0,5,0,0"
-                                    FontSize="22"
+                                    FontSize="17"
                                     HorizontalOptions="Center"
                                     Text="{Binding Description}"
                                     TextColor="Black"
@@ -92,6 +131,7 @@
 
                             </StackLayout>
                         </Frame>
+
 
 
                         <Grid.Resources>
