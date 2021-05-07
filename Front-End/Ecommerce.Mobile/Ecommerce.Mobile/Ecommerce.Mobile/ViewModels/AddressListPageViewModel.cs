@@ -104,6 +104,7 @@ namespace Ecommerce.Mobile.ViewModels
             {
                 User = _preferences.User;
                 base.OnNavigatedTo(parameters);
+                AddressesList.Clear();
                 var List  = await Utilities.GetAddress(_apiServices, _preferences.User.Id);
                 List.ForEach(x => AddressesList.Add(x));
 

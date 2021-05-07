@@ -28,6 +28,7 @@
         <!--  Icons  -->
         <x:String x:Key="List">&#xf00b;</x:String>
         <x:String x:Key="ShoppingCart">&#xf07a;</x:String>
+        <x:String x:Key="Trash">&#xf1f8;</x:String>
 
 
 

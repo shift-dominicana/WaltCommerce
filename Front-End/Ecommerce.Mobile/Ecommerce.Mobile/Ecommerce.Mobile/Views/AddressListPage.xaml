@@ -10,8 +10,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="85*" />
-            <RowDefinition Height="15*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="70" />
         </Grid.RowDefinitions>
 
         <!--<BoxView Grid.Row="0" Color="#FF3399" />

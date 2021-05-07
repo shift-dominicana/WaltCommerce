@@ -149,8 +149,15 @@
                                     Command="{Binding Path=BindingContext.DeleteButtonCmd, Source={x:Reference CartCollection}}"
                                     CommandParameter="{Binding .}"
                                     HorizontalOptions="Center"
-                                    Source="delete.png"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="{DynamicResource MaterialFontFamily}"
+                                            Glyph="{StaticResource Trash}"
+                                            Size="40"
+                                            Color="{StaticResource PrimaryColor}" />
+                                    </ImageButton.Source>
+                                </ImageButton>
 
                             </Grid>
 

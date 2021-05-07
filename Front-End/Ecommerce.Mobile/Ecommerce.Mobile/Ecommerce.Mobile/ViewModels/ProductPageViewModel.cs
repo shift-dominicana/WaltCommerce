@@ -110,11 +110,14 @@ namespace Ecommerce.Mobile.ViewModels
             }
 
             var ListCategories = (List<ProductCategory>)response.Result;
+            CategoryModelList.Add(new ProductCategory() { Id = 0, Description = Messages.CategoryAll, IsDeleted = false, Identificator = "ALL" });
             ListCategories.ForEach(x => CategoryModelList.Add(x));
 
             //var list = ListCategories.Select(x => x.Products).ToList();            
             foreach (ProductCategory x in CategoryModelList)
             {
+                if (x.Id == 0)
+                    continue;
 
                 foreach (Product y in x.Products)
                 {
@@ -132,6 +135,19 @@ namespace Ecommerce.Mobile.ViewModels
             ProductList.Clear();
             foreach (ProductCategory x in CategoryModelList)
             {
+                if (CategorySelected.Id == 0) {
+
+                    if (x.Id == 0)
+                        continue;
+
+                    foreach (var Product in x.Products)
+                    {
+                        ProductList.Add(Product);
+                    }
+
+                    continue;
+                }
+                
                 if (x.Id == CategorySelected.Id) 
                 {
                     foreach (var Product in x.Products)

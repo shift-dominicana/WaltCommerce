@@ -53,6 +53,9 @@ namespace Ecommerce.Mobile.Helpers.I18n
         public static string CreateAddressMsg => Resource.CreateAddressMsg;
         public static string UpdateAddressMsg => Resource.UpdateAddressMsg;
 
+        //Categories
+        public static string CategoryAll => Resource.categoryAll;
+
 
     }
 }

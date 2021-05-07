@@ -12,18 +12,26 @@
 
     <StackLayout>
 
-        <Grid Margin="10" RowSpacing="30">
+        <Grid
+            Margin="10,0,10,0"
+            RowDefinitions="40,50,30"
+            RowSpacing="3">
             <Grid
+                Grid.Row="0"
                 Margin="0"
                 Padding="0"
-                ColumnDefinitions="15*,72*,13*">
+                BackgroundColor="Transparent"
+                ColumnDefinitions="15*,52*,23*">
                 <ImageButton
+                    Grid.Row="0"
                     Grid.Column="0"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
+                    Margin="0"
+                    Padding="0"
+                    Clicked="MasterDetailButton_Pressed"
+                    HeightRequest="30"
+                    HorizontalOptions="Start"
                     VerticalOptions="Center"
-                    WidthRequest="40"
-                    Clicked="MasterDetailButton_Pressed">
+                    WidthRequest="40">
                     <ImageButton.Source>
                         <FontImageSource
                             FontFamily="{DynamicResource MaterialFontFamily}"
@@ -32,11 +40,58 @@
                             Color="{StaticResource PrimaryColor}" />
                     </ImageButton.Source>
                 </ImageButton>
-                
-                
+
 
                 <Frame
-                    Grid.Column="1"
+                    Grid.Column="2"
+                    Margin="0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End">
+
+                    <xct:BadgeView
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="Red"
+                        BadgePosition="TopRight"
+                        FontAttributes="None"
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="{Binding ItemValue}"
+                        TextColor="White"
+                        VerticalOptions="Center">
+
+
+                        <Image
+                            HeightRequest="40"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            WidthRequest="35">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="{DynamicResource MaterialFontFamily}"
+                                    Glyph="{StaticResource ShoppingCart}"
+                                    Size="60"
+                                    Color="{StaticResource PrimaryColor}" />
+                            </Image.Source>
+                        </Image>
+                    </xct:BadgeView>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ViewCartCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+
+            </Grid>
+            <Grid
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="Transparent"
+                ColumnDefinitions="*">
+
+                <Frame
                     Margin="0,0,0,0"
                     Padding="1,1,1,1"
                     BackgroundColor="Transparent"
@@ -55,39 +110,25 @@
                         Text="{Binding Critery}" />
                 </Frame>
 
-                <Frame
-                    Grid.Column="2"
+            </Grid>
+
+            <Grid
+                Grid.Row="2"
+                Margin="0"
+                Padding="0"
+                ColumnDefinitions="*">
+
+
+
+                <Label
                     Margin="0"
                     Padding="0"
-                    BackgroundColor="Transparent">
-                    <xct:BadgeView
-                        Margin="0"
-                        Padding="0"
-                        BackgroundColor="Red"
-                        BadgePosition="TopLeft"
-                        FontAttributes="Bold"
-                        FontSize="Small"
-                        Text="{Binding ItemValue}"
-                        TextColor="White">
-                        <Image
-                            HeightRequest="40"
-                            VerticalOptions="Center"
-                            WidthRequest="40" >
-                            <Image.Source>
-                                <FontImageSource
-                                FontFamily="{DynamicResource MaterialFontFamily}"
-                                Glyph="{StaticResource ShoppingCart}"
-                                Size="60"
-                                Color="{StaticResource PrimaryColor}" />
-                            </Image.Source>
-                        </Image>
-                        
-                    </xct:BadgeView>
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="Compra por categoría" />
 
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ViewCartCommand}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
+
 
             </Grid>
 
@@ -116,13 +157,13 @@
                             Margin="0,0,0,0"
                             Padding="1,0,1,0"
                             BackgroundColor="Transparent"
-                            CornerRadius="20"
+                            CornerRadius="0"
                             HeightRequest="1"
                             OutlineColor="Black"
                             WidthRequest="100">
                             <StackLayout VerticalOptions="FillAndExpand">
                                 <Label
-                                    Margin="0,5,0,0"
+                                    Margin="0,10,0,0"
                                     FontSize="17"
                                     HorizontalOptions="Center"
                                     Text="{Binding Description}"
