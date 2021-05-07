@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   authenticated: false,
   hmr: false,
+  baseUrl: 'http://138.197.75.214/',
 }
 
 /*

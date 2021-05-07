@@ -15,7 +15,6 @@ export class DashboardAnalyticsComponent implements OnInit {
   getListProduct() {
     this._productService.getListProducts().subscribe(
       data => {
-        console.log(data)
         this.listProducts = data
       },
       error => {
