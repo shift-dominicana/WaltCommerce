@@ -1,0 +1,58 @@
+@import 'src/mixins.scss';
+
+.air {
+  &__utils {
+    &__content {
+      padding: rem(30);
+      margin: 0 auto;
+
+      @media (max-width: $sm-max-width) {
+        padding: rem(30) rem(16);
+      }
+    }
+
+    @at-root .kit__utils__heading,
+      &__heading {
+      color: $black;
+      padding-bottom: rem(10);
+      border-bottom: 1px solid $border;
+      position: relative;
+      margin-bottom: rem(40);
+      &:after {
+        position: absolute;
+        display: block;
+        content: '';
+        left: 0;
+        bottom: -3px;
+        height: 7px;
+        width: 35px;
+        border-radius: 7px;
+        background: $blue;
+      }
+    }
+
+    &__shadow {
+      box-shadow: $shadow-ant;
+    }
+  }
+}
+
+// dark theme
+[data-kit-theme='dark'] {
+  .air {
+    &__utils {
+      &__heading {
+        color: $dark-gray-1;
+        border-color: $dark-gray-4;
+      }
+    }
+  }
+  .kit {
+    &__utils {
+      &__heading {
+        color: $dark-gray-1;
+        border-color: $dark-gray-4;
+      }
+    }
+  }
+}

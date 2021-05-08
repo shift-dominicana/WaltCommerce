@@ -1,0 +1,51 @@
+<nz-layout>
+  <nz-content>
+    <air-sidebar></air-sidebar>
+    <air-support-chat></air-support-chat>
+    <div class="authContainer" [ngClass]="{
+        'cui__layout__squaredBorders': isSquaredBorders,
+        'cui__layout__cardsShadow': isCardShadow,
+        'cui__layout__borderless': isBorderless,
+        'white': authPagesColor === 'white',
+        'gray': authPagesColor === 'gray'
+
+      }" [ngStyle]="{backgroundImage: authPagesColor === 'image' ? 'url(assets/images/content/photos/8.jpg)' : ''}">
+      <div class="pt-5 pb-5 d-flex align-items-end mt-auto">
+        <a href="#" class="authLogo">
+          <div class="authLogo__letter">A</div>
+          <div class="authLogo__name">{{logo}}</div>
+          <div class="authLogo__descr">{{description}}</div>
+        </a>
+      </div>
+      <div class="containerInner">
+        <div [@slideFadeinUp]="routeAnimation(outlet, 'slideFadeinUp')"
+          [@slideFadeinRight]="routeAnimation(outlet, 'slideFadeinRight')"
+          [@zoomFadein]="routeAnimation(outlet, 'zoomFadein')" [@fadein]="routeAnimation(outlet, 'fadein')">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </div>
+      <div class="mt-auto pb-5 pt-5">
+        <ul class="footerNav list-unstyled d-flex mb-0 flex-wrap justify-content-center">
+          <li class="list-inline-item">
+            <a href="javascript: void(0);">Terms of Use</a>
+          </li>
+          <li class="active list-inline-item">
+            <a href="javascript: void(0);">Compliance</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="javascript: void(0);">Support</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="javascript: void(0);">Contacts</a>
+          </li>
+        </ul>
+        <div class="text-center">
+          Copyright © 2017-2020 Mdtk Soft |
+          <a href="https://www.mediatec.org/privacy" target="_blank" rel="noopener noreferrer">
+            Privacy Policy
+          </a>
+        </div>
+      </div>
+    </div>
+  </nz-content>
+</nz-layout>
