@@ -25,23 +25,23 @@
       <span></span>
     </a>
     <a href="javascript: void(0);" class="air__menuLeft__logo">
-      <div class="air__menuLeft__logo__letter">A</div>
-      <div class="air__menuLeft__logo__name">{{ logo }}</div>
-      <div class="air__menuLeft__logo__descr">{{ description }}</div>
+      <div class="air__menuLeft__logo__letter">LP</div>
+      <div class="air__menuLeft__logo__name">Locos Phone</div>
+      <div class="air__menuLeft__logo__descr">Admin Back Office</div>
     </a>
     <a href="javascript: void(0);" class="air__menuLeft__user">
       <div class="air__menuLeft__user__avatar">
         <img src="assets/images/avatars/avatar.png" alt="David Beckham" />
       </div>
-      <div class="air__menuLeft__user__name">David Beckham</div>
+      <div class="air__menuLeft__user__name">Admin</div>
       <div class="air__menuLeft__user__role">Administrator</div>
     </a>
     <perfect-scrollbar>
       <div class="air__menuLeft__container">
         <ul class="air__menuLeft__list">
           <li class="air__menuLeft__category">
-            <span>Information</span>
-          </li>
+            <span>Back Office</span>
+          </li> 
           <li class="air__menuLeft__item">
             <a href="javascript: void(0);" class="air__menuLeft__link" (click)="toggleSettings()">
               <i class="fe fe-settings air__menuLeft__icon"></i>
@@ -52,20 +52,12 @@
             <a href="https://docs.sellpixels.com/" class="air__menuLeft__link" target="_blank"
               rel="noopener noreferrer">
               <i class="fe fe-compass air__menuLeft__icon"></i>
-              <span>Documentation</span>
+              <span>Products</span>
             </a>
           </li>
-          <ng-container *ngFor="let item of menuData">
-            <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
-            <ng-container *ngTemplateOutlet="submenuTpl; context: {$implicit: item}"></ng-container>
-            <ng-container *ngTemplateOutlet="categoryTpl; context: {$implicit: item}"></ng-container>
-          </ng-container>
+          
         </ul>
-        <div class="air__menuLeft__banner">
-          <p>More components, more styles, more themes, and premium support!</p>
-          <a href="https://themeforest.net/item/air-ui-multi-concept-admin-template/24434456" target="_blank"
-            rel="noopener noreferrer" class="btn btn-white text-center d-block">Buy Air UI</a>
-        </div>
+       
       </div>
     </perfect-scrollbar>
   </div>
