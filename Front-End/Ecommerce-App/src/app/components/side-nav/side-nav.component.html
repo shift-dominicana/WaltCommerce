@@ -1,1 +1,49 @@
+<div>
 <p>side-nav works!</p>
+
+<perfect-scrollbar>
+  <ng-container *ngFor="let item of menuData">
+    <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
+    <ng-container *ngTemplateOutlet="submenuTpl; context: {$implicit: item}"></ng-container>
+    <ng-container *ngTemplateOutlet="categoryTpl; context: {$implicit: item}"></ng-container>
+  </ng-container>
+</perfect-scrollbar>
+</div>
+
+<ng-template #itemTpl let-item>
+  <ng-container *ngIf="!item.children && !item.category">
+    <li class="air__menuLeft__item" [ngClass]="{air__menuLeft__item__active: item.key === activeItem}">
+      <a [routerLink]="item.url ? item.url : 'javascript: void(0)'" class="air__menuLeft__link">
+        <i *ngIf="item.icon" class="air__menuLeft__icon" [ngClass]="item.icon"></i>
+        <span>{{ item.title }}</span>
+        <span *ngIf="item.count" class="badge text-white bg-blue-light float-right mt-1 px-2">{{ item.count }}</span>
+      </a>
+    </li>
+  </ng-container>
+</ng-template>
+<ng-template #submenuTpl let-item>
+  <ng-container *ngIf="item.children">
+    <li class="air__menuLeft__item air__menuLeft__submenu"
+      [ngClass]="{air__menuLeft__submenu__active: item.key === activeSubmenu}">
+      <a href="javascript: void(0);" class="air__menuLeft__link" (click)="handleSubmenuClick(item.key)"
+        (mouseenter)="handleFlyoutOver($event, item.key, item.children)" (mouseleave)="handleFlyoutOut(item.key)">
+        <i *ngIf="item.icon" class="air__menuLeft__icon" [ngClass]="item.icon"></i>
+        <span>{{ item.title }}</span>
+        <span *ngIf="item.count" class="badge text-white bg-blue-light float-right mt-1 px-2">{{ item.count }}</span>
+      </a>
+      <ul class="air__menuLeft__list">
+        <ng-container *ngFor="let item of item.children">
+          <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
+        </ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ng-template>
+<ng-template #categoryTpl let-item>
+  <ng-container *ngIf="item.category">
+    <li class="air__menuLeft__category">
+      <span>{{ item.title }}</span>
+      <span *ngIf="item.count" class="badge text-white bg-blue-light float-right mt-1 px-2">{{ item.count }}</span>
+    </li>
+  </ng-container>
+</ng-template>
