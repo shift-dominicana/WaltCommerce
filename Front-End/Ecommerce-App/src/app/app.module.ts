@@ -21,6 +21,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ConfigGeneralComponent } from './components/config-general/config-general.component';
 import { CrudProductComponent } from './components/crud-product/crud-product.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -40,6 +42,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    HttpClientModule,
     FormsModule, 
     MaterialModule, StoreModule.forRoot({}, {}),
     PerfectScrollbarModule,
