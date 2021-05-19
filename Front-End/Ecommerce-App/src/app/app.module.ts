@@ -23,6 +23,7 @@ import { CrudProductComponent } from './components/crud-product/crud-product.com
 
 import { HttpClientModule } from '@angular/common/http';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -37,6 +38,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ConfigGeneralComponent,
     CrudProductComponent,
     ViewUsersComponent,
+    TopBarComponent,
   ],
   imports: [
     CommonModule,
