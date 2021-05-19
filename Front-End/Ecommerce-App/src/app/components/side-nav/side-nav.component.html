@@ -1,13 +1,11 @@
 <div>
-<p>side-nav works!</p>
-
-<perfect-scrollbar>
-  <ng-container *ngFor="let item of menuData">
-    <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
-    <ng-container *ngTemplateOutlet="submenuTpl; context: {$implicit: item}"></ng-container>
-    <ng-container *ngTemplateOutlet="categoryTpl; context: {$implicit: item}"></ng-container>
-  </ng-container>
-</perfect-scrollbar>
+  <perfect-scrollbar>
+    <ng-container *ngFor="let item of menuData">
+      <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
+      <ng-container *ngTemplateOutlet="submenuTpl; context: {$implicit: item}"></ng-container>
+      <ng-container *ngTemplateOutlet="categoryTpl; context: {$implicit: item}"></ng-container>
+    </ng-container>
+  </perfect-scrollbar>
 </div>
 
 <ng-template #itemTpl let-item>

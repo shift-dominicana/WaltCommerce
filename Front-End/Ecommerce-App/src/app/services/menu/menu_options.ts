@@ -1,11 +1,11 @@
 export const getMenuData: any[] = [  
     {
-      title: 'Parametros',
+      title: 'Configuración',
       key: 'configs',
       icon: 'fe fe-home',
       children: [
         {
-          title: 'Generales',
+          title: 'Config. General',
           key: 'Generales',
           url: '/parametros/generales',
         },
@@ -22,6 +22,29 @@ export const getMenuData: any[] = [
           key: 'crud-products',
           url: '/mantenimientos/productos',
         },
+      ],
+    },
+    {
+      title: 'Consultas',
+      key: 'views',
+      icon: 'fe fe-database',
+      children: [
+        {
+          title: 'Usuarios',
+          key: 'view-users',
+          url: '/consultas/usuarios',
+        },
+        {
+          title: 'Ventas',
+          key: 'view-users',
+          url: '/consultas/ventas',
+        },
+        {
+          title: 'Ordenes Abiertas',
+          key: 'view-users',
+          url: '/consultas/ordenes-abiertas',
+        }
+
       ],
     },
   ]

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ConfigGeneralComponent } from './components/config-general/config-general.component';
 import { CrudProductComponent } from './components/crud-product/crud-product.component';
+import { ViewUsersComponent } from './components/view-users/view-users.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,13 @@ const routes: Routes = [
     path: 'mantenimientos/productos',
     component: CrudProductComponent,
     data: { title: 'Productos' }
+  },
+  {
+    path: 'consultas/usuarios',
+    component: ViewUsersComponent,
+    data: { title: 'Cons. Usuarios' }
   }
+  
 ];
 
 @NgModule({
