@@ -24,6 +24,7 @@ import { CrudProductComponent } from './components/crud-product/crud-product.com
 import { HttpClientModule } from '@angular/common/http';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -50,6 +51,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule, 
     MaterialModule, StoreModule.forRoot({}, {}),
     PerfectScrollbarModule,
+    NgbModule,
   ],
   providers: [
     {
