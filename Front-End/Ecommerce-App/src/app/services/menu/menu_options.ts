@@ -19,8 +19,13 @@ export const getMenuData: any[] = [
       children: [
         {
           title: 'Productos',
-          key: 'crud-products',
+          key: 'crud-product',
           url: '/mantenimientos/productos',
+        },
+        {
+          title: 'Categorias de productos',
+          key: 'crud-category',
+          url: '/mantenimientos/prod-categorias',
         },
       ],
     },
@@ -35,14 +40,9 @@ export const getMenuData: any[] = [
           url: '/consultas/usuarios',
         },
         {
-          title: 'Ventas',
-          key: 'view-users',
-          url: '/consultas/ventas',
-        },
-        {
-          title: 'Ordenes Abiertas',
-          key: 'view-users',
-          url: '/consultas/ordenes-abiertas',
+          title: 'Ordenes',
+          key: 'view-orders',
+          url: '/consultas/ordenes',
         }
 
       ],

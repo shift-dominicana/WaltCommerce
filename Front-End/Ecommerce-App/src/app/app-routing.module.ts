@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ConfigGeneralComponent } from './components/config-general/config-general.component';
 import { CrudProductComponent } from './components/crud-product/crud-product.component';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
+import { CrudCategoryComponent } from './components/crud-category/crud-category.component';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 const routes: Routes = [
   {
@@ -27,10 +29,21 @@ const routes: Routes = [
     data: { title: 'Productos' }
   },
   {
+    path: 'mantenimientos/prod-categorias',
+    component: CrudCategoryComponent,
+    data: { title: 'Productos' }
+  },  
+  {
     path: 'consultas/usuarios',
     component: ViewUsersComponent,
-    data: { title: 'Cons. Usuarios' }
+    data: { title: 'Usuarios' }
+  },
+  {
+    path: 'consultas/ordenes',
+    component: ViewOrdersComponent,
+    data: { title: 'Ordenes' }
   }
+  
   
 ];
 

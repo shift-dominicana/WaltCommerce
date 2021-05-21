@@ -1,4 +1,4 @@
-<div class="card">
+
   <perfect-scrollbar>
     <ng-container *ngFor="let item of menuData">
       <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
@@ -6,7 +6,6 @@
       <ng-container *ngTemplateOutlet="categoryTpl; context: {$implicit: item}"></ng-container>
     </ng-container>
   </perfect-scrollbar>
-</div>
 
 <ng-template #itemTpl let-item>
   <ng-container *ngIf="!item.children && !item.category">

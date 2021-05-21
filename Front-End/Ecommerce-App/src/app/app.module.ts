@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CrudCategoryComponent } from './components/crud-category/crud-category.component';
+import { ViewOrdersComponent } from './components/view-orders/view-orders.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -40,6 +42,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CrudProductComponent,
     ViewUsersComponent,
     TopBarComponent,
+    CrudCategoryComponent,
+    ViewOrdersComponent,
   ],
   imports: [
     CommonModule,

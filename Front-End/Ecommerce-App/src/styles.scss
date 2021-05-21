@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-#border {border-color: coral; width: 300;}
+#border {border-color: black; width: 300;}
+
+/* You can add global styles to this file, and also import other style files */
+@import 'app/@kit/vendors/antd/style';
+@import 'app/@kit/vendors/bootstrap/style';
+@import 'app/@kit/vendors/nprogress/style';
+@import 'app/@kit/vendors/chartist/style';
+@import 'app/@kit/vendors/chartist-tooltip-plugin/style';
+@import 'app/@kit/vendors/perfect-scrollbar/style';
+@import 'app/@kit/vendors/nestable/style';
+@import 'app/@kit/vendors/quill/style';
+
+@import 'app/@kit/core/style'; // KIT core styles
+@import 'app/@air/styles/style'; // Air UI styles
