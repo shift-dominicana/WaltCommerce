@@ -1,12 +1,20 @@
 
 <!-- Creates a layout with a left-positioned sidenav and explicit content. -->
+<html lang="en" data-kit-theme="default">
+<head>
+  <base href="/">
+  <link rel="stylesheet" type="text/css" href="/assets/fonts/font-feathericons/dist/feather.css">
 
-<app-top-bar></app-top-bar>
+</head>
+<body>
 <mat-sidenav-container>
   <mat-sidenav mode="side" [(opened)] = "navbar_opened">
     <app-side-nav></app-side-nav>
   </mat-sidenav>
   <mat-sidenav-content>
+    <app-top-bar></app-top-bar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</body>
+</html>
