@@ -1,5 +1,6 @@
 
   <perfect-scrollbar>
+    <h2 class="text-white">Back Office</h2>
     <ng-container *ngFor="let item of menuData">
       <ng-container *ngTemplateOutlet="itemTpl; context: {$implicit: item}"></ng-container>
       <ng-container *ngTemplateOutlet="submenuTpl; context: {$implicit: item}"></ng-container>

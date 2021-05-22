@@ -1,8 +1,14 @@
 export const getMenuData: any[] = [  
     {
+      title: 'Home',
+      key: 'home',
+      icon: 'fe fe-home',
+      url: '/home',
+    },
+    {
       title: 'Configuración',
       key: 'configs',
-      icon: 'fe fe-home',
+      icon: 'fe fe-settings',
       children: [
         {
           title: 'Config. General',
@@ -32,7 +38,7 @@ export const getMenuData: any[] = [
     {
       title: 'Consultas',
       key: 'views',
-      icon: 'fe fe-database',
+      icon: 'fe fe-pie-chart',
       children: [
         {
           title: 'Usuarios',
