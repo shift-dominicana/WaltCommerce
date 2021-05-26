@@ -11,7 +11,7 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.stock }}</td>
                 <td class="text-right">
-                  <a href="javascript: void(0);" class="btn btn-sm btn-light" slot="actions" (click)="triggerModal(modalData)">
+                  <a href="javascript: void(0);" class="btn btn-sm btn-light" slot="actions" (click)="openModal(modalData)">
                     <i class="fe fe-edit mr-1"></i> Edit
                   </a>
                 </td>
@@ -36,25 +36,36 @@
       </button>
     </div>
     <div class="modal-body">
-      <p><strong>Are you sure you want to delete <span class="text-primary">"Agatha Harkness"</span> profile?</strong></p>
+      <nav ngbNav #nav="ngbNav" class="nav-tabs">
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Datos Basicos</a>
+          <ng-template ngbNavContent>
+            <p>Datos basicos</p>
+          </ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Especificaciones</a>
+          <ng-template ngbNavContent>
+            <p>Especificaciones de productos</p>
+          </ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Imagenes</a>
+          <ng-template ngbNavContent>
+            <p>Imagenes del producto</p>
+          </ng-template>
+        </ng-container>
+        <ng-container ngbNavItem>
+          <a ngbNavLink>Productos Similares</a>
+          <ng-template ngbNavContent>
+            <p>Productos similares</p>
+          </ng-template>
+        </ng-container>
+      </nav>
       
-      <p>All data related to west view profile will be removed permanently.
-      </p>
-
-      <form>
-        <div class="form-group row form-inline">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-          </div>
-          <label for="staticEmail" class="col-sm-10 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-          </div>
-        </div>
-      </form>   
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
-    </div>
+    </div>  
   </ng-template>

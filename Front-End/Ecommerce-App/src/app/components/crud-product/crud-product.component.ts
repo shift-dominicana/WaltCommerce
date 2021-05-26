@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product/product.service';
-
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -29,8 +28,8 @@ export class CrudProductComponent implements OnInit {
     )
   }
 
-  triggerModal(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+  openModal(content) {
+    this.modalService.open(content, {size:'xl',ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
