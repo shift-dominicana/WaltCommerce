@@ -21,7 +21,7 @@
                   href="javascript: void(0);"
                   class="btn btn-sm btn-light"
                   slot="actions"
-                  (click)="openModal(modalData)"
+                  (click)="onEdit(category, modalData)"
                 >
                   <i class="fe fe-edit mr-1"></i> Edit
                 </a>
@@ -59,14 +59,13 @@
   </div>
   <div class="modal-body">
     <nav ngbNav #nav="ngbNav" class="nav-tabs">
-      <ng-container ngbNavItem>
-        <a ngbNavLink>Datos Basicos</a>
-        <ng-template ngbNavContent>
-          <p>Datos basicos</p>
+      <input type="hidden" name="id" #$key="ngModel" [(ngModel)]="categoryService.selectedCategory.Id">
           <input
             type="text"
             class="form-control"
             id="exampleInputEmail1"
+            name="Identificator"
+            [(ngModel)]="categoryService.selectedCategory.Identificator"
             aria-describedby="emailHelp"
             placeholder="Enter Identificator"
           />
@@ -74,11 +73,11 @@
             type="text"
             class="form-control"
             id="exampleInputEmail1"
+            [(ngModel)]="categoryService.selectedCategory.Description"
             aria-describedby="emailHelp"
             placeholder="Enter Description"
           />
-        </ng-template>
-      </ng-container>
+
     </nav>
 
     <div [ngbNavOutlet]="nav" class="mt-2"></div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category/category.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Category } from 'src/app/models/Category';
 
 @Component({
   selector: 'app-crud-category',
@@ -10,7 +11,8 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class CrudCategoryComponent implements OnInit {
   CategoryList: any[] = []
   closeModal: string;
-  constructor(private _categoryService: CategoryService,
+  constructor(
+    public categoryService: CategoryService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -18,7 +20,7 @@ export class CrudCategoryComponent implements OnInit {
   }
 
   getCategories() {
-    this._categoryService.getCategories().subscribe(
+    this.categoryService.getCategories().subscribe(
       data => {
         this.CategoryList = data
       },
@@ -44,5 +46,10 @@ export class CrudCategoryComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+  onEdit(category: Category, content) {
+    this.categoryService.selectedCategory = Object.assign({}, category);
+    this.openModal(content);
   }
 }
