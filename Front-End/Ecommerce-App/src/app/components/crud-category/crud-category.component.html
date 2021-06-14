@@ -1,12 +1,6 @@
 <div>
   <div class="col-lg-7">
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="openModal(modalData)"
-    >
-      Add
-    </button>
+    
     <div class="card">
       <div class="card-body">
         <h3 class="titulo">Categorias</h3>
@@ -21,7 +15,7 @@
                   href="javascript: void(0);"
                   class="btn btn-sm btn-light"
                   slot="actions"
-                  (click)="onEdit(category, modalData)"
+                  (click)="openModal(modalData, category)"
                 >
                   <i class="fe fe-edit mr-1"></i> Edit
                 </a>
@@ -58,35 +52,44 @@
     </button>
   </div>
   <div class="modal-body">
-    <nav ngbNav #nav="ngbNav" class="nav-tabs">
-      <input type="hidden" name="id" #$key="ngModel" [(ngModel)]="categoryService.selectedCategory.Id">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            name="Identificator"
-            [(ngModel)]="categoryService.selectedCategory.Identificator"
-            aria-describedby="emailHelp"
-            placeholder="Enter Identificator"
-          />
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            [(ngModel)]="categoryService.selectedCategory.Description"
-            aria-describedby="emailHelp"
-            placeholder="Enter Description"
-          />
+    
+      <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <label for="" >Id</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="id"
+          id="id"
+          disabled
+        />
 
-    </nav>
+        <label for="" >Identificador</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="identificator"
+          id="identificator"
+          placeholder="Enter Identificator"
+        />
 
-    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        <label for="" >Descripcion</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          id="description"
+          placeholder="Enter Identificator"
+        />
+
+        </form>
+    
+
   </div>
   <div class="modal-footer">
     <button
       type="button"
       class="btn btn-danger"
-      (click)="modal.close('Save click')"
+      (click)="onSubmit()"
     >
       Save
     </button>

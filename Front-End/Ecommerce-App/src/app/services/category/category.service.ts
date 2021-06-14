@@ -17,4 +17,8 @@ export class CategoryService {
   getCategories(): Observable<any>{
     return this.http.get(this.appUrl+this.apiUrl)
   }
+
+  update(data: any): Observable<any> {
+    return this.http.put(this.appUrl+this.apiUrl, data);
+  }
 }
