@@ -12,10 +12,10 @@ import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
 export class CrudCategoryComponent implements OnInit {
   CategoryList: any[] = []
   closeModal: string;
-  editProfileForm: FormGroup;
-  addProfileForm: FormGroup
+  saveProfileForm: FormGroup;
   message: string;
   closeResult: string;
+  SelectedCategory: Category;
   constructor(
     private fb: FormBuilder,
     public categoryService: CategoryService,
@@ -24,16 +24,13 @@ export class CrudCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
 
-    this.editProfileForm = this.fb.group({
+    this.saveProfileForm = this.fb.group({
       id: [''],
       identificator: [''],
       description: ['']
     });
-    this.addProfileForm = this.fb.group({
-      id: [''],
-      identificator: [''],
-      description: ['']
-    })
+
+    this.SelectedCategory = null;
   }
 
   getCategories() {
@@ -59,8 +56,16 @@ export class CrudCategoryComponent implements OnInit {
     );
   }
 
-  openAddModal(content) {
-    this.modalService.open(content)
+  createCategory(category: Category){
+    this.categoryService.create(category).subscribe(
+      response =>{
+        console.log(response);
+        this.message = response.message ? response.message : 'This category was updated successfully!';
+      },
+      error =>{
+        console.log(error);
+      }
+    );
   }
 
   openModal(content, category) {
@@ -79,35 +84,24 @@ export class CrudCategoryComponent implements OnInit {
         window.location.reload()
       })
     
-    if (this.categoryService.selectedCategory.Id === null) {
-      //console.log("New")
-      //this.openModal(this.addProfileForm, Category)
-      this.editProfileForm.patchValue({
-        id: 0,
+    if (category === "") 
+    {
+      this.saveProfileForm.patchValue({
+        id: "",
         identificator: "",
         description: ""
       });
+      this.SelectedCategory = null;
     }
-    else {
-      //this.onSubmit()
-      this.editProfileForm.patchValue({
+    else 
+    {
+      this.saveProfileForm.patchValue({
         id: category.id,
         identificator: category.identificator,
         description: category.description
       });
+      this.SelectedCategory = category;
     }
-  }
-
-  newCategory = {
-    id: 0,
-    identificator: "",
-    descripton: ""
-  }
-
-  addCategory() {
-    console.log("Klk", this.addProfileForm.value)
-    this.modalService.dismissAll();
-    window.location.reload()
   }
   
   private getDismissReason(reason: any): string {
@@ -123,17 +117,6 @@ export class CrudCategoryComponent implements OnInit {
     }
   }
 
-  onSaveCategory() {
-    if (this.categoryService.selectedCategory.Id === null) {
-      //console.log("New")
-      this.openModal(this.addProfileForm, Category)
-    }
-    else {
-      //console.log("Update")
-      this.onSubmit()
-    }
-  }
-
   closeModalApp() {
     this.modalService.dismissAll();
     window.location.reload()
@@ -141,7 +124,16 @@ export class CrudCategoryComponent implements OnInit {
 
   onSubmit() {
     this.modalService.dismissAll();
-    this.updateCategory(this.editProfileForm.getRawValue())
+    
+    if (this.SelectedCategory === null) 
+    {
+      this.createCategory(this.saveProfileForm.getRawValue())
+    }
+    else
+    {
+      this.updateCategory(this.saveProfileForm.getRawValue())
+    }
+
     window.location.reload()
    }
 }

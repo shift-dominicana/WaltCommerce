@@ -2,7 +2,7 @@
   <button
     type="button"
     class="btn btn-primary"
-    (click)="openModal(modalData, null)"
+    (click)="openModal(modalData, '')"
   >
     Add
   </button>
@@ -43,105 +43,6 @@
   </div>
 </div>
 
-<!-- Modal -->
-<!--<div
-  #modalAdd
-  id="modalCategory"
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <div class="form-group">
-            <input
-              type="text"
-              id="identificator"
-              name="Identificator"
-              class="form-control"
-              placeholder="Identificador"
-            />
-            <input
-              type="text"
-              id="description"
-              name="Description"
-              class="form-control"
-              placeholder="Descripción"
-            />
-          </div>
-          <button type="submit" class="btn primary float-right">Add</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</div>-->
-
-<!--<ng-template #modalAdd let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">
-      Angular Bootstrap Modal Popup
-    </h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="addProfileForm" (ngSubmit)="onSubmit()">
-      <input
-        type="text"
-        class="form-control"
-        id="identificator"
-        placeholder="Enter Identificator"
-        formControlName="identificator"
-      />
-
-      <input
-        type="text"
-        class="form-control"
-        id="description"
-        placeholder="Enter Descripción"
-        formControlName="description"
-      />
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="addCategory()">
-      Save
-    </button>
-    <button
-      type="button"
-      class="btn btn-danger"
-      (click)="modal.close('Save click')"
-    >
-      Close
-    </button>
-  </div>
-</ng-template>-->
-
 <ng-template #modalData let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">
@@ -157,7 +58,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="saveProfileForm" (ngSubmit)="onSubmit()">
       <label for="">Id</label>
       <input
         type="text"

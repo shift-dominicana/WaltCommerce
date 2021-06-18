@@ -21,4 +21,8 @@ export class CategoryService {
   update(data: any): Observable<any> {
     return this.http.put(this.appUrl+this.apiUrl, data);
   }
+
+  create(data: any): Observable<any> {
+    return this.http.post(this.appUrl+this.apiUrl, data);
+  }
 }
