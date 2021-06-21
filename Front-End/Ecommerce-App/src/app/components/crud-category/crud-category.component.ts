@@ -56,7 +56,7 @@ export class CrudCategoryComponent implements OnInit {
     );
   }
 
-  createCategory(category: Category){
+  createCategory(category){
     this.categoryService.create(category).subscribe(
       response =>{
         console.log(response);
@@ -127,7 +127,17 @@ export class CrudCategoryComponent implements OnInit {
     
     if (this.SelectedCategory === null) 
     {
-      this.createCategory(this.saveProfileForm.getRawValue())
+      let newCategory = new Category();
+      newCategory.Id = 0;
+      newCategory.CreatedBy = 'Hiciano';
+      newCategory.CreationDate = new Date();
+      newCategory.ModificatedBy = 'Hiciano';
+      newCategory.ModificationDate = new Date();
+      newCategory.IsDeleted = false;
+      newCategory.Identificator = this.saveProfileForm.value.identificator; 
+      newCategory.Description = this.saveProfileForm.value.description;
+      newCategory.OnTopInMainPage = false;
+      this.createCategory(JSON.stringify(newCategory))
     }
     else
     {
@@ -136,4 +146,6 @@ export class CrudCategoryComponent implements OnInit {
 
     window.location.reload()
    }
+
+   
 }

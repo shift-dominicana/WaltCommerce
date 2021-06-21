@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import {Category} from 'src/app/models/Category'
+
+
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+};
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +16,9 @@ import {Category} from 'src/app/models/Category'
 export class CategoryService {
   private appUrl = environment.baseUrl
   private apiUrl = 'api/ProductCategory'
+  
+  
+
   selectedCategory: Category = new Category();
 
   constructor(private http: HttpClient) { }
@@ -23,6 +32,6 @@ export class CategoryService {
   }
 
   create(data: any): Observable<any> {
-    return this.http.post(this.appUrl+this.apiUrl, data);
+    return this.http.post(this.appUrl+this.apiUrl, data, httpOptions);
   }
 }
