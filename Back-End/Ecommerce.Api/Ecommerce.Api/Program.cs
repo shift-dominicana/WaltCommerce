@@ -21,9 +21,8 @@ namespace Ecommerce.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    //webBuilder.UseUrls("http://localhost:5001", "https://localhost:5000");
-                    webBuilder.UseUrls("http://10.0.0.19:5001", "https://10.0.0.19:5000");
-                    //webBuilder.UseUrls("http://192.168.1.112:5001", "https://192.168.1.112:5000");
+                    webBuilder.UseUrls("http://localhost:5001", "https://localhost:5000");
+                    //webBuilder.UseUrls("http://10.0.0.19:5001", "https://10.0.0.19:5000");
                 });
 
     }

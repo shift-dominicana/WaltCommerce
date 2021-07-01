@@ -56,11 +56,23 @@ export class CrudCategoryComponent implements OnInit {
     );
   }
 
-  createCategory(category){
+  createCategory(category: any){
     this.categoryService.create(category).subscribe(
       response =>{
         console.log(response);
         this.message = response.message ? response.message : 'This category was updated successfully!';
+      },
+      error =>{
+        console.log(error);
+      },
+    );
+  }
+
+  deleteCategory(id: any){
+    this.categoryService.delete(id).subscribe(
+      response =>{
+        console.log(response);
+        this.message = response.message ? response.message : 'This category was deleted successfully!';
       },
       error =>{
         console.log(error);
@@ -103,6 +115,28 @@ export class CrudCategoryComponent implements OnInit {
       this.SelectedCategory = category;
     }
   }
+
+  openConfirmDelete(content, category) {
+    
+    this.modalService.open(content, {
+      centered: true,
+      backdrop: 'static',
+      size:'sm',
+      ariaLabelledBy: 'modal-basic-title'
+    })
+      .result.then((result) => {
+        this.closeResult = `Closed with: ${result}`
+        window.location.reload()
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`
+        window.location.reload()
+      })
+
+    if (category !== "") 
+    {
+      this.SelectedCategory = category;
+    }
+  }
   
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -128,15 +162,15 @@ export class CrudCategoryComponent implements OnInit {
     if (this.SelectedCategory === null) 
     {
       let newCategory = new Category();
-      newCategory.Id = 0;
-      newCategory.CreatedBy = 'Hiciano';
-      newCategory.CreationDate = new Date();
-      newCategory.ModificatedBy = 'Hiciano';
-      newCategory.ModificationDate = new Date();
-      newCategory.IsDeleted = false;
-      newCategory.Identificator = this.saveProfileForm.value.identificator; 
-      newCategory.Description = this.saveProfileForm.value.description;
-      newCategory.OnTopInMainPage = false;
+      newCategory.id = 0;
+      newCategory.createdBy = 'Hiciano';
+      newCategory.creationDate = new Date();
+      newCategory.modificatedBy = 'Hiciano';
+      newCategory.modificationDate = new Date();
+      newCategory.isDeleted = false;
+      newCategory.identificator = this.saveProfileForm.value.identificator; 
+      newCategory.description = this.saveProfileForm.value.description;
+      newCategory.onTopInMainPage = false;
       this.createCategory(JSON.stringify(newCategory))
     }
     else
@@ -144,6 +178,13 @@ export class CrudCategoryComponent implements OnInit {
       this.updateCategory(this.saveProfileForm.getRawValue())
     }
 
+    window.location.reload()
+   }
+
+   OnDelete(){
+    this.deleteCategory(this.SelectedCategory.id);
+    this.SelectedCategory = null;
+    this.modalService.dismissAll();
     window.location.reload()
    }
 

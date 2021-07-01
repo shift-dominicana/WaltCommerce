@@ -1,11 +1,11 @@
 export class Category {
-    Id: number;
-    CreatedBy: string;
-    CreationDate: Date;
-    ModificatedBy: string;
-    ModificationDate: Date;
-    IsDeleted: boolean;
-    Identificator: string;
-    Description: string;
-    OnTopInMainPage: boolean;
+    id: number;
+    createdBy: string;
+    creationDate: Date;
+    modificatedBy: string;
+    modificationDate: Date;
+    isDeleted: boolean;
+    identificator: string;
+    description: string;
+    onTopInMainPage: boolean;
 }
