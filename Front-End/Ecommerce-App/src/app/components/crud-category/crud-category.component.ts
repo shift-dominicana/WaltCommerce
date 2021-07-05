@@ -48,6 +48,7 @@ export class CrudCategoryComponent implements OnInit {
     this.categoryService.update(category).subscribe(
       response =>{
         console.log(response);
+        window.location.reload();
         this.message = response.message ? response.message : 'This category was updated successfully!';
       },
       error =>{
@@ -60,6 +61,7 @@ export class CrudCategoryComponent implements OnInit {
     this.categoryService.create(category).subscribe(
       response =>{
         console.log(response);
+        window.location.reload();
         this.message = response.message ? response.message : 'This category was updated successfully!';
       },
       error =>{
@@ -72,6 +74,7 @@ export class CrudCategoryComponent implements OnInit {
     this.categoryService.delete(id).subscribe(
       response =>{
         console.log(response);
+        window.location.reload();
         this.message = response.message ? response.message : 'This category was deleted successfully!';
       },
       error =>{
@@ -90,10 +93,8 @@ export class CrudCategoryComponent implements OnInit {
     })
       .result.then((result) => {
         this.closeResult = `Closed with: ${result}`
-        window.location.reload()
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`
-        window.location.reload()
       })
     
     if (category === "") 
@@ -126,10 +127,8 @@ export class CrudCategoryComponent implements OnInit {
     })
       .result.then((result) => {
         this.closeResult = `Closed with: ${result}`
-        window.location.reload()
       }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`
-        window.location.reload()
       })
 
     if (category !== "") 
@@ -141,19 +140,15 @@ export class CrudCategoryComponent implements OnInit {
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
-      //window.location.reload()
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
-      //window.location.reload()
     } else {
       return `with: ${reason}`;
-      //window.location.reload()
     }
   }
 
   closeModalApp() {
     this.modalService.dismissAll();
-    window.location.reload()
   }
 
   onSubmit() {
@@ -177,15 +172,12 @@ export class CrudCategoryComponent implements OnInit {
     {
       this.updateCategory(this.saveProfileForm.getRawValue())
     }
-
-    window.location.reload()
    }
 
    OnDelete(){
     this.deleteCategory(this.SelectedCategory.id);
     this.SelectedCategory = null;
     this.modalService.dismissAll();
-    window.location.reload()
    }
 
    
