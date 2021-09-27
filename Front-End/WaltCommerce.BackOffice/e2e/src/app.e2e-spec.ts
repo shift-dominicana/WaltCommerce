@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('Ecommerce-App app is running!');
+    expect(await page.getTitleText()).toEqual('WaltCommerce-BackOffice is running!');
   });
 
   afterEach(async () => {

@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Ecommerce-App'`, () => {
+  it(`should have as title 'WaltCommerce-BackOffice'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Ecommerce-App');
+    expect(app.title).toEqual('WaltCommerce-BackOffice');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Ecommerce-App app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('WaltCommerce-BackOffice app is running!');
   });
 });

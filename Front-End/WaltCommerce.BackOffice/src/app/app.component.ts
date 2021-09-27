@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Ecommerce-App';
+  title = 'WaltCommerce-BackOffice';
   navbar_opened = true;
 
   constructor(private http: HttpClient) { }
