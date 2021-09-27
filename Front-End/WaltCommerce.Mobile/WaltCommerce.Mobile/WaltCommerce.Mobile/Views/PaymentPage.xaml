@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WaltCommerce.Mobile.Views.PaymentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:WaltCommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <Grid RowDefinitions="Auto,70">
+        <ScrollView>
+            <StackLayout>
+                <Label
+                    Grid.Row="0"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    Text="{i18n:Translate QReciveOrder}" />
+
+                <StackLayout
+                    x:Name="ObtainMethodSelectedValue"
+                    RadioButtonGroup.GroupName="ObtainMethod"
+                    RadioButtonGroup.SelectedValue="{Binding SelectionGenderType}">
+                    <!--  tHE sAME types IN DataEnums.GenderEnum  -->
+                    <Grid
+                        Margin="0,10,0,0"
+                        Padding="0"
+                        ColumnDefinitions="25*, 75*">
+                        <RadioButton
+                            Grid.Column="0"
+                            CheckedChanged="OnObtainMethodCheckedChanged"
+                            Content="{i18n:Translate Method_Delivery}"
+                            IsChecked="{Binding IsDelivery}"
+                            Value="1" />
+
+                        <Frame
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                            <Picker
+                                x:Name="PickerAddress"
+                                Title="Select an Address"
+                                Margin="0,0,10,0"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding UserAddresses}"
+                                SelectedItem="{Binding SelectedAddress}"
+                                TitleColor="Red" />
+                        </Frame>
+                    </Grid>
+
+                    <Grid Padding="0" ColumnDefinitions="25*, 75*">
+                        <RadioButton
+                            CheckedChanged="OnObtainMethodCheckedChanged"
+                            Content="{i18n:Translate Method_Pickup}"
+                            IsChecked="{Binding IsPickup}"
+                            Value="2" />
+                    </Grid>
+                </StackLayout>
+
+                <Label
+                    Grid.Row="0"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    Text="{i18n:Translate QPayOrder}" />
+
+                <StackLayout
+                    x:Name="PayMethodSelectedValue"
+                    RadioButtonGroup.GroupName="PayMethod"
+                    RadioButtonGroup.SelectedValue="{Binding SelectionGenderType}">
+                    <!--  tHE sAME types IN DataEnums.GenderEnum  -->
+                    <RadioButton
+                        x:Name="CashOption"
+                        CheckedChanged="OnPayMethodCheckedChanged"
+                        Content="{i18n:Translate PayM_Cash}"
+                        IsChecked="{Binding IsCash}"
+                        Value="1" />
+                    <RadioButton
+                        x:Name="BankTranferOption"
+                        CheckedChanged="OnPayMethodCheckedChanged"
+                        Content="{i18n:Translate PayM_Transfer}"
+                        IsChecked="{Binding IsBankTransfer}"
+                        Value="2" />
+                </StackLayout>
+
+
+
+                <StackLayout Margin="10" Padding="0">
+                    <Grid ColumnDefinitions="40*, 10*, 25*, 25*">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Producto" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Cant" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Precio" />
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Importe" />
+
+                    </Grid>
+
+
+                    <CollectionView
+                        x:Name="CartCollection"
+                        Grid.Row="0"
+                        Margin="0"
+                        EmptyView="{i18n:Translate Noitems}"
+                        HeightRequest="100"
+                        ItemsSource="{Binding CartUserDetail}"
+                        SelectionMode="None"
+                        VerticalOptions="StartAndExpand"
+                        VerticalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid ColumnDefinitions="40*, 10*, 25*, 25*">
+                                    <Label Grid.Column="0" Text="{Binding Product.Name}" />
+                                    <Label Grid.Column="1" Text="{Binding Quantity}" />
+                                    <Label Grid.Column="2" Text="{Binding Product.Price, StringFormat='{0:#,0.#0}'}" />
+                                    <Label Grid.Column="3" Text="{Binding Total, StringFormat='{0:#,0.#0}'}" />
+                                </Grid>
+
+
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+
+                    <Grid ColumnDefinitions="40*, 10*, 25*, 25*">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Sub Total" />
+
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="{Binding SubTotalReceipt, StringFormat='{0:#,0.#0}'}" />
+
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="Total" />
+
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="3"
+                            FontAttributes="Bold"
+                            FontSize="Subtitle"
+                            Text="{Binding TotalReceipt, StringFormat='{0:#,0.#0}'}" />
+
+                    </Grid>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Button
+            Grid.Row="1"
+            Command="{Binding PaymentCommand}"
+            Text="{i18n:Translate PayButtontxt}" />
+
+    </Grid>
+
+</ContentPage>

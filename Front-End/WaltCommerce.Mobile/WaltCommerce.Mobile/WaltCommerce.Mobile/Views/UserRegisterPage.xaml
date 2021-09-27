@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WaltCommerce.Mobile.Views.UserRegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctr="clr-namespace:WaltCommerce.Mobile.Controls"
+    xmlns:i18n="clr-namespace:WaltCommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{Binding Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+
+    <StackLayout Margin="20">
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhFirstName}"
+            Text="{Binding FirstName}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhLastName}"
+            Text="{Binding LastName}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Placeholder="{i18n:Translate PhEmail}"
+            Text="{Binding Email}" />
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            IsPassword="True"
+            Placeholder="{i18n:Translate PhPassword}"
+            Text="{Binding Password}" />
+
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            IsPassword="True"
+            Placeholder="{i18n:Translate PhConfirmPassword}"
+            Text="{Binding ConfirmPassword}" />
+
+        <ctr:StandardEntry
+            BorderColor="#D8DAE9"
+            BorderThickness="1"
+            CornerRadius="10"
+            Keyboard="Telephone"
+            Placeholder="{i18n:Translate PhTelephone}"
+            Text="{Binding Telephone}" />
+
+        <Label
+            Margin="5"
+            FontSize="Medium"
+            Text="{i18n:Translate wBirthDay}" />
+        <DatePicker Date="{Binding BirthDay}" Format="dd/MM/yyyy" />
+
+        <ActivityIndicator IsRunning="{Binding IsRunning}" />
+        <Button
+            Command="{Binding SaveCommand}"
+            IsEnabled="{Binding IsEnabled}"
+            Text="{i18n:Translate wSave}"
+            VerticalOptions="EndAndExpand" />
+    </StackLayout>
+</ContentPage>

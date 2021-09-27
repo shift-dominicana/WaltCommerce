@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WaltCommerce.Mobile.Views.CartDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:i18n="clr-namespace:WaltCommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+
+
+    <Grid RowDefinitions="Auto,70">
+
+
+        <Button
+            Grid.Row="1"
+            Command="{Binding PaymentCommand}"
+            Text="{i18n:Translate PayButtontxt}" />
+
+
+
+
+        <CollectionView
+            x:Name="CartCollection"
+            Grid.Row="0"
+            Margin="10"
+            EmptyView="{i18n:Translate Noitems}"
+            ItemsSource="{Binding CartUserDetail}"
+            SelectedItem="{Binding CartItemSelected}"
+            SelectionMode="Single"
+            VerticalOptions="StartAndExpand"
+            VerticalScrollBarVisibility="Never">
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame
+                        Margin="0"
+                        Padding="0"
+                        HeightRequest="310"
+                        VerticalOptions="Fill">
+
+                        <Grid
+                            Margin="0"
+                            Padding="0"
+                            RowSpacing="2">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*" />
+                                <ColumnDefinition Width="60*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid RowDefinitions="300">
+
+                                <Frame
+                                    Grid.Row="0"
+                                    Padding="0"
+                                    CornerRadius="0"
+                                    HasShadow="False">
+
+                                    <ffimageloading:CachedImage
+                                        Aspect="Fill"
+                                        Background="Transparent"
+                                        CacheDuration="50"
+                                        DownsampleToViewSize="true"
+                                        ErrorPlaceholder="ErrorImage"
+                                        LoadingPlaceholder="LoaderImage"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="{Binding Product.MainImageUrl}"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="120" />
+                                </Frame>
+
+                            </Grid>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding Product.Name}"
+                                TextColor="Black" />
+
+
+
+
+                            <Grid
+                                x:Name="QuantitySelect"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame
+                                    Grid.Column="0"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Black"
+                                    CornerRadius="25"
+                                    HasShadow="False"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Center" />
+
+                                <Button
+                                    Grid.Column="0"
+                                    Margin="10,0,0,0"
+                                    Command="{Binding Path=BindingContext.DecreaseButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource QuantityButton}"
+                                    Text="-"
+                                    VerticalOptions="Center" />
+
+                                <Button
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    Command="{Binding Path=BindingContext.IncreaseButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource QuantityButton}"
+                                    Text="+"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Quantity}"
+                                    VerticalOptions="Center" />
+
+                                <ImageButton
+                                    Grid.Column="1"
+                                    Margin="0,0,10,0"
+                                    Command="{Binding Path=BindingContext.DeleteButtonCmd, Source={x:Reference CartCollection}}"
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                            FontFamily="{DynamicResource MaterialFontFamily}"
+                                            Glyph="{StaticResource Trash}"
+                                            Size="40"
+                                            Color="{StaticResource PrimaryColor}" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+
+                            </Grid>
+
+
+                            <Label Grid.Row="2" Grid.Column="1">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontSize="Medium" Text="$RD " />
+                                        <Span FontSize="Medium" Text="{Binding Product.Price, StringFormat='{0:#,0.#0}'}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+
+
+                        </Grid>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

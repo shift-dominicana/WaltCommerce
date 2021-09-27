@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WaltCommerce.Mobile.Views.UserProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Behavior="clr-namespace:WaltCommerce.Mobile.Behaviors"
+    xmlns:ctr="clr-namespace:WaltCommerce.Mobile.Controls"
+    xmlns:i18n="clr-namespace:WaltCommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    Title="{i18n:Translate UserProfile_Title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ScrollView>
+        <StackLayout Margin="20">
+
+            <ctr:StandardEntry
+                BorderColor="#D8DAE9"
+                BorderThickness="1"
+                CornerRadius="10"
+                Placeholder="{i18n:Translate PhFirstName}"
+                Text="{Binding FirstName}" />
+            <ctr:StandardEntry
+                BorderColor="#D8DAE9"
+                BorderThickness="1"
+                CornerRadius="10"
+                Placeholder="{i18n:Translate PhLastName}"
+                Text="{Binding LastName}" />
+            <ctr:StandardEntry Placeholder="{i18n:Translate PhEmail}" Text="{Binding Email}" />
+            <ctr:StandardEntry
+                BorderColor="#D8DAE9"
+                BorderThickness="1"
+                CornerRadius="10"
+                Placeholder="{i18n:Translate PhNickName}"
+                Text="{Binding NickName}" />
+
+            <Label
+                Margin="5"
+                FontSize="Medium"
+                Text="{i18n:Translate wBirthDay}" />
+
+            <DatePicker Date="{Binding BirthDay}" Format="dd/MM/yyyy" />
+
+
+
+
+            <ctr:StandardEntry
+                BorderColor="#D8DAE9"
+                BorderThickness="1"
+                CornerRadius="10"
+                Keyboard="Telephone"
+                Placeholder="{i18n:Translate PhTelephone}"
+                Text="{Binding Telephone}">
+                <ctr:StandardEntry.Behaviors>
+                    <Behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
+                </ctr:StandardEntry.Behaviors>
+            </ctr:StandardEntry>
+
+
+
+
+            <ctr:StandardEntry
+                BorderColor="#D8DAE9"
+                BorderThickness="1"
+                CornerRadius="10"
+                Keyboard="Telephone"
+                Placeholder="{i18n:Translate PhCellPhone}"
+                Text="{Binding Cellphone}">
+
+                <ctr:StandardEntry.Behaviors>
+                    <Behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
+                </ctr:StandardEntry.Behaviors>
+            </ctr:StandardEntry>
+            <!-- Not Necesary for bussiness
+            <Entry Placeholder="{i18n:Translate PhPersonalId}" Text="{Binding PersonalId}">
+
+                <Entry.Behaviors>
+                    <Behavior:MaskedBehavior Mask="XXX-XXXXXXX-X" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <StackLayout
+                x:Name="IdTypeSelectedValue"
+                RadioButtonGroup.GroupName="PersonalIdType"
+                RadioButtonGroup.SelectedValue="{Binding SelectionIdType}">
+                <Label Text="{i18n:Translate Option_IdType}" />
+
+                <RadioButton
+                    CheckedChanged="OnPersonalIdTypeCheckedChanged"
+                    Content="Cedula"
+                    IsChecked="{Binding IsLocalId}"
+                    Value="1" />
+                <RadioButton
+                    CheckedChanged="OnPersonalIdTypeCheckedChanged"
+                    Content="Pasaporte"
+                    IsChecked="{Binding IsPassport}"
+                    Value="2" />
+                <RadioButton
+                    CheckedChanged="OnPersonalIdTypeCheckedChanged"
+                    Content="Rnc"
+                    IsChecked="{Binding IsBusinessId}"
+                    Value="3" />
+            </StackLayout>-->
+
+            <StackLayout
+                x:Name="GenderSelectedValue"
+                RadioButtonGroup.GroupName="GenderType"
+                RadioButtonGroup.SelectedValue="{Binding SelectionGenderType}">
+                <Label Text="{i18n:Translate Option_GenderType}" />
+                <!--  tHE sAME types IN DataEnums.GenderEnum  -->
+                <RadioButton
+                    CheckedChanged="OnGenderTypeCheckedChanged"
+                    Content="{i18n:Translate Gender_Male}"
+                    IsChecked="{Binding IsMale}"
+                    Value="1" />
+                <RadioButton
+                    CheckedChanged="OnGenderTypeCheckedChanged"
+                    Content="{i18n:Translate Gender_Female}"
+                    IsChecked="{Binding IsFemale}"
+                    Value="2" />
+                <RadioButton
+                    CheckedChanged="OnGenderTypeCheckedChanged"
+                    Content="{i18n:Translate Gender_NonBinary}"
+                    IsChecked="{Binding IsNonBinary}"
+                    Value="3" />
+            </StackLayout>
+
+
+            <ActivityIndicator IsRunning="{Binding IsRunning}" />
+            <Button
+                Command="{Binding SaveCommand}"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate wSave}"
+                VerticalOptions="EndAndExpand" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

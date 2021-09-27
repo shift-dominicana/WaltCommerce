@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="WaltCommerce.Mobile.Views.ProductDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:i18n="clr-namespace:WaltCommerce.Mobile.Helpers.I18n"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ScrollView>
+        <StackLayout Padding="5,2,5,2">
+            <CarouselView
+                HeightRequest="400"
+                HorizontalScrollBarVisibility="Always"
+                ItemsSource="{Binding Product.ProductImages}"
+                Loop="False">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        SnapPointsAlignment="End"
+                        SnapPointsType="MandatorySingle" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame
+                                Margin="0,0,0,0"
+                                BorderColor="DarkGray"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                HeightRequest="450"
+                                HorizontalOptions="Center"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout>
+
+                                    <ffimageloading:CachedImage
+                                        Aspect="Fill"
+                                        HeightRequest="350"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding ImageUrl}"
+                                        WidthRequest="350" />
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <CollectionView
+                x:Name="colorList"
+                HeightRequest="50"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding SimilarProducts}"
+                SelectedItem="{Binding SelectedColor}"
+                SelectionChangedCommand="{Binding ChangeColorCommand}"
+                SelectionMode="Single"
+                VerticalOptions="Start">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="0" Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Margin="0,0,0,0" Padding="0,0,0,0">
+
+                            <Frame
+                                Margin="0,0,5,0"
+                                HeightRequest="50"
+                                WidthRequest="60">
+                                <ImageButton
+                                    Padding="0"
+                                    Aspect="Fill"
+                                    BackgroundColor="{Binding ProductColor.HexCode}"
+                                    CornerRadius="60"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding ProductColor.ImageColorUrl}"
+                                    VerticalOptions="Start"
+                                    WidthRequest="60" />
+                            </Frame>
+
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="VisualStateManager.VisualStateGroups">
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid
+                ColumnDefinitions="Auto, *"
+                ColumnSpacing="40"
+                RowDefinitions="Auto,Auto,Auto"
+                VerticalOptions="End">
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{i18n:Translate DpName}" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Product.Name}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpDescription}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Product.Description}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpPrice}" />
+                <Label Grid.Row="2" Grid.Column="1">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Medium" Text="$RD " />
+                            <Span FontSize="Medium" Text="{Binding Product.Price, StringFormat='{0:#,0.#0}'}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+
+            </Grid>
+
+            <Grid
+                x:Name="QuantitySelect"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="End">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Start"
+                    Text="Quantity"
+                    VerticalOptions="Start" />
+
+
+                <Frame
+                    Grid.Column="1"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="Black"
+                    CornerRadius="25"
+                    HasShadow="False"
+                    HeightRequest="50"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Command="{Binding DecreaseButtonCmd}"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource QuantityButton}"
+                    Text="-"
+                    VerticalOptions="Center" />
+                <Button
+                    Grid.Column="1"
+                    Margin="0,0,10,0"
+                    Command="{Binding IncreaseButtonCmd}"
+                    HorizontalOptions="End"
+                    Style="{StaticResource QuantityButton}"
+                    Text="+"
+                    VerticalOptions="Center" />
+
+                <Label
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Text="{Binding Qty}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+
+            <Grid RowDefinitions="Auto,Auto">
+                <Button
+                    Grid.Row="0"
+                    BackgroundColor="Navy"
+                    Command="{Binding ShoppingCarCommand}"
+                    CornerRadius="10"
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpAddToCart}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+
+                <Button
+                    Grid.Row="1"
+                    BackgroundColor="Navy"
+                    Command="{Binding AskWhatsappCommand}"
+                    CornerRadius="10"
+                    FontSize="Medium"
+                    Text="{i18n:Translate DpAskWhatsapp}"
+                    TextColor="White"
+                    VerticalOptions="EndAndExpand" />
+            </Grid>
+
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="{i18n:Translate DpSpecifications}"
+                TextColor="OrangeRed" />
+
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                Color="Black" />
+
+
+            <CollectionView
+                x:Name="categoryList"
+                HeightRequest="150"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Product.Specs}"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Always">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="0" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid>
+
+                            <Label FontAttributes="Bold" Text="{Binding Description, StringFormat='-{0:F0}'}" />
+
+                        </Grid>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+
+
+</ContentPage>
