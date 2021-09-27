@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://138.197.75.214/',
-  //baseUrl: 'https://10.0.0.19:5000/',
+  //baseUrl: 'http://138.197.75.214/',
+  baseUrl: 'https://10.0.0.19:5000/',
 };
 
 /*

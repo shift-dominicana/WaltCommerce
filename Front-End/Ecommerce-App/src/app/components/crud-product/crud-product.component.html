@@ -36,33 +36,74 @@
       </button>
     </div>
     <div class="modal-body">
-      <nav ngbNav #nav="ngbNav" class="nav-tabs">
-        <ng-container ngbNavItem>
-          <a ngbNavLink>Datos Basicos</a>
-          <ng-template ngbNavContent>
-            <p>Datos basicos</p>
-          </ng-template>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <a ngbNavLink>Especificaciones</a>
-          <ng-template ngbNavContent>
-            <p>Especificaciones de productos</p>
-          </ng-template>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <a ngbNavLink>Imagenes</a>
-          <ng-template ngbNavContent>
-            <p>Imagenes del producto</p>
-          </ng-template>
-        </ng-container>
-        <ng-container ngbNavItem>
-          <a ngbNavLink>Productos Similares</a>
-          <ng-template ngbNavContent>
-            <p>Productos similares</p>
-          </ng-template>
-        </ng-container>
-      </nav>
-      
+
+        <nav ngbNav #nav="ngbNav" class="nav-tabs">
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Datos Basicos</a>
+            <ng-template ngbNavContent>
+
+              <div ng-form="basicForm">
+                
+
+                  <div class="form-row">
+
+                    <div class="col-md-4 mb-3">  
+                      <label for="product-iden">Identificador</label>
+                      <input type="text" class="form-control" name="product-iden" id="product-iden" ng-model="model.textProperty" required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">    
+                      <label for="product-name">Nombre</label>
+                      <input type="text" class="form-control" name="product-name" id="product-name" ng-model="model.textProperty" required>
+                    </div>    
+
+                    
+                    
+                  </div>    
+                
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="product-enable">
+                    <label class="form-check-label" for="gridCheck">
+                      Disponible
+                    </label>
+                  </div>
+                
+
+                  <label for="product-description">Descripcion</label>
+                  <input type="text" class="form-control" name="product-description" id="product-description" ng-model="model.textProperty" required>
+
+                  <label for="product-price">Precio</label>
+                  <input type="text" class="form-control" name="product-price" id="product-price" ng-model="model.textProperty" required>
+
+                  <label for="product-disprice">Precio de descuento</label>
+                  <input type="text" class="form-control" name="product-disprice" id="product-disprice" ng-model="model.textProperty" required>
+
+                  <label for="product-stock">Stock</label>
+                  <input type="text" class="form-control" name="product-stock" id="product-stock" ng-model="model.textProperty" required>
+                </div>
+            
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Especificaciones</a>
+            <ng-template ngbNavContent>
+              <p>Especificaciones de productos</p>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Imagenes</a>
+            <ng-template ngbNavContent>
+              <p>Imagenes del producto</p>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Productos Similares</a>
+            <ng-template ngbNavContent>
+              <p>Productos similares</p>
+            </ng-template>
+          </ng-container>
+        </nav>
+
       <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
     <div class="modal-footer">

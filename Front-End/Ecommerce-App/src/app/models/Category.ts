@@ -1,10 +1,5 @@
-export class Category {
-    id: number;
-    createdBy: string;
-    creationDate: Date;
-    modificatedBy: string;
-    modificationDate: Date;
-    isDeleted: boolean;
+import { Base } from 'src/app/models/Base';
+export class Category extends Base {
     identificator: string;
     description: string;
     onTopInMainPage: boolean;
