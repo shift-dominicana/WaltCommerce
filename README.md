@@ -1,4 +1,4 @@
-<h1 align="center"> Shift E-Commerce </h1>
+<h1 align="center"> WaltCommerce </h1>
 <h3 align="center">A Store for everything</h3>
 
 ## Description :seedling:
