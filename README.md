@@ -3,7 +3,7 @@
 
 ## Description :seedling:
 
-*Shift E-Commerce* is a project initially for learn to build a E-Commerce and sell it to the public. It was decided to work with emerging technologies of the moment like Postgres, .Net Core, Angular and Xamarin,  The beginning of this project was a great experience and taking it to production with several clients is another that I want us to achieve **together**. Join the team and we will learn together about this experience.
+*WaltCommerce* is a project initially for learn to build a E-Commerce and sell it to the public. It was decided to work with emerging technologies of the moment like Postgres, .Net Core, Angular and Xamarin,  The beginning of this project was a great experience and taking it to production with several clients is another that I want us to achieve **together**. Join the team and we will learn together about this experience.
 
 ## Technology Stack :collision:
 
