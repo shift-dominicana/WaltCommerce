@@ -32,13 +32,3 @@ Application server : Kestrel + Nginx or Kestrel + Apache for the API, IIS or Nod
 **Google Chrome** - For test the Angular App
 
 **Smart Phone** - For test the mobile app (Maybe a virtual one)
-
-
-
-![Menu](C:\wk_directory\Ecommerce Images\1 Foto.webp)
-
-![](C:\wk_directory\Ecommerce Images\2 - Resumen Factura .webp)
-
-![](C:\wk_directory\Ecommerce Images\3 - Catalog.webp)
-
-![](C:\wk_directory\Ecommerce Images\5 - View Product.webp)
