@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.ProductsSizes
+namespace DataLayer.ContextExtension
 {
     public class ProductSizeConfiguration : IEntityTypeConfiguration<ProductSize>
     {

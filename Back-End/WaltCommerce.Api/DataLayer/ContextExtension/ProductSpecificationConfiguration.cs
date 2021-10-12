@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.ProductsSpecifications
+namespace DataLayer.ContextExtension
 {
     public class ProductSpecificationConfiguration : IEntityTypeConfiguration<ProductSpecification>
     {

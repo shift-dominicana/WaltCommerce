@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.Brands
+namespace DataLayer.ContextExtension
 {
     public class BrandConfiguration : IEntityTypeConfiguration<Brand>
     {

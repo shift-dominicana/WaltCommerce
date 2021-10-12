@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.PersonTypeCategories
+namespace DataLayer.ContextExtension
 {
     public class PersonTypeCategoryConfiguration : IEntityTypeConfiguration<PersonTypeCategory>
     {
