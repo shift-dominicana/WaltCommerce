@@ -4,7 +4,7 @@ using DataLayer.ViewModels.ProductsSizes;
 using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WaltCommerce.Api.Controllers.ProductsSizes
+namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

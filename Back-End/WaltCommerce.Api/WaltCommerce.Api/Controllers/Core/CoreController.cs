@@ -17,7 +17,7 @@ namespace WaltCommerce.Api.Controllers.Core
         {
             _service = service;
         }
-
+        //Uncommented Authorize to Deploy to production
         [HttpGet]
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public virtual async Task<IActionResult> Get()

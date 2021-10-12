@@ -4,7 +4,7 @@ using DataLayer.ViewModels.Roles;
 using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WaltCommerce.Api.Controllers.Roles
+namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

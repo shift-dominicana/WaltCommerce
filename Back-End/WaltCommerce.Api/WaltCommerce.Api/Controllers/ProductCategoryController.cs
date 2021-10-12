@@ -1,11 +1,10 @@
 ﻿using BussinesLayer.Interfaces.ProductsCategories;
 using Common.Models.ProductCategories;
 using DataLayer.ViewModels.ProductsCategories;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using WaltCommerce.Api.Controllers.Core;
 
-namespace WaltCommerce.Api.Controllers.ProductsCategories
+namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

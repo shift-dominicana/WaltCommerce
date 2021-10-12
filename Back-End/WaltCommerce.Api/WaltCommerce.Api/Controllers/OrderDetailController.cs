@@ -1,12 +1,11 @@
 ﻿using BussinesLayer.Interfaces.OrderDetails;
-using BussinesLayer.Interfaces.Orders;
 using Common.Models.OrderDetails;
 using DataLayer.ViewModels.OrderDetails;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using WaltCommerce.Api.Controllers.Core;
 
-namespace WaltCommerce.Api.Controllers.OrdersDetails
+namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
