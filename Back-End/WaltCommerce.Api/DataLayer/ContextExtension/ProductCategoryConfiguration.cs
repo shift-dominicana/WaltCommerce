@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.ProductCategories
+namespace DataLayer.ContextExtension
 {
     public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCategory>
     {

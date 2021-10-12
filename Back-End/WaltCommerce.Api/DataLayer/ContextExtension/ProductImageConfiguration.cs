@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.ProductsImages
+namespace DataLayer.ContextExtension
 {
     public class ProductImageConfiguration : IEntityTypeConfiguration<ProductImage>
     {

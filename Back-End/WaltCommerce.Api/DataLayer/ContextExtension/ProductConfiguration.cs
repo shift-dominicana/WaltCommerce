@@ -2,7 +2,7 @@ using Common.Models.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.Products
+namespace DataLayer.ContextExtension
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

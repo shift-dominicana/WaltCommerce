@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataLayer.ContextExtension.ProductColors
+namespace DataLayer.ContextExtension
 {
     public class ProductColorConfiguration : IEntityTypeConfiguration<ProductColor>
     {

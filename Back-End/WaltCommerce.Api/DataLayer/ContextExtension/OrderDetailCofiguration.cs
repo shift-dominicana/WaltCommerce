@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.ContextExtension.OrderDetails
+namespace DataLayer.ContextExtension
 {
     public class OrderDetailCofiguration : IEntityTypeConfiguration<OrderDetail>
     {

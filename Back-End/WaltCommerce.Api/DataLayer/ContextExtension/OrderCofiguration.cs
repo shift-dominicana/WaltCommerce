@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.ContextExtension.Orders
+namespace DataLayer.ContextExtension
 {
     public class OrderCofiguration : IEntityTypeConfiguration<Order>
     {

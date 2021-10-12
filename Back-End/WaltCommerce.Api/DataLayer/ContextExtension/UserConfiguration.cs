@@ -1,10 +1,9 @@
-﻿using Common.Models.Users;
-using Common.Enums;
+﻿using Common.Enums;
+using Common.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Common.Models.BuyCarts;
 
-namespace DataLayer.ContextExtension.Users
+namespace DataLayer.ContextExtension
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
