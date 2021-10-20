@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.Roles;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.Roles;
 using DataLayer.ViewModels.Roles;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : CoreController<IRolesService, Role, RoleViewModel>
+    public class RoleController : CoreController<IRoleService, Role, RoleViewModel>
     {
-        private IRolesService _roleService;
+        private IRoleService _roleService;
 
-        public RoleController(IRolesService service) : base(service)
+        public RoleController(IRoleService service) : base(service)
         {
             this._roleService = service;
         }

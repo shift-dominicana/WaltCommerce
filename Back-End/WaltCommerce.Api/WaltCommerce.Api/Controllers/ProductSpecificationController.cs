@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.ProductsSpecifications;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.ProductsSpecifications;
 using DataLayer.ViewModels.ProductsSpecifications;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductSpecificationController : CoreController<IProductsSpecificationsService, ProductSpecification, ProductSpecificationViewModel>
+    public class ProductSpecificationController : CoreController<IProductSpecificationService, ProductSpecification, ProductSpecificationViewModel>
     {
-        private IProductsSpecificationsService _productSpecificationService;
+        private IProductSpecificationService _productSpecificationService;
 
-        public ProductSpecificationController(IProductsSpecificationsService service) : base(service)
+        public ProductSpecificationController(IProductSpecificationService service) : base(service)
         {
             this._productSpecificationService = service;
         }

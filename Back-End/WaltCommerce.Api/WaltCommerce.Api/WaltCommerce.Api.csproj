@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BussinesLayer\BussinesLayer.csproj" />
+    <ProjectReference Include="..\BussinesLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
   </ItemGroup>

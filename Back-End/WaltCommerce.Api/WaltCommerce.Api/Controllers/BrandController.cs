@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.Brands;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.Brands;
 using DataLayer.ViewModels.Brands;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : CoreController<IBrandsService, Brand, BrandViewModel>
+    public class BrandController : CoreController<IBrandService, Brand, BrandViewModel>
     {
-        private IBrandsService _brandService;
+        private IBrandService _brandService;
 
-        public BrandController(IBrandsService service) : base(service)
+        public BrandController(IBrandService service) : base(service)
         {
             this._brandService = service;
         }

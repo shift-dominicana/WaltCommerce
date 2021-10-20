@@ -1,4 +1,4 @@
-﻿using BussinesLayer.Interfaces.Mails;
+﻿using BussinesLayer.Interfaces;
 using BussinesLayer.Models.Mails;
 using Microsoft.AspNetCore.Mvc;
 using System;

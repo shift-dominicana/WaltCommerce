@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{0A2B4A81-B797-4BCC-BBD5-41A03A9DC59F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinesLayer", "BussinesLayer\BussinesLayer.csproj", "{F813A108-1965-4B37-ADF4-0B1939147658}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BussinesLayer\BusinessLayer.csproj", "{F813A108-1965-4B37-ADF4-0B1939147658}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{99755865-8DD2-4585-93BD-FBBCB6280C4C}"
 EndProject

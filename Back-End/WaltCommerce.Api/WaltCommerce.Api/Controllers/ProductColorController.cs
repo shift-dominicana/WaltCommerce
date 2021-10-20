@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.ProductsColors;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.ProductsColors;
 using DataLayer.ViewModels.ProductsColors;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductColorController : CoreController<IProductsColorsService, ProductColor, ProductColorViewModel>
+    public class ProductColorController : CoreController<IProductColorService, ProductColor, ProductColorViewModel>
     {
-        private IProductsColorsService _productColorService;
+        private IProductColorService _productColorService;
 
-        public ProductColorController(IProductsColorsService service) : base(service)
+        public ProductColorController(IProductColorService service) : base(service)
         {
             this._productColorService = service;
         }

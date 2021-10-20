@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.PersonsTypeCategories;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.PersonTypeCategories;
 using DataLayer.ViewModels.PersonsTypeCategories;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PersonTypeCategoryController : CoreController<IPersonsTypeCategoriesService, PersonTypeCategory, PersonTypeCategoryViewModel>
+    public class PersonTypeCategoryController : CoreController<IPersonTypeCategorieService, PersonTypeCategory, PersonTypeCategoryViewModel>
     {
-        private IPersonsTypeCategoriesService _personTypeCategoryService;
+        private IPersonTypeCategorieService _personTypeCategoryService;
 
-        public PersonTypeCategoryController(IPersonsTypeCategoriesService service) : base(service)
+        public PersonTypeCategoryController(IPersonTypeCategorieService service) : base(service)
         {
             this._personTypeCategoryService = service;
         }
