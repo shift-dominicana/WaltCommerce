@@ -1,4 +1,4 @@
-﻿using BussinesLayer.Interfaces.BuyCartDetails;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.BuyCartDetails;
 using DataLayer.ViewModels.BuyCartDetails;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +10,11 @@ namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BuyCartDetailController : CoreController<IBuyCartDetailsService, BuyCartDetail, BuyCartDetailViewModel>
+    public class BuyCartDetailController : CoreController<IBuyCartDetailService, BuyCartDetail, BuyCartDetailViewModel>
     {
-        private IBuyCartDetailsService _buyCartDetailService;
+        private IBuyCartDetailService _buyCartDetailService;
 
-        public BuyCartDetailController(IBuyCartDetailsService service) : base(service)
+        public BuyCartDetailController(IBuyCartDetailService service) : base(service)
         {
             this._buyCartDetailService = service;
         }

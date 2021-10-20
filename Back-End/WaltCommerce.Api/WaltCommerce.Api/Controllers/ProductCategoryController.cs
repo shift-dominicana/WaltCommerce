@@ -1,4 +1,4 @@
-﻿using BussinesLayer.Interfaces.ProductsCategories;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.ProductCategories;
 using DataLayer.ViewModels.ProductsCategories;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +8,11 @@ namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductCategoryController : CoreController<IProductsCategoriesService, ProductCategory, ProductCategoryViewModel>
+    public class ProductCategoryController : CoreController<IProductCategorieService, ProductCategory, ProductCategoryViewModel>
     {
-        private IProductsCategoriesService _productCategoryService;
+        private IProductCategorieService _productCategoryService;
 
-        public ProductCategoryController(IProductsCategoriesService service) : base(service)
+        public ProductCategoryController(IProductCategorieService service) : base(service)
         {
             this._productCategoryService = service;
         }

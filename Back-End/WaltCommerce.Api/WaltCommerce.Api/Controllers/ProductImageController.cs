@@ -8,11 +8,11 @@ namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductImageController : CoreController<IProductsImagesService, ProductImage, ProductImageViewModel>
+    public class ProductImageController : CoreController<IProductImageService, ProductImage, ProductImageViewModel>
     {
-        private IProductsImagesService _productImageService;
+        private IProductImageService _productImageService;
 
-        public ProductImageController(IProductsImagesService service) : base(service)
+        public ProductImageController(IProductImageService service) : base(service)
         {
             this._productImageService = service;
         }

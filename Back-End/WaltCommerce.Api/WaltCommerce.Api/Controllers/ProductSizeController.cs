@@ -1,18 +1,18 @@
-﻿using BussinesLayer.Interfaces.ProductsSizes;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.Sizes;
 using DataLayer.ViewModels.ProductsSizes;
-using WaltCommerce.Api.Controllers.Core;
 using Microsoft.AspNetCore.Mvc;
+using WaltCommerce.Api.Controllers.Core;
 
 namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductSizeController : CoreController<IProductsSizesService, ProductSize, ProductSizeViewModel>
+    public class ProductSizeController : CoreController<IProductSizeService, ProductSize, ProductSizeViewModel>
     {
-        private IProductsSizesService _productSizeService;
+        private IProductSizeService _productSizeService;
 
-        public ProductSizeController(IProductsSizesService service) : base(service)
+        public ProductSizeController(IProductSizeService service) : base(service)
         {
             this._productSizeService = service;
         }

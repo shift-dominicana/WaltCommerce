@@ -1,6 +1,5 @@
-﻿using BussinesLayer.Interfaces.Auth;
+﻿using BussinesLayer.Interfaces;
 using BussinesLayer.Interfaces.BuyCarts;
-using BussinesLayer.Interfaces.Users;
 using Common.Models.UserRequest;
 using Common.Models.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +12,10 @@ namespace WaltCommerce.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _service;
-        private readonly IUsersService _userService;
+        private readonly IUserService _userService;
         private readonly IBuyCartsService _buyCartsService;
 
-        public AuthController(IAuthService service, IUsersService userService,IBuyCartsService buyCartsService)
+        public AuthController(IAuthService service, IUserService userService, IBuyCartsService buyCartsService)
         {
             _service = service;
             _userService = userService;
@@ -27,7 +26,7 @@ namespace WaltCommerce.Api.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserRequest credentials)
         {
-            User user = await  _userService.Authenticate(credentials.Email, credentials.Password);
+            User user = await _userService.Authenticate(credentials.Email, credentials.Password);
 
             if (user == null) return BadRequest("invalid login");
             var token = _service.BuildToken(user);

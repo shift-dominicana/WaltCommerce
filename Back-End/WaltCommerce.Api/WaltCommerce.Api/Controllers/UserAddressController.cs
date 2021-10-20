@@ -1,4 +1,4 @@
-using BussinesLayer.Interfaces.UserAddresses;
+using BussinesLayer.Interfaces;
 using Common.Models.UsersAddresses;
 using DataLayer.ViewModels.UserAddresses;
 using Microsoft.AspNetCore.Mvc;
@@ -9,12 +9,12 @@ namespace WaltCommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserAddressController : CoreController<IUserAddressesService, UserAddress, UserAddressViewModel>
+    public class UserAddressController : CoreController<IUserAddressService, UserAddress, UserAddressViewModel>
     {
 
-        private IUserAddressesService _userAddressService;
+        private IUserAddressService _userAddressService;
 
-        public UserAddressController(IUserAddressesService service) : base(service)
+        public UserAddressController(IUserAddressService service) : base(service)
         {
             _userAddressService = service;
         }

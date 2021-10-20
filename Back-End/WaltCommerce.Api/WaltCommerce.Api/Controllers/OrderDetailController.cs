@@ -1,4 +1,4 @@
-﻿using BussinesLayer.Interfaces.OrderDetails;
+﻿using BussinesLayer.Interfaces;
 using Common.Models.OrderDetails;
 using DataLayer.ViewModels.OrderDetails;
 using Microsoft.AspNetCore.Mvc;
